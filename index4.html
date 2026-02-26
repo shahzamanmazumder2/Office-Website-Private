@@ -1,909 +1,503 @@
 <!doctype html>
-<html lang="en" class="h-full scroll-smooth">
+<html lang="en" data-theme="light" class="h-full">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud Connect AI - CCAI</title>
+  <title>Feature Showcase</title>
   <script src="/_sdk/element_sdk.js"></script>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <script>
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'light');
-    }
-    
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-    });
-  </script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light dark;
-    }
-
-    [data-theme="light"] {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8fafb;
-      --text-primary: #111827;
-      --text-secondary: #4b5563;
-      --border-color: #e5e7eb;
-      --accent-1: #6366f1;
-      --accent-2: #0891b2;
-      --accent-3: #7c3aed;
-      --card-bg: #ffffff;
-      --surface-overlay: rgba(0, 0, 0, 0.02);
+      --bg-color: #f8fafc;
+      --bg-gradient-1: rgba(99, 102, 241, 0.1);
+      --bg-gradient-2: rgba(168, 85, 247, 0.1);
+      --bg-gradient-3: rgba(236, 72, 153, 0.1);
+      --shape-color-1: rgba(99, 102, 241, 0.15);
+      --shape-color-2: rgba(168, 85, 247, 0.12);
+      --shape-color-3: rgba(236, 72, 153, 0.1);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-border: rgba(99, 102, 241, 0.2);
     }
 
     [data-theme="dark"] {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
+      --bg-color: #0f172a;
+      --bg-gradient-1: rgba(99, 102, 241, 0.2);
+      --bg-gradient-2: rgba(168, 85, 247, 0.15);
+      --bg-gradient-3: rgba(236, 72, 153, 0.12);
+      --shape-color-1: rgba(99, 102, 241, 0.25);
+      --shape-color-2: rgba(168, 85, 247, 0.2);
+      --shape-color-3: rgba(236, 72, 153, 0.15);
       --text-primary: #f1f5f9;
-      --text-secondary: #cbd5e1;
-      --border-color: #334155;
-      --accent-1: #818cf8;
-      --accent-2: #06b6d4;
-      --accent-3: #a78bfa;
-      --card-bg: #1e293b;
-      --surface-overlay: rgba(255, 255, 255, 0.05);
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+      --text-secondary: #94a3b8;
+      --card-bg: rgba(30, 41, 59, 0.8);
+      --card-border: rgba(99, 102, 241, 0.3);
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-primary);
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-color);
       color: var(--text-primary);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
     }
 
-    .font-heading {
+    .geometric-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      background: 
+        radial-gradient(ellipse at 20% 20%, var(--bg-gradient-1) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, var(--bg-gradient-2) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, var(--bg-gradient-3) 0%, transparent 60%),
+        var(--bg-color);
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.8;
+      filter: blur(1px);
+    }
+
+    .shape-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--shape-color-1);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      top: -10%;
+      left: -10%;
+      animation: float1 25s ease-in-out infinite;
+      filter: blur(3px);
+    }
+
+    .shape-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--shape-color-2);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      top: 50%;
+      right: -8%;
+      animation: float2 30s ease-in-out infinite;
+      filter: blur(2px);
+    }
+
+    .shape-3 {
+      width: 350px;
+      height: 350px;
+      background: var(--shape-color-3);
+      border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+      bottom: -5%;
+      left: 10%;
+      animation: float3 28s ease-in-out infinite;
+      filter: blur(3px);
+    }
+
+    .shape-4 {
+      width: 300px;
+      height: 300px;
+      background: var(--shape-color-1);
+      border-radius: 50%;
+      top: 20%;
+      right: 15%;
+      animation: float4 26s ease-in-out infinite;
+      filter: blur(2px);
+    }
+
+    .shape-5 {
+      width: 450px;
+      height: 450px;
+      background: var(--shape-color-2);
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      bottom: -10%;
+      right: -5%;
+      animation: rotate1 45s linear infinite;
+      filter: blur(3px);
+    }
+
+    .shape-6 {
+      width: 380px;
+      height: 380px;
+      background: var(--shape-color-3);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+      top: -5%;
+      right: 25%;
+      animation: float5 32s ease-in-out infinite;
+      filter: blur(2px);
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(30px, 30px) rotate(10deg); }
+      66% { transform: translate(-20px, 20px) rotate(-5deg); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-40px, 20px) rotate(-15deg); }
+      66% { transform: translate(20px, -30px) rotate(10deg); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -40px) scale(1.1); }
+    }
+
+    @keyframes float4 {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-20px, 30px); }
+      50% { transform: translate(30px, 50px); }
+      75% { transform: translate(50px, 20px); }
+    }
+
+    @keyframes float5 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-30px, 40px) rotate(180deg); }
+    }
+
+    @keyframes rotate1 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .heading-font {
       font-family: 'Space Grotesk', sans-serif;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-gradient {
-      background: radial-gradient(ellipse at top, var(--accent-1) 0%, transparent 50%),
-                  radial-gradient(ellipse at bottom right, var(--accent-2) 0%, transparent 40%);
-      opacity: 0.1;
-    }
-
-    .card-hover {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      box-shadow: 0 1px 3px var(--surface-overlay);
-    }
-
-    .card-hover:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: var(--accent-1);
-      box-shadow: 0 20px 40px var(--surface-overlay);
-    }
-
-    .card-hover:hover .card-icon {
-      transform: scale(1.1) rotate(5deg);
-    }
-
-    .card-icon {
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn-glow {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: linear-gradient(135deg, var(--accent-1), #818cf8) !important;
-      color: white !important;
-      border: none !important;
-    }
-
-    .btn-glow::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .btn-glow:hover::before {
-      left: 100%;
-    }
-
-    .btn-glow:hover {
-      box-shadow: 0 0 30px var(--accent-1);
-      transform: translateY(-2px);
-    }
-
-    .floating {
-      animation: floating 6s ease-in-out infinite;
-    }
-
-    @keyframes floating {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.8s ease-out forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .carousel-item {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-    }
-
-    .carousel-item img {
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-
-    .carousel-item:hover img {
-      transform: scale(1.05);
-      filter: brightness(1.1);
-    }
-
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
-      color: var(--text-secondary);
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover::after {
+    .carousel-container {
       width: 100%;
     }
 
-    .nav-link:hover {
-      color: var(--accent-2);
-    }
-
-    .tech-badge {
-      transition: all 0.3s ease;
-      background: var(--surface-overlay) !important;
-      border: 1px solid var(--border-color) !important;
-      color: var(--text-secondary) !important;
-    }
-
-    .tech-badge:hover {
-      transform: scale(1.1);
-      background: var(--accent-1) !important;
-      color: white !important;
-      border: 1px solid var(--accent-1) !important;
-    }
-
-    .main-wrapper {
-      height: 100%;
+    .carousel-slide {
       width: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: var(--bg-primary);
-    }
-
-    /* Feature Cards Section Transitions */
-    .feature-card-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      min-height: 500px;
+      display: flex;
       align-items: center;
-      margin: 4rem 0;
-      overflow: hidden;
-    }
-
-    .feature-card-image {
+      justify-content: center;
       position: relative;
-      height: 400px;
-      border-radius: 1rem;
       overflow: hidden;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
     }
 
-    .feature-card-content {
+    .slide-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
       padding: 2rem;
     }
 
-    /* Card 1: Slide Up from Left */
-    .card-1-image {
-      animation: slideUpLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      opacity: 0;
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
     }
 
-    @keyframes slideUpLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-100px) translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0) translateY(0);
-      }
+    .slide-1 .slide-bg {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
     }
 
-    .card-1-content {
-      animation: fadeInRight 0.8s ease-out 0.2s forwards;
-      opacity: 0;
+    .slide-2 .slide-bg {
+      background: linear-gradient(135deg, #ec4899 0%, #f43f5e 50%, #ef4444 100%);
     }
 
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .slide-3 .slide-bg {
+      background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 50%, #0ea5e9 100%);
     }
 
-    .card-1-content:hover {
-      transform: translateX(10px);
+    .slide-4 .slide-bg {
+      background: linear-gradient(135deg, #f59e0b 0%, #f97316 50%, #ef4444 100%);
     }
 
-    /* Card 2: Scale & Rotate */
-    .card-2-image {
-      animation: scaleRotate 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      opacity: 0;
-      transform-origin: center;
+    .feature-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
     }
 
-    @keyframes scaleRotate {
-      from {
-        opacity: 0;
-        transform: scale(0.5) rotateY(90deg);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) rotateY(0deg);
-      }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
     }
 
-    .card-2-content {
-      animation: slideInFromRight 0.8s ease-out 0.3s forwards;
-      opacity: 0;
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 1rem;
     }
 
-    @keyframes slideInFromRight {
-      from {
-        opacity: 0;
-        transform: translateX(100px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+    .theme-toggle {
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .card-2-content:hover {
-      background: var(--surface-overlay);
-      border-radius: 0.5rem;
-    }
-
-    /* Card 3: Bounce In */
-    .card-3-image {
-      animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-      opacity: 0;
-    }
-
-    @keyframes bounceIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.3) translateY(20px);
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    .card-3-content {
-      animation: fadeInUp 0.8s ease-out 0.2s forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .card-3-content:hover {
-      transform: scale(1.02);
-    }
-
-    /* Reverse layout for alternating cards */
-    .feature-card-container.reverse {
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .feature-card-container.reverse .feature-card-image {
-      order: 2;
-    }
-
-    .feature-card-container.reverse .feature-card-content {
-      order: 1;
-    }
-
-    @media (max-width: 768px) {
-      .feature-card-container {
-        grid-template-columns: 1fr;
-      }
-
-      .feature-card-container.reverse .feature-card-image {
-        order: -1;
-      }
-
-      .feature-card-container.reverse .feature-card-content {
-        order: 0;
-      }
-
-      .feature-card-image {
-        height: 300px;
-      }
-    }
-
-    .stats-number {
-      transition: transform 0.3s ease;
-    }
-
-    .stats-number:hover {
+    .theme-toggle:hover {
       transform: scale(1.1);
     }
 
-    .navbar {
-      background: var(--card-bg) !important;
-      border-bottom: 1px solid var(--border-color) !important;
-      box-shadow: 0 1px 3px var(--surface-overlay) !important;
+    .nav-glass {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
     }
 
-    .badge {
-      background: var(--surface-overlay) !important;
-      border: 1px solid var(--border-color) !important;
-      color: var(--text-secondary) !important;
+    .carousel-indicators {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 1rem;
     }
 
-    /* Scroll Animation Classes */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--text-secondary);
+      opacity: 0.4;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .scroll-reveal.visible {
+    .carousel-dot.active {
       opacity: 1;
-      transform: translateY(0);
-    }
-
-    .scroll-reveal-left {
-      opacity: 0;
-      transform: translateX(-60px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scroll-reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .scroll-reveal-right {
-      opacity: 0;
-      transform: translateX(60px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scroll-reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .scroll-reveal-scale {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scroll-reveal-scale.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Staggered animation delays */
-    .scroll-stagger-1 { transition-delay: 0s; }
-    .scroll-stagger-2 { transition-delay: 0.15s; }
-    .scroll-stagger-3 { transition-delay: 0.3s; }
-    .scroll-stagger-4 { transition-delay: 0.45s; }
-    .scroll-stagger-5 { transition-delay: 0.6s; }
-
-    /* Counter animation for stats */
-    .counter {
-      display: inline-block;
-    }
-
-    @keyframes countUp {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .counter.active {
-      animation: countUp 0.6s ease-out;
-    }
-
-    /* Parallax effect on scroll */
-    .parallax-element {
-      transition: transform 0.3s ease-out;
+      background: #6366f1;
+      transform: scale(1.2);
     }
   </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div class="main-wrapper"><!-- Navigation -->
-   <nav class="navbar sticky top-0 z-50">
-    <div class="navbar-start">
-     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-       </svg>
+  <!-- Geometric Background -->
+  <div class="geometric-bg">
+   <div class="shape shape-1"></div>
+   <div class="shape shape-2"></div>
+   <div class="shape shape-3"></div>
+   <div class="shape shape-4"></div>
+   <div class="shape shape-5"></div>
+   <div class="shape shape-6"></div>
+  </div>
+  <div class="h-full w-full overflow-auto">
+   <!-- Navbar -->
+   <nav class="nav-glass sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-2">
+       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+        <span class="text-white text-xl">✦</span>
+       </div><span class="heading-font font-bold text-xl" style="color: var(--text-primary)">FeatureFlow</span>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52" style="background: var(--card-bg);">
-       <li><a class="text-gray-600 dark:text-gray-300">Features</a></li>
-       <li><a class="text-gray-600 dark:text-gray-300">Solutions</a></li>
-       <li><a class="text-gray-600 dark:text-gray-300">About</a></li>
-       <li><a class="text-gray-600 dark:text-gray-300">Contact</a></li>
-      </ul>
-     </div><a class="btn btn-ghost text-xl font-heading font-bold">
-      <svg class="w-8 h-8 mr-2" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2" fill="none" /> <circle cx="20" cy="20" r="10" fill="url(#grad1)" opacity="0.3" /> <circle cx="20" cy="12" r="3" fill="#6366f1" /> <circle cx="13" cy="24" r="3" fill="#0891b2" /> <circle cx="27" cy="24" r="3" fill="#6366f1" /> <line x1="20" y1="12" x2="13" y2="24" stroke="#6366f1" stroke-width="1.5" /> <line x1="20" y1="12" x2="27" y2="24" stroke="#0891b2" stroke-width="1.5" /> <line x1="13" y1="24" x2="27" y2="24" stroke="#6366f1" stroke-width="1.5" /> <defs>
-        <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-         <stop offset="0%" style="stop-color:#6366f1" />
-         <stop offset="100%" style="stop-color:#0891b2" />
-        </lineargradient>
-       </defs>
-      </svg><span class="gradient-text">CCAI</span> </a>
-    </div>
-    <div class="navbar-center hidden lg:flex">
-     <ul class="menu menu-horizontal px-1 gap-2">
-      <li><a class="nav-link font-medium">Features</a></li>
-      <li><a class="nav-link font-medium">Solutions</a></li>
-      <li><a class="nav-link font-medium">About</a></li>
-      <li><a class="nav-link font-medium">Contact</a></li>
-     </ul>
-    </div>
-    <div class="navbar-end gap-2"><button class="btn btn-ghost text-gray-600 dark:text-gray-300">Sign In</button> <button class="btn btn-glow text-white border-0 px-6" id="cta-nav-btn">Get Started</button>
-    </div>
-   </nav><!-- Hero Section -->
-   <section class="min-h-[90%] flex items-center justify-center px-4 py-16 relative overflow-hidden">
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-     <div class="absolute top-20 left-10 w-72 h-72 hero-gradient rounded-full blur-3xl floating"></div>
-     <div class="absolute bottom-20 right-10 w-96 h-96 hero-gradient rounded-full blur-3xl floating" style="animation-delay: -3s;"></div>
-     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] hero-gradient rounded-full blur-3xl"></div>
-    </div>
-    <div class="max-w-6xl mx-auto text-center relative z-10 w-full">
-     <div class="fade-in" style="animation-delay: 0.1s;"><span class="badge badge-lg mb-6 py-4 px-6 text-sm font-medium"> 🚀 Next-Gen Cloud Solutions </span>
-     </div>
-     <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 fade-in" id="hero-title" style="animation-delay: 0.2s;"><span>Elevate Your Business with</span><br><span class="gradient-text">Cloud Connect AI</span></h1>
-     <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-10 fade-in" id="hero-subtitle" style="animation-delay: 0.3s;">Transform your digital infrastructure with intelligent cloud solutions. Seamless integration, unmatched performance, infinite possibilities.</p>
-     <div class="flex flex-wrap justify-center gap-4 fade-in" style="animation-delay: 0.4s;"><button class="btn btn-lg btn-glow text-white border-0 px-8" id="cta-main-btn"> Start Free Trial 
-       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-       </svg></button> <button class="btn btn-lg border-2 px-8" style="border-color: var(--accent-1); color: var(--accent-1); background: transparent;" onmouseover="this.style.background='var(--surface-overlay)'" onmouseout="this.style.background='transparent'"> Watch Demo 
-       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-       </svg></button>
-     </div><!-- Tech Badges -->
-     <div class="flex flex-wrap justify-center gap-3 mt-12 fade-in" style="animation-delay: 0.4s;"><span class="tech-badge badge badge-lg py-3 px-4">☁️ AWS</span> <span class="tech-badge badge badge-lg py-3 px-4">🔷 Azure</span> <span class="tech-badge badge badge-lg py-3 px-4">🌐 GCP</span> <span class="tech-badge badge badge-lg py-3 px-4">🤖 AI/ML</span> <span class="tech-badge badge badge-lg py-3 px-4">🔒 Security</span>
-     </div>
-    </div>
-   </section><!-- Image Carousel Section -->
-   <section class="py-16 px-4 bg-gray-50 dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto">
-     <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Our Solutions in Action</span></h2>
-     <div class="carousel w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-slate-700">
-      <div id="slide1" class="carousel-item relative w-full">
-       <div class="w-full h-80 md:h-96 flex items-center justify-center bg-gradient-to-br from-indigo-100 to-indigo-50 dark:from-indigo-950 dark:to-indigo-900">
-        <div class="text-center p-8">
-         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="30" width="80" height="50" rx="4" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <circle cx="50" cy="20" r="12" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <line x1="50" y1="32" x2="50" y2="30" stroke="currentColor" stroke-width="2" opacity="0.3" />
-         </svg>
-         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">Cloud Infrastructure</h3>
-         <p style="color: var(--text-secondary);">Scalable, secure, and lightning-fast</p>
-        </div>
-       </div>
-       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide3" class="btn btn-circle btn-sm" style="background: var(--accent-1); border: none; color: white;">❮</a> <a href="#slide2" class="btn btn-circle btn-sm" style="background: var(--accent-1); border: none; color: white;">❯</a>
-       </div>
-      </div>
-      <div id="slide2" class="carousel-item relative w-full">
-       <div class="w-full h-80 md:h-96 flex items-center justify-center bg-gradient-to-br from-cyan-100 to-cyan-50 dark:from-cyan-950 dark:to-cyan-900">
-        <div class="text-center p-8">
-         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <path d="M35 50 L45 60 L65 40" stroke="currentColor" stroke-width="3" fill="none" opacity="0.3" />
-         </svg>
-         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">AI Integration</h3>
-         <p style="color: var(--text-secondary);">Intelligent automation at scale</p>
-        </div>
-       </div>
-       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide1" class="btn btn-circle btn-sm" style="background: var(--accent-2); border: none; color: white;">❮</a> <a href="#slide3" class="btn btn-circle btn-sm" style="background: var(--accent-2); border: none; color: white;">❯</a>
-       </div>
-      </div>
-      <div id="slide3" class="carousel-item relative w-full">
-       <div class="w-full h-80 md:h-96 flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-50 dark:from-purple-950 dark:to-purple-900">
-        <div class="text-center p-8">
-         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="60" rx="8" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <line x1="20" y1="40" x2="80" y2="40" stroke="currentColor" stroke-width="2" opacity="0.3" />
-         </svg>
-         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">Custom Dashboards</h3>
-         <p style="color: var(--text-secondary);">Real-time insights and analytics</p>
-        </div>
-       </div>
-       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide2" class="btn btn-circle btn-sm" style="background: var(--accent-3); border: none; color: white;">❮</a> <a href="#slide1" class="btn btn-circle btn-sm" style="background: var(--accent-3); border: none; color: white;">❯</a>
-       </div>
-      </div>
-     </div><!-- Carousel Indicators -->
-     <div class="flex justify-center gap-2 mt-6"><a href="#slide1" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1);"></a> <a href="#slide2" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1); opacity: 0.5;"></a> <a href="#slide3" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1); opacity: 0.5;"></a>
-     </div>
-    </div>
-   </section><!-- Features Section -->
-   <section class="py-20 px-4">
-    <div class="max-w-7xl mx-auto">
-     <div class="text-center mb-16"><span class="badge badge-lg mb-4 py-3 px-5"> ✨ Why Choose Us </span>
-      <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4" id="features-title"><span>Powerful Features for</span><br><span class="gradient-text">Modern Businesses</span></h2>
-      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">Everything you need to scale your business in the cloud era</p>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20"><!-- Feature 1 -->
-      <div class="card-hover rounded-2xl p-8 group">
-       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.1));">
-        <svg class="w-8 h-8" style="color: var(--accent-1);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-        </svg>
-       </div>
-       <h3 class="font-heading text-xl font-bold mb-3">Cloud Migration</h3>
-       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Seamlessly migrate your infrastructure to the cloud with zero downtime and maximum efficiency.</p>
-      </div><!-- Feature 2 -->
-      <div class="card-hover rounded-2xl p-8 group">
-       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(99, 102, 241, 0.1));">
-        <svg class="w-8 h-8" style="color: var(--accent-2);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-        </svg>
-       </div>
-       <h3 class="font-heading text-xl font-bold mb-3">AI &amp; Machine Learning</h3>
-       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Leverage cutting-edge AI models to automate processes and gain predictive insights.</p>
-      </div><!-- Feature 3 -->
-      <div class="card-hover rounded-2xl p-8 group">
-       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(167, 139, 250, 0.1));">
-        <svg class="w-8 h-8" style="color: var(--accent-3);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-        </svg>
-       </div>
-       <h3 class="font-heading text-xl font-bold mb-3">Enterprise Security</h3>
-       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Bank-grade security protocols protecting your data with end-to-end encryption.</p>
-      </div>
-     </div><!-- Feature Card 1: Infrastructure (Slide Up Left) -->
-     <div class="feature-card-container">
-      <div class="feature-card-image card-1-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-       <div class="w-full h-full flex items-center justify-center p-8">
-        <div class="text-center">
-         <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-2));">
-          <svg class="w-20 h-20 text-white" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V9m14 0a2 2 0 00-2-2m2 2a2 2 0 002 2m0 0V9m0 0a2 2 0 00-2-2m2 2a2 2 0 01-2 2m-4 0a2 2 0 01-2-2m2 2a2 2 0 00-2-2m0 0V5m0 0a2 2 0 012-2m-2 2a2 2 0 00-2 2v2m0 0H9m0 0a2 2 0 002 2" />
-          </svg>
-         </div>
-         <p class="text-sm" style="color: var(--text-secondary);">Cloud Infrastructure</p>
-        </div>
-       </div>
-      </div>
-      <div class="feature-card-content card-1-content">
-       <h3 class="font-heading text-3xl font-bold mb-4" id="card1_title">Infrastructure</h3>
-       <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed" id="card1_desc">Build, deploy, and scale your applications on a globally distributed infrastructure with 99.9% uptime guarantee and automatic failover capabilities.</p>
-       <ul class="space-y-2">
-        <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Global data centers</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Auto-scaling capabilities</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Advanced monitoring</span></li>
-       </ul>
-      </div>
-     </div><!-- Feature Card 2: Analytics (Scale & Rotate) -->
-     <div class="feature-card-container reverse">
-      <div class="feature-card-image card-2-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-       <div class="w-full h-full flex items-center justify-center p-8">
-        <div class="text-center">
-         <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), var(--accent-3));">
-          <svg class="w-20 h-20 text-white" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-         </div>
-         <p class="text-sm" style="color: var(--text-secondary);">Analytics Dashboard</p>
-        </div>
-       </div>
-      </div>
-      <div class="feature-card-content card-2-content">
-       <h3 class="font-heading text-3xl font-bold mb-4" id="card2_title">Real-Time Analytics</h3>
-       <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed" id="card2_desc">Get comprehensive insights into your business metrics with powerful visualization tools and customizable dashboards for data-driven decision making.</p>
-       <ul class="space-y-2">
-        <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Real-time data processing</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Custom reports &amp; alerts</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">ML-powered predictions</span></li>
-       </ul>
-      </div>
-     </div><!-- Feature Card 3: Security (Bounce In) -->
-     <div class="feature-card-container">
-      <div class="feature-card-image card-3-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-       <div class="w-full h-full flex items-center justify-center p-8">
-        <div class="text-center">
-         <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-3));">
-          <svg class="w-20 h-20 text-white" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-         </div>
-         <p class="text-sm" style="color: var(--text-secondary);">Enterprise Security</p>
-        </div>
-       </div>
-      </div>
-      <div class="feature-card-content card-3-content">
-       <h3 class="font-heading text-3xl font-bold mb-4" id="card3_title">Security</h3>
-       <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed" id="card3_desc">Protect your sensitive data with industry-leading security standards, encryption protocols, and compliance certifications across all cloud platforms.</p>
-       <ul class="space-y-2">
-        <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">End-to-end encryption</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">SOC 2, ISO 27001 certified</span></li>
-        <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">24/7 threat monitoring</span></li>
-       </ul>
+      <div class="flex items-center gap-6">
+       <a href="#features" class="text-sm font-medium hover:text-indigo-500 transition-colors" style="color: var(--text-secondary)">Features</a> <a href="#" class="text-sm font-medium hover:text-indigo-500 transition-colors" style="color: var(--text-secondary)">About</a> <a href="#" class="text-sm font-medium hover:text-indigo-500 transition-colors" style="color: var(--text-secondary)">Contact</a> <!-- Theme Toggle --> <button id="themeToggle" class="theme-toggle w-10 h-10 rounded-full flex items-center justify-center" style="background: var(--card-bg); border: 1px solid var(--card-border);"> <span id="themeIcon" class="text-xl">🌙</span> </button>
       </div>
      </div>
     </div>
-   </section><!-- Stats Section -->
-   <section class="py-20 px-4 bg-gray-50 dark:bg-slate-900">
-    <div class="max-w-6xl mx-auto">
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="text-center group">
-       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
-        500+
+   </nav><!-- Full Width Carousel -->
+   <section class="carousel-container">
+    <div id="carousel" class="relative overflow-hidden">
+     <div id="carouselTrack" class="flex transition-transform duration-700 ease-in-out">
+      <!-- Slide 1 -->
+      <div class="carousel-slide slide-1 flex-shrink-0 w-full">
+       <div class="slide-bg"></div>
+       <div class="slide-content max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: rgba(99, 102, 241, 0.2); color: #6366f1;"> 🚀 Welcome to the Future </span>
+        <h1 id="heroTitle" class="heading-font text-5xl md:text-7xl font-bold mb-6" style="color: var(--text-primary)">Build Something<br><span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Extraordinary</span></h1>
+        <p id="heroSubtitle" class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary)">Discover powerful features designed to transform your workflow and boost productivity</p><button class="btn btn-lg bg-gradient-to-r from-indigo-500 to-purple-600 border-none text-white hover:opacity-90"> Get Started → </button>
        </div>
-       <p style="color: var(--text-secondary);">Enterprise Clients</p>
-      </div>
-      <div class="text-center group">
-       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
-        99.9%
+      </div><!-- Slide 2 -->
+      <div class="carousel-slide slide-2 flex-shrink-0 w-full">
+       <div class="slide-bg"></div>
+       <div class="slide-content max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: rgba(236, 72, 153, 0.2); color: #ec4899;"> ⚡ Lightning Fast </span>
+        <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6" style="color: var(--text-primary)">Speed That<br><span class="bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 bg-clip-text text-transparent">Inspires</span></h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary)">Experience blazing-fast performance that keeps up with your creative vision</p><button class="btn btn-lg bg-gradient-to-r from-pink-500 to-rose-600 border-none text-white hover:opacity-90"> Learn More → </button>
        </div>
-       <p style="color: var(--text-secondary);">Uptime SLA</p>
-      </div>
-      <div class="text-center group">
-       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
-        50+
+      </div><!-- Slide 3 -->
+      <div class="carousel-slide slide-3 flex-shrink-0 w-full">
+       <div class="slide-bg"></div>
+       <div class="slide-content max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: rgba(20, 184, 166, 0.2); color: #14b8a6;"> 🎨 Beautiful Design </span>
+        <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6" style="color: var(--text-primary)">Design Without<br><span class="bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent">Limits</span></h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary)">Create stunning visuals with our intuitive and powerful design tools</p><button class="btn btn-lg bg-gradient-to-r from-teal-500 to-cyan-600 border-none text-white hover:opacity-90"> Explore → </button>
        </div>
-       <p style="color: var(--text-secondary);">Global Regions</p>
-      </div>
-      <div class="text-center group">
-       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
-        24/7
-       </div>
-       <p style="color: var(--text-secondary);">Expert Support</p>
-      </div>
-     </div>
-    </div>
-   </section><!-- CTA Section -->
-   <section class="py-20 px-4">
-    <div class="max-w-4xl mx-auto">
-     <div class="rounded-3xl p-10 md:p-16 text-center relative overflow-hidden" style="background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: 0 20px 40px var(--surface-overlay);">
-      <div class="absolute top-0 right-0 w-64 h-64 hero-gradient rounded-full blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-64 h-64 hero-gradient rounded-full blur-3xl"></div>
-      <div class="relative z-10">
-       <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-       <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-xl mx-auto">Join hundreds of companies already leveraging Cloud Connect AI to power their digital transformation.</p>
-       <div class="flex flex-wrap justify-center gap-4"><button class="btn btn-lg btn-glow text-white border-0 px-8" id="cta-bottom-btn"> Start Free Trial </button> <button class="btn btn-lg border-2 px-8" style="border-color: var(--accent-1); color: var(--accent-1); background: transparent;" onmouseover="this.style.background='var(--surface-overlay)'" onmouseout="this.style.background='transparent'"> Schedule Demo </button>
+      </div><!-- Slide 4 -->
+      <div class="carousel-slide slide-4 flex-shrink-0 w-full">
+       <div class="slide-bg"></div>
+       <div class="slide-content max-w-4xl mx-auto">
+        <span class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b;"> 🔒 Secure &amp; Reliable </span>
+        <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6" style="color: var(--text-primary)">Trust in Every<br><span class="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 bg-clip-text text-transparent">Interaction</span></h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto" style="color: var(--text-secondary)">Enterprise-grade security that protects your most valuable assets</p><button class="btn btn-lg bg-gradient-to-r from-amber-500 to-orange-600 border-none text-white hover:opacity-90"> See Security → </button>
        </div>
       </div>
-     </div>
+     </div><!-- Navigation Arrows --> <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background: var(--card-bg); border: 1px solid var(--card-border);"> <span style="color: var(--text-primary)">←</span> </button> <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background: var(--card-bg); border: 1px solid var(--card-border);"> <span style="color: var(--text-primary)">→</span> </button>
+    </div><!-- Carousel Indicators -->
+    <div class="carousel-indicators pb-8">
+     <div class="carousel-dot active" data-slide="0"></div>
+     <div class="carousel-dot" data-slide="1"></div>
+     <div class="carousel-dot" data-slide="2"></div>
+     <div class="carousel-dot" data-slide="3"></div>
     </div>
    </section><!-- Footer -->
-   <footer class="py-12 px-4 bg-gray-50 dark:bg-slate-900 border-t border-gray-200 dark:border-slate-700">
-    <div class="max-w-6xl mx-auto">
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-      <div>
-       <h4 class="font-heading font-bold mb-4">Product</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Features</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Pricing</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Integrations</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">API</a></li>
-       </ul>
-      </div>
-      <div>
-       <h4 class="font-heading font-bold mb-4">Company</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">About</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Careers</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Blog</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Press</a></li>
-       </ul>
-      </div>
-      <div>
-       <h4 class="font-heading font-bold mb-4">Resources</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Documentation</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Help Center</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Community</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Status</a></li>
-       </ul>
-      </div>
-      <div>
-       <h4 class="font-heading font-bold mb-4">Legal</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Privacy</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Terms</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Security</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Cookies</a></li>
-       </ul>
-      </div>
+   <footer class="py-12 px-4" style="border-top: 1px solid var(--card-border);">
+    <div class="max-w-7xl mx-auto text-center">
+     <div class="flex items-center justify-center gap-2 mb-4">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+       <span class="text-white text-sm">✦</span>
+      </div><span class="heading-font font-bold text-lg" style="color: var(--text-primary)">FeatureFlow</span>
      </div>
-     <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-200 dark:border-slate-700">
-      <div class="flex items-center mb-4 md:mb-0">
-       <svg class="w-8 h-8 mr-2" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="url(#grad2)" stroke-width="2" fill="none" /> <circle cx="20" cy="20" r="10" fill="url(#grad2)" opacity="0.3" /> <circle cx="20" cy="12" r="3" fill="#6366f1" /> <circle cx="13" cy="24" r="3" fill="#0891b2" /> <circle cx="27" cy="24" r="3" fill="#6366f1" /> <defs>
-         <lineargradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#6366f1" />
-          <stop offset="100%" style="stop-color:#0891b2" />
-         </lineargradient>
-        </defs>
-       </svg><span class="font-heading font-bold gradient-text">Cloud Connect AI</span>
-      </div>
-      <p class="text-gray-600 dark:text-gray-400 text-sm">© 2024 Cloud Connect AI. All rights reserved.</p>
-     </div>
+     <p style="color: var(--text-secondary)">© 2024 FeatureFlow. Crafted with ❤️</p>
     </div>
    </footer>
   </div>
   <script>
     const defaultConfig = {
-      background_color: '#ffffff',
-      surface_color: '#f8fafb',
-      text_color: '#111827',
-      accent_1: '#6366f1',
-      accent_2: '#0891b2',
-      accent_3: '#7c3aed',
-      font_family: 'Space Grotesk',
-      font_size: 16,
-      hero_title: 'Elevate Your Business with',
-      hero_subtitle: 'Transform your digital infrastructure with intelligent cloud solutions. Seamless integration, unmatched performance, infinite possibilities.',
-      features_title: 'Powerful Features for',
-      cta_button_text: 'Start Free Trial',
-      card1_title: 'Infrastructure',
-      card1_desc: 'Build, deploy, and scale your applications on a globally distributed infrastructure with 99.9% uptime guarantee and automatic failover capabilities.',
-      card2_title: 'Real-Time Analytics',
-      card2_desc: 'Get comprehensive insights into your business metrics with powerful visualization tools and customizable dashboards for data-driven decision making.',
-      card3_title: 'Security',
-      card3_desc: 'Protect your sensitive data with industry-leading security standards, encryption protocols, and compliance certifications across all cloud platforms.'
+      hero_title: 'Build Something<br><span class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Extraordinary</span>',
+      hero_subtitle: 'Discover powerful features designed to transform your workflow and boost productivity',
+      features_title: 'Everything You Need',
+      background_color: '#f8fafc',
+      text_color: '#1e293b',
+      accent_color: '#6366f1',
+      font_family: 'Outfit',
+      font_size: 16
     };
 
-    async function onConfigChange(config) {
-      const root = document.documentElement;
-      root.style.setProperty('--bg-primary', config.background_color || defaultConfig.background_color);
-      root.style.setProperty('--surface-color', config.surface_color || defaultConfig.surface_color);
-      root.style.setProperty('--text-primary', config.text_color || defaultConfig.text_color);
-      root.style.setProperty('--accent-1', config.accent_1 || defaultConfig.accent_1);
-      root.style.setProperty('--accent-2', config.accent_2 || defaultConfig.accent_2);
-      root.style.setProperty('--accent-3', config.accent_3 || defaultConfig.accent_3);
+    let config = { ...defaultConfig };
+    let currentSlide = 0;
+    const totalSlides = 4;
+    let autoSlideInterval;
 
-      const fontFamily = config.font_family || defaultConfig.font_family;
-      const fontSize = config.font_size || defaultConfig.font_size;
+    // Carousel functionality
+    function goToSlide(index) {
+      currentSlide = index;
+      if (currentSlide >= totalSlides) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = totalSlides - 1;
       
-      document.querySelectorAll('.font-heading, h1, h2, h3, h4').forEach(el => {
-        el.style.fontFamily = `${fontFamily}, sans-serif`;
-      });
+      const track = document.getElementById('carouselTrack');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
       
-      document.body.style.fontSize = `${fontSize}px`;
-      
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-        heroTitle.innerHTML = `<span>${config.hero_title || defaultConfig.hero_title}</span><br><span class="gradient-text">Cloud Connect AI</span>`;
-      }
-      
-      const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) {
-        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      }
-      
-      const featuresTitle = document.getElementById('features-title');
-      if (featuresTitle) {
-        featuresTitle.innerHTML = `<span>${config.features_title || defaultConfig.features_title}</span><br><span class="gradient-text">Modern Businesses</span>`;
-      }
-
-      ['card1_title', 'card2_title', 'card3_title'].forEach((key, idx) => {
-        const el = document.getElementById(key);
-        if (el) el.textContent = config[key] || defaultConfig[key];
-      });
-
-      ['card1_desc', 'card2_desc', 'card3_desc'].forEach((key, idx) => {
-        const el = document.getElementById(key);
-        if (el) el.textContent = config[key] || defaultConfig[key];
-      });
-      
-      const ctaText = config.cta_button_text || defaultConfig.cta_button_text;
-      ['cta-nav-btn', 'cta-main-btn', 'cta-bottom-btn'].forEach(id => {
-        const btn = document.getElementById(id);
-        if (btn) {
-          if (id === 'cta-main-btn') {
-            btn.innerHTML = `${ctaText}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>`;
-          } else if (id === 'cta-bottom-btn') {
-            btn.textContent = ctaText;
-          } else {
-            btn.textContent = 'Get Started';
-          }
-        }
+      // Update indicators
+      document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
       });
     }
 
-    function mapToCapabilities(config) {
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoSlide() {
+      clearInterval(autoSlideInterval);
+    }
+
+    // Event listeners for carousel
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      stopAutoSlide();
+      nextSlide();
+      startAutoSlide();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      stopAutoSlide();
+      prevSlide();
+      startAutoSlide();
+    });
+
+    document.querySelectorAll('.carousel-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        stopAutoSlide();
+        goToSlide(parseInt(dot.dataset.slide));
+        startAutoSlide();
+      });
+    });
+
+    // Start auto-sliding
+    startAutoSlide();
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    let isDark = false;
+
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      themeIcon.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Element SDK initialization
+    async function onConfigChange(cfg) {
+      const heroTitle = document.getElementById('heroTitle');
+      const heroSubtitle = document.getElementById('heroSubtitle');
+      const featuresTitle = document.getElementById('featuresTitle');
+
+      if (heroTitle) heroTitle.innerHTML = cfg.hero_title || defaultConfig.hero_title;
+      if (heroSubtitle) heroSubtitle.textContent = cfg.hero_subtitle || defaultConfig.hero_subtitle;
+      if (featuresTitle) featuresTitle.textContent = cfg.features_title || defaultConfig.features_title;
+
+      // Apply font
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+      document.querySelectorAll('.heading-font').forEach(el => {
+        el.style.fontFamily = `'Space Grotesk', ${fontFamily}, sans-serif`;
+      });
+
+      // Apply font size
+      const baseSize = cfg.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${baseSize}px`;
+    }
+
+    function mapToCapabilities(cfg) {
       return {
         recolorables: [
           {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (value) => { cfg.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
           },
           {
-            get: () => config.surface_color || defaultConfig.surface_color,
-            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (value) => { cfg.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
           },
           {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
-          },
-          {
-            get: () => config.accent_1 || defaultConfig.accent_1,
-            set: (value) => { config.accent_1 = value; window.elementSdk.setConfig({ accent_1: value }); }
-          },
-          {
-            get: () => config.accent_2 || defaultConfig.accent_2,
-            set: (value) => { config.accent_2 = value; window.elementSdk.setConfig({ accent_2: value }); }
+            get: () => cfg.accent_color || defaultConfig.accent_color,
+            set: (value) => { cfg.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
           }
         ],
         borderables: [],
         fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (value) => { cfg.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
         },
         fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+          get: () => cfg.font_size || defaultConfig.font_size,
+          set: (value) => { cfg.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
         }
       };
     }
 
-    function mapToEditPanelValues(config) {
+    function mapToEditPanelValues(cfg) {
       return new Map([
-        ['hero_title', config.hero_title || defaultConfig.hero_title],
-        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-        ['features_title', config.features_title || defaultConfig.features_title],
-        ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
-        ['card1_title', config.card1_title || defaultConfig.card1_title],
-        ['card1_desc', config.card1_desc || defaultConfig.card1_desc],
-        ['card2_title', config.card2_title || defaultConfig.card2_title],
-        ['card2_desc', config.card2_desc || defaultConfig.card2_desc],
-        ['card3_title', config.card3_title || defaultConfig.card3_title],
-        ['card3_desc', config.card3_desc || defaultConfig.card3_desc]
+        ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+        ['features_title', cfg.features_title || defaultConfig.features_title]
       ]);
     }
 
@@ -915,103 +509,6 @@
         mapToEditPanelValues
       });
     }
-
-    // Scroll reveal animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Apply scroll reveal to sections and cards
-    document.addEventListener('DOMContentLoaded', () => {
-      // Carousel section
-      const carouselSection = document.querySelector('.carousel').parentElement.parentElement;
-      carouselSection.classList.add('scroll-reveal');
-      observer.observe(carouselSection);
-
-      // Feature cards with stagger effect
-      const featureCards = document.querySelectorAll('.card-hover');
-      featureCards.forEach((card, index) => {
-        card.classList.add('scroll-reveal-scale', `scroll-stagger-${(index % 5) + 1}`);
-        observer.observe(card);
-      });
-
-      // Feature card containers
-      const featureContainers = document.querySelectorAll('.feature-card-container');
-      featureContainers.forEach((container, index) => {
-        if (index % 2 === 0) {
-          const image = container.querySelector('.feature-card-image');
-          const content = container.querySelector('.feature-card-content');
-          image.classList.add('scroll-reveal-left');
-          content.classList.add('scroll-reveal-right');
-          observer.observe(image);
-          observer.observe(content);
-        } else {
-          const image = container.querySelector('.feature-card-image');
-          const content = container.querySelector('.feature-card-content');
-          image.classList.add('scroll-reveal-right');
-          content.classList.add('scroll-reveal-left');
-          observer.observe(image);
-          observer.observe(content);
-        }
-      });
-
-      // Stats section with counter animations
-      const statsSection = document.querySelector('.py-20.px-4.bg-gray-50');
-      statsSection.classList.add('scroll-reveal');
-      observer.observe(statsSection);
-
-      const statsNumbers = document.querySelectorAll('.stats-number');
-      const countObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !entry.target.classList.contains('active')) {
-            entry.target.classList.add('active', 'counter');
-            countObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      statsNumbers.forEach(stat => countObserver.observe(stat));
-
-      // CTA section
-      const ctaSection = document.querySelector('.rounded-3xl').parentElement.parentElement;
-      ctaSection.classList.add('scroll-reveal-scale');
-      observer.observe(ctaSection);
-
-      // Footer
-      const footer = document.querySelector('footer');
-      footer.classList.add('scroll-reveal');
-      observer.observe(footer);
-
-      // Parallax effect on hero section
-      const heroGradients = document.querySelectorAll('.hero-gradient');
-      let scrollProgress = 0;
-
-      window.addEventListener('scroll', () => {
-        scrollProgress = window.scrollY;
-        heroGradients.forEach((element, index) => {
-          const speed = 0.5 + (index * 0.1);
-          element.style.transform = `translateY(${scrollProgress * speed}px)`;
-        });
-
-        // Navbar shadow effect on scroll
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 10) {
-          navbar.style.boxShadow = '0 4px 12px var(--surface-overlay)';
-        } else {
-          navbar.style.boxShadow = '0 1px 3px var(--surface-overlay)';
-        }
-      });
-    });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d2d40f5f36771f4',t:'MTc3MTkxODE4Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d3d78074273ba5c',t:'MTc3MjA4ODIxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
