@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="h-full scroll-smooth">
+<html lang="en" class="h-full ">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,8 +123,8 @@
     ============================================== */
     .service-card-container {
       opacity: 0;
-      transform: translateY(70px);
-      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
       will-change: opacity, transform;
     }
 
@@ -176,7 +176,7 @@
 
     .service-card-content {
       padding: 1.5rem 0;
-      margin-bottom: 4.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .navbar {
@@ -284,201 +284,243 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="py-10 px-4">
-    <div class="max-w-7xl mx-auto">
+<!-- Services Section -->
+<section class="py-10 px-4">
+  <div class="max-w-7xl mx-auto">
 
-      <!-- Service 1 -->
-      <div class="service-card-container">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-2));">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Digital Transformation</p>
+    <!-- Service 1 -->
+    <div class="service-card-container" id="service1">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-2));">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Digital Transformation</p>
           </div>
         </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service1_title">Digital Transformation</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;" id="service1_headline">Empowering the Future of Enterprise</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Digital Transformation is the cornerstone of our business philosophy. We empower organizations to leverage data, automation, and intelligent systems to unlock unprecedented efficiency, agility, and decision-making capabilities.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Enterprise-scale operational modernization</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Cloud, AI, and advanced analytics integration</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Strategic consulting and digital roadmap development</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Consult with Our Experts</button>
-        </div>
       </div>
-
-      <!-- Service 2 -->
-      <div class="service-card-container reverse">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), var(--accent-3));">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Cybersecurity Solutions</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service2_title">Cybersecurity Solutions</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;" id="service2_headline">Defending Your Digital Frontier</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Protect your critical assets against an ever-evolving threat landscape. We deliver defense-grade cybersecurity solutions designed to secure the cyberspace of corporate enterprises, government bodies, and defense organizations.</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Vulnerability Assessment and Penetration Testing (VAPT)</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Social media threat monitoring and personnel investigation</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Proactive cybercrime prevention and asset defense</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Request Demo</button>
-        </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Digital Transformation</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;">Empowering the Future of Enterprise</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Digital Transformation is at the core of sustainable organizational growth. We enable institutions to harness data, automation, and intelligent systems to drive operational efficiency, agility, and informed decision-making.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Our approach integrates advanced technologies—including Artificial Intelligence, cloud infrastructure, and advanced analytics—to modernize legacy systems into scalable, future-ready digital ecosystems. From strategic consulting and roadmap design to full-scale enterprise implementation, we guide organizations throughout their entire digital evolution journey.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Enterprise-scale operational modernization</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Cloud, AI, and advanced analytics integration</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Digital transformation frameworks and roadmap development</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Strategic consulting for telecom, enterprise, and national-scale entities</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Consult with Our Experts</button>
       </div>
-
-      <!-- Service 3 -->
-      <div class="service-card-container">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-3));">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Big Data Analytics</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service3_title">Big Data Analytics</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;" id="service3_headline">Actionable Insights from Complex Data</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Transform raw data into strategic foresight. Utilizing extensive access to Open-Source Intelligence (OSINT) and premium commercial data networks...</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Advanced OSINT and commercial data aggregation</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Strategic Business Intelligence (BI) for financial sectors</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Investigative data support for security organizations</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Schedule Consultation</button>
-        </div>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="service-card-container reverse">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), #818cf8);">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Artificial Intelligence</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service4_title">Artificial Intelligence</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;" id="service4_headline">Next-Generation AI & Cognitive Solutions</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Augment your operational intelligence with bespoke Artificial Intelligence solutions...</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Misinformation and disinformation detection systems</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Conversational AI agents (Speech-to-Text / Text-to-Speech)</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">AI-enhanced OSINT for strategic narrative building</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Explore AI Solutions</button>
-        </div>
-      </div>
-
-      <!-- Service 5 -->
-      <div class="service-card-container">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-3), var(--accent-1));">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Software Development</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service5_title">Software Development</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-3); font-weight: 600;" id="service5_headline">Intelligence-Driven Software Engineering</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Build scalable, resilient, and mission-ready software tailored to your most complex challenges...</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">Custom software for defense and security agencies</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">AI-integrated intelligence and financial platforms</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> <span style="color: var(--text-secondary);">End-to-end enterprise software architecture</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Start Your Project</button>
-        </div>
-      </div>
-
-      <!-- Service 6 -->
-      <div class="service-card-container reverse">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #a78bfa, var(--accent-2));">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">HR Development</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service6_title">HR Development</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;" id="service6_headline">Upskilling the Workforce for the Digital Era</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Technology is only as powerful as the people who wield it. We provide comprehensive human resource development...</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Cybersecurity and social media awareness training</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">AI and digital interface proficiency programs</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> <span style="color: var(--text-secondary);">Scalable upskilling for small to large enterprises</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Book Training Session</button>
-        </div>
-      </div>
-
-      <!-- Service 7 -->
-      <div class="service-card-container">
-        <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-          <div class="w-full h-full flex items-center justify-center p-8">
-            <div class="text-center">
-              <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), #06b6d4);">
-                <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-              </div>
-              <p class="text-sm" style="color: var(--text-secondary);">Cloud Computing & Network</p>
-            </div>
-          </div>
-        </div>
-        <div class="service-card-content">
-          <h3 class="font-heading text-3xl font-bold mb-2" id="service7_title">Cloud Computing & Network Management</h3>
-          <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;" id="service7_headline">Infrastructure Excellence</p>
-          <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Deploy and manage robust cloud infrastructure with enterprise-grade security and performance...</p>
-          <ul class="space-y-2 mb-6">
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Multi-cloud deployment and optimization</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">Advanced network security and monitoring</span></li>
-            <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> <span style="color: var(--text-secondary);">24/7 infrastructure support and optimization</span></li>
-          </ul>
-          <button class="btn btn-glow text-white border-0 px-6">Get Infrastructure Quote</button>
-        </div>
-      </div>
-
     </div>
-  </section>
+
+    <!-- Service 2 -->
+    <div class="service-card-container reverse" id="service2">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), var(--accent-3));">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Cybersecurity Solutions</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Cybersecurity Solutions</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;">Defending Your Digital Frontier</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          In today’s evolving threat landscape, cybersecurity is mission-critical. We deliver defense-grade cybersecurity solutions designed to protect corporate enterprises, financial institutions, government bodies, and security organizations.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          With hands-on experience supporting security and paramilitary environments, we specialize in identifying digital threats, analyzing cyber risks, and neutralizing malicious activities before they impact operations.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Vulnerability Assessment and Penetration Testing (VAPT)</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Cyber risk monitoring and digital footprint tracking</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Social media intelligence and threat monitoring</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Digital investigation and cybercrime prevention</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Critical asset defense and operational resilience</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Request Demo</button>
+      </div>
+    </div>
+
+    <!-- Service 3 -->
+    <div class="service-card-container" id="service3">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-3));">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Big Data Analytics</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Big Data Analytics & Business Intelligence</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;">Actionable Insights from Complex Data</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          We transform vast volumes of structured and unstructured data into actionable intelligence. Leveraging Open-Source Intelligence (OSINT) and commercial data ecosystems, we deliver high-value Business Intelligence (BI) solutions tailored for enterprises, banks, financial institutions, and government agencies.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Our analytics frameworks help organizations uncover patterns, predict trends, detect risks, and enhance situational awareness.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Advanced OSINT and multi-source data aggregation</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Strategic Business Intelligence (BI) for financial sectors</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Predictive analytics and trend modeling</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Investigative data support for security and law enforcement agencies</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Schedule Consultation</button>
+      </div>
+    </div>
+
+    <!-- Service 4 -->
+    <div class="service-card-container reverse" id="service4">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), #818cf8);">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Artificial Intelligence</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Artificial Intelligence</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;">Next-Generation AI & Cognitive Solutions</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Our Artificial Intelligence solutions convert complex data into intelligent, automated actions. We engineer bespoke AI systems for high-stakes and enterprise environments, combining machine learning, NLP, and automation technologies.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          From misinformation detection engines to conversational AI systems, we develop AI-enabled intelligence platforms that enhance decision-making and strengthen operational capabilities.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Misinformation and disinformation detection systems</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> AI-driven narrative analysis and decision support tools</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Conversational AI agents (Speech-to-Text / Text-to-Speech)</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> AI-enhanced OSINT intelligence platforms</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Automation and cognitive workflow systems</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Explore AI Solutions</button>
+      </div>
+    </div>
+
+    <!-- Service 5 -->
+    <div class="service-card-container" id="service5">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-3), var(--accent-1));">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Software Development</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Software Development</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-3); font-weight: 600;">Intelligence-Driven Software Engineering</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          We design and develop scalable, secure, and mission-ready software tailored to complex enterprise and security requirements.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Our engineering expertise spans AI-integrated intelligence systems, financial platforms, enterprise software, and specialized applications for defense and security agencies. Using modern architectures and secure development practices, we deliver high-performance systems aligned with operational objectives.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> Custom software for defense and security organizations</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> AI-integrated intelligence and financial platforms</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> End-to-end enterprise software architecture</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> Secure, scalable, and high-availability systems</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> Full lifecycle development: design, build, deploy, maintain</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Start Your Project</button>
+      </div>
+    </div>
+
+    <!-- Service 6 -->
+    <div class="service-card-container reverse" id="service6">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #a78bfa, var(--accent-2));">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">HR Development</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Human Resource Development & Digital Capacity Building</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-2); font-weight: 600;">Upskilling the Workforce for the Digital Era</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Technology transformation succeeds only when people are equipped to leverage it effectively. We provide structured corporate training and capacity-building programs designed to strengthen digital competencies across organizations.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          Our expert-led modules combine theoretical knowledge with practical implementation, ensuring teams can confidently adapt to evolving digital environments.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Cybersecurity awareness and best practices training</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Social media intelligence and digital risk awareness</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> AI fundamentals and applied AI training programs</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Digital transformation strategy workshops</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Scalable upskilling programs for SMEs to large enterprises</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Book Training Session</button>
+      </div>
+    </div>
+
+    <!-- Service 7 -->
+    <div class="service-card-container" id="service7">
+      <div class="service-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+        <div class="w-full h-full flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), #06b6d4);">
+              <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+              </svg>
+            </div>
+            <p class="text-sm" style="color: var(--text-secondary);">Cloud Computing & Network</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-content">
+        <h3 class="font-heading text-3xl font-bold mb-2">Cloud Computing & Network Management</h3>
+        <p class="text-sm mb-4" style="color: var(--accent-1); font-weight: 600;">Infrastructure Excellence</p>
+        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          We deploy and manage robust, secure, and high-performance cloud infrastructure and network systems. Our solutions support multi-cloud environments, deliver advanced security, continuous monitoring, and 24/7 optimization to ensure reliability, scalability, and business continuity.
+        </p>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Multi-cloud deployment and optimization</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Advanced network security and monitoring</li>
+          <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> 24/7 infrastructure support and optimization</li>
+        </ul>
+        <button class="btn btn-glow text-white border-0 px-6">Get Infrastructure Quote</button>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- CTA Section -->
   <section class="py-10 px-4">
@@ -498,60 +540,86 @@
     </div>
   </section>
 
-   <footer class="py-12 px-4" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
-    <div class="max-w-6xl mx-auto">
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+<!-- Footer -->
+<footer class="py-12 px-4" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 mb-12">
+
+      <!-- Brand + Description Column -->
+      <div class="space-y-5">
+        <div class="flex items-center gap-3">
+          <svg class="w-9 h-9 flex-shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="url(#grad-footer)" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="10" fill="url(#grad-footer)" opacity="0.3"/>
+            <circle cx="20" cy="12" r="3" fill="#6366f1"/>
+            <circle cx="13" cy="24" r="3" fill="#0891b2"/>
+            <circle cx="27" cy="24" r="3" fill="#6366f1"/>
+            <defs>
+              <linearGradient id="grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#0891b2"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <h3 class="font-heading font-bold text-2xl gradient-text">Cloud Connect AI</h3>
+        </div>
+
+        <p class="text-[--text-secondary] leading-relaxed text-base">
+          Augment your intelligence with your own AI twin.<br>Personalized. Private. Powerful.
+        </p>
+
+        <p class="company-tagline text-sm font-medium gradient-text mt-2">
+          Empowering the Future with Connectivity, Security & Intelligence.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+
+
+      <!-- Empty / future column (matching your provided structure) -->
+      <div class="hidden lg:block"></div>
       <div>
-       <h4 class="font-heading font-bold mb-4">Product</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Features</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Pricing</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Integrations</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">API</a></li>
-       </ul>
+        <h4 class="font-heading font-semibold text-lg mb-5 text-[--text-primary]">Navigation</h4>
+        <ul class="space-y-3 text-[--text-secondary]">
+          <li>
+            <a href="index1.html" class="hover:text-[--accent-2] transition-colors duration-200">Home</a>
+          </li>
+          <li>
+            <a href="index5.html" class="hover:text-[--accent-2] transition-colors duration-200">Services</a>
+          </li>
+          <li>
+            <a href="contact.html" class="hover:text-[--accent-2] transition-colors duration-200">Contact</a>
+          </li>
+        </ul>
       </div>
+      <!-- Legal -->
       <div>
-       <h4 class="font-heading font-bold mb-4">Company</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">About</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Careers</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Blog</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Press</a></li>
-       </ul>
+        <h4 class="font-heading font-semibold text-lg mb-5 text-[--text-primary]">Legal</h4>
+        <ul class="space-y-3 text-[--text-secondary]">
+          <li>
+            <a href="about.html" class="hover:text-[--accent-2] transition-colors duration-200">About</a>
+          </li>
+          <li>
+            <a href="privacy.html" class="hover:text-[--accent-2] transition-colors duration-200">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="terms.html" class="hover:text-[--accent-2] transition-colors duration-200">Terms & Conditions</a>
+          </li>
+        </ul>
       </div>
-      <div>
-       <h4 class="font-heading font-bold mb-4">Resources</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Documentation</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Help Center</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Community</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Status</a></li>
-       </ul>
-      </div>
-      <div>
-       <h4 class="font-heading font-bold mb-4">Legal</h4>
-       <ul class="space-y-2">
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Privacy</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Terms</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Security</a></li>
-        <li><a class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors cursor-pointer">Cookies</a></li>
-       </ul>
-      </div>
-     </div>
-     <div class="flex flex-col md:flex-row justify-between items-center pt-8" style="border-top: 1px solid var(--border-color);">
-      <div class="flex items-center mb-4 md:mb-0">
-       <svg class="w-8 h-8 mr-2" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="18" stroke="url(#grad2)" stroke-width="2" fill="none" /> <circle cx="20" cy="20" r="10" fill="url(#grad2)" opacity="0.3" /> <circle cx="20" cy="12" r="3" fill="#6366f1" /> <circle cx="13" cy="24" r="3" fill="#0891b2" /> <circle cx="27" cy="24" r="3" fill="#6366f1" /> <defs>
-         <lineargradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#6366f1" />
-          <stop offset="100%" style="stop-color:#0891b2" />
-         </lineargradient>
-        </defs>
-       </svg><span class="font-heading font-bold gradient-text">Cloud Connect AI</span>
-      </div>
-      <p class="text-gray-600 dark:text-gray-400 text-sm">© 2024 Cloud Connect AI. All rights reserved.</p>
-     </div>
+
     </div>
-   </footer>
+
+    <!-- Bottom copyright bar -->
+    <div class="footer-bottom pt-8 border-t border-[--border-color] text-center">
+      <p class="text-sm text-[--text-secondary]">
+        © 2025 Cloud Connect AI. All rights reserved.
+      </p>
+    </div>
+
+  </div>
+</footer>
 
 </div>
 
