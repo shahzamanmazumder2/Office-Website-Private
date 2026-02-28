@@ -293,74 +293,151 @@
       .contact-form { padding: 1.75rem; }
     }
   </style>
+
+<style>
+
+
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--accent-2);
+}
+
+/* ── ACTIVE / CURRENT PAGE ──────────────────────────────── */
+.nav-link.active,
+.menu a.active {
+  color: var(--accent-2) !important;
+  font-weight: 700;
+}
+
+.nav-link.active::after,
+.menu a.active::after {
+  width: 100% !important;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2)) !important;
+}
+
+/* Optional: nicer mobile active look */
+.menu-sm a.active {
+  background-color: rgba(99, 102, 241, 0.1); /* accent-1 with opacity */
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+}
+
+</style>
+
+<script>
+// Auto-highlight current page in navigation
+document.addEventListener('DOMContentLoaded', () => {
+  let path = window.location.pathname;
+  let currentFile = path.split('/').pop() || 'index.html';
+  if (currentFile === '') currentFile = 'index.html';
+
+  const pageMap = {
+    'index.html':   'Home',
+    'index5.html':  'Solutions',
+    'about.html':   'About',
+    'contact.html': 'Contact'
+  };
+
+  const currentLabel = pageMap[currentFile] || '';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.textContent.trim() === currentLabel) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+
+
 </head>
 <body class="h-full">
 
   <div class="main-wrapper">
 
     <!-- Navigation ──────────────────────────────────────── -->
-    <nav class="navbar sticky top-0 z-50">
-      <div class="navbar-start">
-        <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
-          </div>
-          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52" style="background: var(--card-bg);">
-            <li><a href="index1.html" class="nav-link font-medium">Home</a></li>
-            <li><a class="nav-link font-medium">Features</a></li>
-            <li><a href="index5.html" class="nav-link font-medium">Solutions</a></li>
-            <li><a class="nav-link font-medium">About</a></li>
-            <li><a class="nav-link font-medium active">Contact</a></li>
-          </ul>
-        </div>
-        <a href="index1.html" class="btn btn-ghost text-xl font-heading font-bold">
-          <svg class="w-8 h-8 mr-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2" fill="none" />
-            <circle cx="20" cy="20" r="10" fill="url(#grad1)" opacity="0.3" />
-            <circle cx="20" cy="12" r="3" fill="#6366f1" />
-            <circle cx="13" cy="24" r="3" fill="#0891b2" />
-            <circle cx="27" cy="24" r="3" fill="#6366f1" />
-            <line x1="20" y1="12" x2="13" y2="24" stroke="#6366f1" stroke-width="1.5" />
-            <line x1="20" y1="12" x2="27" y2="24" stroke="#0891b2" stroke-width="1.5" />
-            <line x1="13" y1="24" x2="27" y2="24" stroke="#6366f1" stroke-width="1.5" />
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#6366f1" />
-                <stop offset="100%" style="stop-color:#0891b2" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <span class="gradient-text">CCAI</span>
-        </a>
+    <!-- Navigation -->
+<!-- Navigation ──────────────────────────────────────── -->
+<nav class="navbar sticky top-0 z-50">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
       </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52" style="background: var(--card-bg);">
+        <li><a href="index.html"      class="nav-link font-medium">Home</a></li>
+        <li><a href="index5.html"     class="nav-link font-medium">Solutions</a></li>
+        <li><a href="about.html"      class="nav-link font-medium">About</a></li>
+        <li><a href="contact.html"    class="nav-link font-medium">Contact</a></li>
+      </ul>
+    </div>
+    <a href="index.html" class="btn btn-ghost text-xl font-heading font-bold">
+      <svg class="w-8 h-8 mr-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2" fill="none" />
+        <circle cx="20" cy="20" r="10" fill="url(#grad1)" opacity="0.3" />
+        <circle cx="20" cy="12" r="3" fill="#6366f1" />
+        <circle cx="13" cy="24" r="3" fill="#0891b2" />
+        <circle cx="27" cy="24" r="3" fill="#6366f1" />
+        <line x1="20" y1="12" x2="13" y2="24" stroke="#6366f1" stroke-width="1.5" />
+        <line x1="20" y1="12" x2="27" y2="24" stroke="#0891b2" stroke-width="1.5" />
+        <line x1="13" y1="24" x2="27" y2="24" stroke="#6366f1" stroke-width="1.5" />
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#6366f1" />
+            <stop offset="100%" style="stop-color:#0891b2" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="gradient-text">CCAI</span>
+    </a>
+  </div>
 
-      <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1 gap-2">
-          <li><a href="index1.html" class="nav-link font-medium">Home</a></li>
-          <li><a class="nav-link font-medium">Features</a></li>
-          <li><a href="index5.html" class="nav-link font-medium">Solutions</a></li>
-          <li><a class="nav-link font-medium">About</a></li>
-          <li><a class="nav-link font-medium active">Contact</a></li>
-        </ul>
-      </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-2">
+      <li><a href="index.html"      class="nav-link font-medium">Home</a></li>
+      <li><a href="index5.html"     class="nav-link font-medium">Solutions</a></li>
+      <li><a href="about.html"      class="nav-link font-medium">About</a></li>
+      <li><a href="contact.html"    class="nav-link font-medium">Contact</a></li>
+    </ul>
+  </div>
 
-      <div class="navbar-end gap-2">
-        <button class="btn btn-ghost text-gray-600 dark:text-gray-300" id="theme-toggle" title="Toggle dark mode">
-          <svg id="sun-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 18a6 6 0 100-12 6 6 0 000 12z" />
-            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m3.08 3.08l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m3.08-3.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
-        <button class="btn btn-ghost text-gray-600 dark:text-gray-300">Sign In</button>
-        <button class="btn btn-glow text-white border-0 px-6">Get Started</button>
-      </div>
-    </nav>
-
+  <div class="navbar-end gap-2">
+    <button class="btn btn-ghost text-gray-600 dark:text-gray-300" id="theme-toggle" title="Toggle dark mode">
+      <svg id="sun-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 18a6 6 0 100-12 6 6 0 000 12z" />
+        <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m3.08 3.08l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m3.08-3.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+      <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+    </button>
+    <!-- Uncomment if you want sign-in / get-started buttons later -->
+    <!-- <button class="btn btn-ghost text-gray-600 dark:text-gray-300">Sign In</button> -->
+    <!-- <button class="btn btn-glow text-white border-0 px-6" id="cta-nav-btn">Get Started</button> -->
+  </div>
+</nav>
     <!-- Contact Us Hero Section -->
     <section id="contact-hero" class="hero-section relative">
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
