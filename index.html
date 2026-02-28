@@ -668,6 +668,7 @@ document.addEventListener("DOMContentLoaded", function () {
   padding: 0.5rem 0.75rem;
 }
 
+
 </style>
 
 <script>
@@ -693,6 +694,35 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<style>
+
+  /* ────────────────────────────────────────────────
+   Light mode hero improvements – dark mode untouched
+───────────────────────────────────────────────── */
+
+[data-theme="light"] #hero-title span:not(.gradient-text),
+[data-theme="light"] #hero-title {
+  color: #0f172a !important;           /* very dark slate for strong contrast */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+[data-theme="light"] #hero-subtitle,
+[data-theme="light"] #hero-subtitle span {
+  color: #1f2937 !important;           /* gray-800 */
+}
+
+[data-theme="light"] .tech-badge {
+  background: rgba(255,255,255,0.75) !important;
+  border-color: rgba(99,102,241,0.18) !important;
+  color: #374151 !important;           /* gray-700 */
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Ensure primary button text stays white in light mode too (glow button) */
+.btn-glow {
+  color: white !important;
+}
+</style>
 
 
   <style>body { box-sizing: border-box; }</style>
@@ -766,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </nav>
    
    
-   
+
    
    
    <!-- Hero Section -->
@@ -778,9 +808,14 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- === Animated Tech Background Layer === -->
   <div class="absolute inset-0 tech-bg pointer-events-none"></div>
 
-  <!-- Subtle contrast overlay -->
+  <!-- Subtle contrast overlay – original for dark, softer & cleaner for light -->
   <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(15,23,42,0.18)] to-[rgba(15,23,42,0.40)] 
               dark:via-[rgba(241,245,249,0.10)] dark:to-[rgba(241,245,249,0.22)] pointer-events-none"></div>
+
+  <!-- Light mode only: very gentle additional veil to improve text contrast -->
+  <div class="absolute inset-0 pointer-events-none hidden dark:block" 
+       style="background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0.20) 100%);">
+  </div>
 
   <!-- === Big floating energy orbs + smaller pulsing nodes === -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -801,81 +836,90 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <!-- === Main Hero Content === -->
+<!-- Main Hero Content -->
   <div class="max-w-7xl mx-auto text-center relative z-10 w-full">
 
-    <!-- Top small badge -->
+    <!-- Badge – theme adaptive text & background -->
     <div class="fade-in mb-6 md:mb-8" style="animation-delay: 0.1s;">
       <span class="badge badge-lg py-3 px-7 text-sm md:text-base font-medium 
-                   bg-gradient-to-r from-[var(--accent-1)]/20 to-[var(--accent-2)]/20 
-                   border border-[var(--accent-1)]/40 text-[var(--accent-1)] backdrop-blur-md">
+                   bg-gradient-to-r from-[var(--accent-1)]/10 to-[var(--accent-2)]/10 
+                   border border-[var(--accent-1)]/30 
+                   text-[var(--text-primary)] 
+                   backdrop-blur-md">
         Next-Gen Digital Infrastructure
       </span>
     </div>
 
-    <!-- Main headline – Born to Connect -->
+    <!-- Headline – gradient part stays colorful, main title uses theme text -->
     <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 md:mb-8 fade-in" 
         id="hero-title" style="animation-delay: 0.25s;">
       <span class="gradient-text block">Born to Connect</span>
-      <span class="text-white/90 block mt-2 md:mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight">
+      <span class="block mt-2 md:mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text-primary)]">
         Cloud Connect AI
       </span>
     </h1>
 
-    <!-- Subtitle -->
-    <p class="text-lg md:text-xl lg:text-2xl text-gray-300 dark:text-gray-200 max-w-4xl mx-auto mb-10 md:mb-14 leading-relaxed fade-in" 
+    <!-- Subtitle – uses theme-aware colors -->
+    <p class="text-lg md:text-xl lg:text-2xl text-[var(--text-secondary)] max-w-4xl mx-auto mb-10 md:mb-14 leading-relaxed fade-in" 
        id="hero-subtitle" style="animation-delay: 0.4s;">
       Where cloud, mobile, AI, agents and enterprise transformation become one powerful ecosystem.
       <br class="hidden sm:block" />
-      <span class="font-semibold text-[var(--accent-2)]">Built for tomorrow. Engineered today.</span>
+      <span class="font-semibold text-[var(--accent-1)] dark:text-[var(--accent-2)]">
+        Built for tomorrow. Engineered today.
+      </span>
     </p>
 
-<!-- CTA buttons -->
-<div class="flex flex-wrap justify-center gap-5 md:gap-6 fade-in" style="animation-delay: 0.55s;">
-  <!-- Get Connected → goes to contact.html -->
-  <a href="contact.html" class="btn btn-lg btn-glow min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 shadow-xl shadow-[var(--accent-1)]/40 hover:shadow-[var(--accent-1)]/60 transition-all duration-300 inline-flex items-center justify-center">
-    Get Connected
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-    </svg>
-  </a>
+    <!-- CTA buttons – primary button always white text (because of glow), secondary adapts -->
+    <div class="flex flex-wrap justify-center gap-5 md:gap-6 fade-in" style="animation-delay: 0.55s;">
+      <a href="contact.html" 
+         class="btn btn-lg btn-glow min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 
+                shadow-xl shadow-[var(--accent-1)]/40 hover:shadow-[var(--accent-1)]/60 
+                transition-all duration-300 inline-flex items-center justify-center text-white">
+        Get Connected
+        <svg class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
 
-  <!-- Discover More → goes to index5.html -->
-  <a href="index5.html" class="btn btn-lg border-2 border-[var(--accent-2)] text-[var(--accent-2)] hover:bg-[var(--accent-2)]/15 
-                 min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 backdrop-blur-md transition-all duration-300 inline-flex items-center justify-center">
-    Discover More
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  </a>
-</div>
+      <a href="index5.html" 
+         class="btn btn-lg border-2 border-[var(--accent-2)] 
+                text-[var(--accent-2)] hover:bg-[var(--accent-2)]/15 hover:text-white 
+                min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 
+                backdrop-blur-md transition-all duration-300 inline-flex items-center justify-center">
+        Discover More
+        <svg class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </a>
+    </div>
 
     <!-- Infinite scrolling tech badges strip -->
     <div class="mt-10 w-[50vw] max-w-3xl mx-auto overflow-hidden" style="animation-delay: 0.7s;">
       <div class="inline-flex flex-nowrap animate-marquee whitespace-nowrap gap-6 md:gap-10 py-4">
         <!-- First set -->
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">AWS</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Azure</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Google Cloud</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">React Native</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Flutter</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Kotlin</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Swift</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Node.js</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Python</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">PostgreSQL</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AWS</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Azure</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Google Cloud</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">React Native</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Flutter</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Kotlin</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Swift</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Node.js</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Python</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">PostgreSQL</span>
 
         <!-- Second set (duplicate for seamless loop) -->
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">MongoDB</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">LangChain</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">LlamaIndex</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">AutoGen</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">RAG Systems</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Generative AI</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">AI Agents</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Digital Transformation</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">DevOps</span>
-        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/8 dark:bg-black/25 border border-white/15">Zero-Trust Security</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">MongoDB</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">LangChain</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">LlamaIndex</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AutoGen</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">RAG Systems</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Generative AI</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AI Agents</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Digital Transformation</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">DevOps</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Zero-Trust Security</span>
       </div>
     </div>
 
