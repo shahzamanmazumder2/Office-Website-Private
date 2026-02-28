@@ -261,15 +261,15 @@
       </div>
 
       <div class="navbar-end gap-2">
-        <button class="btn btn-ghost text-gray-600 dark:text-gray-300" id="theme-toggle" title="Toggle dark mode">
-          <svg id="sun-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 18a6 6 0 100-12 6 6 0 000 12z" />
-            <path d="M12 1v6m0 6v6M4.22 4.22l4.24 4.24m3.08 3.08l4.24 4.24M1 12h6m6 0h6m-15.78 7.78l4.24-4.24m3.08-3.08l4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-          <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
+<button
+  class="btn btn-ghost btn-circle text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
+  id="theme-toggle"
+  title="Toggle dark/light mode"
+  aria-label="Toggle between dark and light mode"
+>
+  <span id="sun-icon" class="text-xl">☀️</span>
+  <span id="moon-icon" class="text-xl hidden">🌙</span>
+</button>
       </div>
     </nav>
 
