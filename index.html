@@ -741,20 +741,9 @@ opacity: 0.50;
     <!-- Navigation -->
 <!-- Navigation ──────────────────────────────────────── -->
 <nav class="navbar sticky top-0 z-50">
+
+  <!-- LEFT: Logo -->
   <div class="navbar-start">
-    <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-        </svg>
-      </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 rounded-box w-52" style="background: var(--card-bg);">
-        <li><a href="index.html"      class="nav-link font-medium">Home</a></li>
-        <li><a href="index5.html"     class="nav-link font-medium">Solutions</a></li>
-        <li><a href="about.html"      class="nav-link font-medium">About</a></li>
-        <li><a href="contact.html"    class="nav-link font-medium">Contact</a></li>
-      </ul>
-    </div>
     <a href="index.html" class="btn btn-ghost text-xl font-heading font-bold">
       <svg class="w-8 h-8 mr-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2" fill="none" />
@@ -776,31 +765,58 @@ opacity: 0.50;
     </a>
   </div>
 
+  <!-- CENTER MENU (Desktop Only) -->
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1 gap-2">
-      <li><a href="index.html"      class="nav-link font-medium">Home</a></li>
-      <li><a href="index5.html"     class="nav-link font-medium">Solutions</a></li>
-      <li><a href="about.html"      class="nav-link font-medium">About</a></li>
-      <li><a href="contact.html"    class="nav-link font-medium">Contact</a></li>
+      <li><a href="index.html"   class="nav-link font-medium">Home</a></li>
+      <li><a href="index5.html"  class="nav-link font-medium">Solutions</a></li>
+      <li><a href="about.html"   class="nav-link font-medium">About</a></li>
+      <li><a href="contact.html" class="nav-link font-medium">Contact</a></li>
     </ul>
   </div>
 
+  <!-- RIGHT: Toggle + Burger -->
   <div class="navbar-end gap-2">
-<button
-  class="btn btn-ghost btn-circle text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
-  id="theme-toggle"
-  title="Toggle dark/light mode"
-  aria-label="Toggle between dark and light mode"
->
-  <span id="sun-icon" class="text-xl">☀️</span>
-  <span id="moon-icon" class="text-xl hidden">🌙</span>
-</button>
-    <!-- Uncomment if you want sign-in / get-started buttons later -->
-    <!-- <button class="btn btn-ghost text-gray-600 dark:text-gray-300">Sign In</button> -->
-    <!-- <button class="btn btn-glow text-white border-0 px-6" id="cta-nav-btn">Get Started</button> -->
+
+    <!-- Theme Toggle -->
+    <button
+      class="btn btn-ghost btn-circle text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
+      id="theme-toggle"
+      title="Toggle dark/light mode"
+      aria-label="Toggle between dark and light mode"
+    >
+      <span id="sun-icon" class="text-xl">☀️</span>
+      <span id="moon-icon" class="text-xl hidden">🌙</span>
+    </button>
+
+    <!-- Burger Menu (Mobile Only) -->
+    <div class="dropdown dropdown-end lg:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </div>
+
+      <ul tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-[1] p-3 rounded-box w-52 shadow-lg"
+          style="background: var(--card-bg);">
+        <li><a href="index.html"   class="nav-link font-medium">Home</a></li>
+        <li><a href="index5.html"  class="nav-link font-medium">Solutions</a></li>
+        <li><a href="about.html"   class="nav-link font-medium">About</a></li>
+        <li><a href="contact.html" class="nav-link font-medium">Contact</a></li>
+      </ul>
+    </div>
+
   </div>
+
 </nav>
-   
    
 
    
