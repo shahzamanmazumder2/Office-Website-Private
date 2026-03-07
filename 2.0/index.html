@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Connect AI</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="index_css.css">
+
+
+
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
+   <!-- Dynamic gradient background -->
+   <div class="hero-gradient"></div><!-- Tech grid pattern -->
+   <div class="tech-pattern"></div><!-- Floating Orbs - Dynamic Background -->
+   <div class="orb w-96 h-96 bg-blue-600 top-0 left-0" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
+   <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
+   <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
+   <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4" style="position: fixed; animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
+   <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0" style="position: fixed; animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
+   <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2" style="position: fixed; animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
+   <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
+   <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
+   <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
+   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div><!-- Content Wrapper -->
+   <div class="content-wrapper">
+    <!-- Navbar -->
+    <nav class="relative fade-in">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+       <!-- Logo -->
+       <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+       </div><!-- Desktop Nav -->
+       <div class="hidden md:flex items-center gap-8">
+        <a href="#home" class="nav-link nav-item active text-white transition-colors text-sm font-medium" data-page="home">Home</a> <a href="#solutions" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a> <a href="#platform" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="platform">Platform</a> <a href="#resources" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="resources">Resources</a> <a href="#enterprise" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="enterprise">Enterprise</a>
+       </div><!-- CTA Button -->
+       <div class="hidden md:flex items-center gap-4">
+        <button class="text-gray-300 hover:text-white transition-colors text-sm font-medium">Sign In</button> <button class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow"> Start Free Trial </button>
+       </div><!-- Mobile Menu Button --> <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg></button>
+      </div><!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-2 p-4">
+       <div class="flex flex-col gap-4">
+        <a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2">Solutions</a> <a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2">Platform</a> <a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2">Resources</a> <a href="#" class="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2">Enterprise</a>
+        <hr class="border-white/10"><button class="text-gray-300 hover:text-white transition-colors text-sm font-medium py-2 text-left">Sign In</button> <button class="px-5 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300"> Start Free Trial </button>
+       </div>
+      </div>
+     </div>
+    </nav><!-- Hero Section -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
+     <div class="text-center max-w-4xl mx-auto">
+      <!-- Badge -->
+      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
+       <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> <span class="text-gray-300 text-sm">Connecting enterprises globally</span>
+      </div><!-- Main Heading -->
+      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">Born to<br><span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span></h1><!-- Subtitle -->
+      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">Cloud Connect AI integrates your enterprise infrastructure with intelligent connectivity solutions. Unified, secure, and infinitely scalable.</p><!-- CTA Buttons -->
+      <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+       <button id="cta-primary-btn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg"> <span>Get Started Free</span>
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></button> <button id="cta-secondary-btn" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg><span>Watch Demo</span> </button>
+      </div><!-- Stats -->
+      <div class="slide-up delay-500 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+       <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-blue-400 mb-1">
+         500+
+        </div>
+        <div class="text-gray-400 text-sm">
+         Enterprise Clients
+        </div>
+       </div>
+       <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-purple-400 mb-1">
+         99.99%
+        </div>
+        <div class="text-gray-400 text-sm">
+         Uptime SLA
+        </div>
+       </div>
+       <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-cyan-400 mb-1">
+         150+
+        </div>
+        <div class="text-gray-400 text-sm">
+         Countries
+        </div>
+       </div>
+       <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-blue-300 mb-1">
+         24/7
+        </div>
+        <div class="text-gray-400 text-sm">
+         Global Support
+        </div>
+       </div>
+      </div><!-- Trust Logos -->
+      <div class="mt-20 slide-up delay-500">
+       <p class="text-gray-500 text-sm mb-8">Trusted by leading innovators</p>
+       <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
+        <div class="text-gray-400 font-bold text-lg tracking-wider">
+         TECHCORP
+        </div>
+        <div class="text-gray-400 font-bold text-lg tracking-wider">
+         INNOVATE
+        </div>
+        <div class="text-gray-400 font-bold text-lg tracking-wider">
+         CLOUDSYS
+        </div>
+        <div class="text-gray-400 font-bold text-lg tracking-wider">
+         NEXTGEN
+        </div>
+        <div class="text-gray-400 font-bold text-lg tracking-wider">
+         QUANTUM
+        </div>
+       </div>
+      </div>
+     </div>
+    </main>
+    
+    
+    <!-- Footer -->
+    <footer class="relative border-t border-white/10">
+
+<!-- Bottom Bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-4">
+       <p id="footer-text" class="text-gray-500 text-sm">© 2024 Cloud Connect AI. All rights reserved.</p><!-- Social Links -->
+      
+      </div>
+  
+    </footer>
+
+
+    
+   </div>
+  </div>
+  <script>
+    // Tech background images that rotate automatically
+    const techBackgrounds = [
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop")',
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=800&fit=crop")',
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=800&fit=crop")',
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=800&fit=crop")',
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=1200&h=800&fit=crop")',
+      'linear-gradient(135deg, rgba(10, 14, 39, 0.7) 0%, rgba(26, 26, 62, 0.7) 50%, rgba(13, 13, 31, 0.7) 100%), url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop")'
+    ];
+
+    let currentBgIndex = 0;
+    const heroGradientEl = document.querySelector('.hero-gradient');
+    let nextBgIndex = 1;
+    
+    // Create two background layers for smooth transition
+    const bgLayer1 = document.createElement('div');
+    bgLayer1.className = 'hero-gradient';
+    bgLayer1.style.position = 'absolute';
+    bgLayer1.style.inset = '0';
+    bgLayer1.style.backgroundSize = 'cover';
+    bgLayer1.style.backgroundPosition = 'center';
+    bgLayer1.style.zIndex = '1';
+    bgLayer1.style.opacity = '1';
+    
+    const bgLayer2 = document.createElement('div');
+    bgLayer2.className = 'hero-gradient';
+    bgLayer2.style.position = 'absolute';
+    bgLayer2.style.inset = '0';
+    bgLayer2.style.backgroundSize = 'cover';
+    bgLayer2.style.backgroundPosition = 'center';
+    bgLayer2.style.zIndex = '1';
+    bgLayer2.style.opacity = '0';
+
+    // Initialize backgrounds
+    if (heroGradientEl && heroGradientEl.parentElement) {
+      bgLayer1.style.backgroundImage = techBackgrounds[0];
+      bgLayer2.style.backgroundImage = techBackgrounds[1];
+      
+      // Replace original with our dual-layer setup
+      heroGradientEl.parentElement.insertBefore(bgLayer1, heroGradientEl);
+      heroGradientEl.parentElement.insertBefore(bgLayer2, heroGradientEl);
+      heroGradientEl.style.display = 'none';
+      
+      // Rotate backgrounds every 20 seconds with smooth 8-second crossfade
+      setInterval(() => {
+        currentBgIndex = (currentBgIndex + 1) % techBackgrounds.length;
+        nextBgIndex = (currentBgIndex + 1) % techBackgrounds.length;
+        
+        // Determine which layer to fade to
+        const activeBg = parseFloat(bgLayer1.style.opacity) === 1 ? bgLayer1 : bgLayer2;
+        const nextBg = activeBg === bgLayer1 ? bgLayer2 : bgLayer1;
+        
+        // Set next image and crossfade
+        nextBg.style.backgroundImage = techBackgrounds[currentBgIndex];
+        nextBg.style.transition = 'opacity 8s ease-in-out';
+        nextBg.style.opacity = '1';
+        activeBg.style.opacity = '0';
+      }, 28000);
+    }
+
+    const defaultConfig = {
+      company_name: 'Cloud Connect AI',
+      hero_title: 'Born to<br><span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span>',
+      hero_subtitle: 'Cloud Connect AI integrates your enterprise infrastructure with intelligent connectivity solutions. Unified, secure, and infinitely scalable.',
+      cta_primary: 'Get Started Free',
+      cta_secondary: 'Watch Demo',
+      footer_text: '© 2024 Cloud Connect AI. All rights reserved.',
+      background_color: '#0a0e27',
+      surface_color: 'rgba(255, 255, 255, 0.03)',
+      text_color: '#ffffff',
+      primary_action_color: '#2563eb',
+      secondary_action_color: '#9ca3af',
+      font_family: 'Space Grotesk',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const ctaPrimaryBtn = document.getElementById('cta-primary-btn');
+      const ctaSecondaryBtn = document.getElementById('cta-secondary-btn');
+      const footerText = document.getElementById('footer-text');
+      const brandName = document.getElementById('brand-name');
+
+      if (brandName) {
+        brandName.textContent = config.company_name || defaultConfig.company_name;
+      }
+      if (heroTitle) {
+        heroTitle.innerHTML = config.hero_title || defaultConfig.hero_title;
+      }
+      if (heroSubtitle) {
+        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      if (ctaPrimaryBtn) {
+        const span = ctaPrimaryBtn.querySelector('span:first-of-type');
+        if (span) span.textContent = config.cta_primary || defaultConfig.cta_primary;
+      }
+      if (ctaSecondaryBtn) {
+        const span = ctaSecondaryBtn.querySelector('span');
+        if (span) span.textContent = config.cta_secondary || defaultConfig.cta_secondary;
+      }
+      if (footerText) {
+        footerText.textContent = config.footer_text || defaultConfig.footer_text;
+      }
+
+      // Apply font
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, sans-serif`;
+
+      // Apply font size scaling
+      const baseSize = config.font_size || defaultConfig.font_size;
+      if (heroSubtitle) heroSubtitle.style.fontSize = `${baseSize * 1.25}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['company_name', config.company_name || defaultConfig.company_name],
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['cta_primary', config.cta_primary || defaultConfig.cta_primary],
+        ['cta_secondary', config.cta_secondary || defaultConfig.cta_secondary],
+        ['footer_text', config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let isMenuOpen = false;
+
+    mobileMenuBtn.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.setAttribute('d', isMenuOpen 
+        ? 'M6 18L18 6M6 6l12 12' 
+        : 'M4 6h16M4 12h16M4 18h16'
+      );
+    });
+
+    // Navigation active state handler
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    function setActivePage(page) {
+      navItems.forEach(item => {
+        if (item.dataset.page === page) {
+          item.classList.add('active', 'text-white');
+          item.classList.remove('text-gray-300');
+        } else {
+          item.classList.remove('active', 'text-white');
+          item.classList.add('text-gray-300');
+        }
+      });
+    }
+
+    // Handle hash navigation
+    window.addEventListener('hashchange', () => {
+      const page = window.location.hash.slice(1) || 'home';
+      setActivePage(page);
+    });
+
+    // Set initial active page
+    const initialPage = window.location.hash.slice(1) || 'home';
+    setActivePage(initialPage);
+
+    // Handle nav link clicks
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const page = item.dataset.page;
+        setActivePage(page);
+        if (isMenuOpen) {
+          isMenuOpen = false;
+          mobileMenu.classList.add('hidden');
+          menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+      });
+    });
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d6675e9237bba4d',t:'MTc3MjUxODA0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

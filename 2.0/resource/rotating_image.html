@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rotating Background Only</title>
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; }
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #000;
+    }
+
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0d0d1f 100%);
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+      transition: opacity 5s ease-in-out;
+      opacity: 0.58;
+    }
+
+    .tech-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image:
+        linear-gradient(0deg,  transparent 24%, rgba(59,130,246,0.05) 25%, rgba(59,130,246,0.05) 26%, transparent 27%, transparent 74%, rgba(59,130,246,0.05) 75%, rgba(59,130,246,0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(59,130,246,0.05) 25%, rgba(59,130,246,0.05) 26%, transparent 27%, transparent 74%, rgba(59,130,246,0.05) 75%, rgba(59,130,246,0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: 2;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gradient-bg">
+    <div class="hero-gradient"></div>
+    <div class="tech-pattern"></div>
+  </div>
+
+  <script>
+    const backgrounds = [
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80")',
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80")',
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&q=80")',
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80")',
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=1600&q=80")',
+      'linear-gradient(135deg, rgba(10,14,39,0.7) 0%, rgba(26,26,62,0.7) 50%, rgba(13,13,31,0.7) 100%), url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80")'
+    ];
+
+    let idx = 0;
+
+    const layerA = document.createElement('div');
+    const layerB = document.createElement('div');
+
+    layerA.className = layerB.className = 'hero-gradient';
+    layerA.style.opacity = '1';
+    layerB.style.opacity = '0';
+
+    const placeholder = document.querySelector('.hero-gradient');
+    const container = placeholder.parentElement;
+
+    layerA.style.backgroundImage = backgrounds[0];
+    layerB.style.backgroundImage = backgrounds[1];
+
+    container.insertBefore(layerA, placeholder);
+    container.insertBefore(layerB, placeholder);
+    placeholder.remove();
+
+    setInterval(() => {
+      idx = (idx + 1) % backgrounds.length;
+
+      const active = layerA.style.opacity > 0.5 ? layerA : layerB;
+      const next   = active === layerA ? layerB : layerA;
+
+      next.style.backgroundImage = backgrounds[idx];
+      next.style.transition = active.style.transition = 'opacity 5s ease-in-out';
+
+      next.style.opacity = '1';
+      active.style.opacity = '0';
+    }, 10000);
+  </script>
+
+</body>
+</html>
