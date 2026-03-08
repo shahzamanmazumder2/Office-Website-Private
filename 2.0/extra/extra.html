@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Connect AI - Transforming Business Through Intelligent Cloud Solutions</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'display': ['Space Grotesk', 'sans-serif'],
+            'body': ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            'primary': '#0f172a',
+            'secondary': '#1e293b',
+            'accent': '#06b6d4',
+            'accent2': '#8b5cf6',
+            'surface': '#f8fafc',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out forwards;
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .capability-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .capability-card:hover {
+      transform: translateY(-10px) scale(1.02);
+    }
+    
+    .morph-bg {
+      animation: morphBackground 15s ease-in-out infinite;
+    }
+    
+    @keyframes morphBackground {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.6); }
+    }
+    
+    .rotate-slow {
+      animation: rotateSlow 20s linear infinite;
+    }
+    
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .service-image {
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    
+    .service-card:hover .service-image {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    }
+    
+    .faq-content.open {
+      max-height: 500px;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .blob {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation: blobMorph 8s ease-in-out infinite;
+    }
+    
+    @keyframes blobMorph {
+      0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+      25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+      50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+      75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .client-logo {
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: all 0.3s ease;
+    }
+    
+    .client-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+    
+    .scroll-indicator {
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-primary font-body text-white overflow-x-hidden">
+  <div id="app-container" class="w-full h-full overflow-auto"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-lg border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center pulse-glow">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+       </div><span class="text-xl font-display font-bold">Cloud Connect <span class="gradient-text">AI</span></span>
+      </div>
+      <div class="hidden md:flex items-center gap-8"><a href="#capabilities" class="nav-link text-gray-300 hover:text-white transition-colors">Capabilities</a> <a href="#services" class="nav-link text-gray-300 hover:text-white transition-colors">Services</a> <a href="#news" class="nav-link text-gray-300 hover:text-white transition-colors">News</a> <a href="#blog" class="nav-link text-gray-300 hover:text-white transition-colors">Blog</a> <a href="#faq" class="nav-link text-gray-300 hover:text-white transition-colors">FAQ</a>
+      </div><button class="px-6 py-2.5 bg-gradient-to-r from-accent to-accent2 rounded-full font-semibold hover:shadow-lg hover:shadow-accent/30 transition-all hover:scale-105"> Get Started </button>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="hero-gradient min-h-screen relative overflow-hidden pt-20"><!-- Animated Background Elements -->
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute top-20 left-10 w-72 h-72 bg-accent/10 blob floating"></div>
+     <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent2/10 blob floating" style="animation-delay: -3s;"></div>
+     <div class="absolute top-1/2 left-1/4 w-48 h-48 bg-pink-500/10 blob floating" style="animation-delay: -1.5s;"></div><!-- Grid Pattern -->
+     <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80%]"><!-- Left Content -->
+      <div class="slide-in-left">
+       <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span> <span id="hero-tagline">Transforming Business Through AI</span>
+       </div>
+       <h1 id="hero-title" class="text-5xl lg:text-7xl font-display font-bold leading-tight mb-6">Intelligent <span class="gradient-text">Cloud Solutions</span> for Tomorrow</h1>
+       <p id="hero-subtitle" class="text-xl text-gray-400 mb-8 leading-relaxed">Empower your enterprise with cutting-edge AI-driven cloud infrastructure. We deliver scalable, secure, and innovative solutions that transform how businesses operate in the digital age.</p>
+       <div class="flex flex-wrap gap-4 mb-12"><button class="group px-8 py-4 bg-gradient-to-r from-accent to-accent2 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-accent/30 transition-all hover:scale-105 flex items-center gap-2"> Start Your Journey 
+         <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+         </svg></button> <button class="px-8 py-4 border border-white/20 rounded-full font-semibold text-lg hover:bg-white/5 transition-all flex items-center gap-2">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg> Watch Demo </button>
+       </div><!-- Stats -->
+       <div class="grid grid-cols-3 gap-8">
+        <div>
+         <div class="text-3xl font-display font-bold gradient-text">
+          500+
+         </div>
+         <div class="text-gray-500 text-sm">
+          Enterprise Clients
+         </div>
+        </div>
+        <div>
+         <div class="text-3xl font-display font-bold gradient-text">
+          99.9%
+         </div>
+         <div class="text-gray-500 text-sm">
+          Uptime Guarantee
+         </div>
+        </div>
+        <div>
+         <div class="text-3xl font-display font-bold gradient-text">
+          24/7
+         </div>
+         <div class="text-gray-500 text-sm">
+          Expert Support
+         </div>
+        </div>
+       </div>
+      </div><!-- Right - Animated Image -->
+      <div class="slide-in-right relative">
+       <div class="relative"><!-- Rotating Ring -->
+        <div class="absolute inset-0 flex items-center justify-center">
+         <div class="w-[420px] h-[420px] border-2 border-dashed border-accent/30 rounded-full rotate-slow"></div>
+        </div>
+        <div class="absolute inset-0 flex items-center justify-center">
+         <div class="w-[320px] h-[320px] border border-accent2/20 rounded-full rotate-slow" style="animation-direction: reverse; animation-duration: 15s;"></div>
+        </div><!-- Main Image Container -->
+        <div id="hero-image-container" class="relative w-full aspect-square flex items-center justify-center">
+         <div class="w-80 h-80 rounded-3xl bg-gradient-to-br from-secondary to-primary border border-white/10 overflow-hidden floating pulse-glow flex items-center justify-center">
+          <div id="hero-image" class="w-full h-full flex items-center justify-center transition-all duration-700"><!-- Image 1 - Cloud Infrastructure -->
+           <svg class="w-48 h-48 text-accent" viewbox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12v4m0 0l-2-2m2 2l2-2" />
+           </svg>
+          </div>
+         </div>
+        </div><!-- Floating Badges -->
+        <div class="absolute top-10 right-0 px-4 py-2 bg-secondary/80 backdrop-blur border border-white/10 rounded-xl floating" style="animation-delay: -1s;">
+         <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+           <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-sm font-medium">AI Powered</span>
+         </div>
+        </div>
+        <div class="absolute bottom-20 left-0 px-4 py-2 bg-secondary/80 backdrop-blur border border-white/10 rounded-xl floating" style="animation-delay: -2s;">
+         <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
+           <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+           </svg>
+          </div><span class="text-sm font-medium">Lightning Fast</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Scroll Indicator -->
+     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-indicator">
+      <div class="flex flex-col items-center gap-2 text-gray-500"><span class="text-sm">Scroll to explore</span>
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+       </svg>
+      </div>
+     </div>
+    </div>
+   </section><!-- Core Capabilities Section -->
+   <section id="capabilities" class="relative py-32 overflow-hidden"><!-- Animated Gradient Background -->
+    <div class="absolute inset-0 morph-bg" style="background: linear-gradient(270deg, #0f172a, #1e293b, #0f172a, #1e1b4b, #0f172a); background-size: 400% 400%;"></div><!-- Animated Particles -->
+    <div class="absolute inset-0 overflow-hidden">
+     <div class="absolute w-2 h-2 bg-accent rounded-full" style="top: 20%; left: 10%; animation: float 4s ease-in-out infinite;"></div>
+     <div class="absolute w-3 h-3 bg-accent2 rounded-full" style="top: 60%; left: 80%; animation: float 5s ease-in-out infinite; animation-delay: -1s;"></div>
+     <div class="absolute w-2 h-2 bg-pink-500 rounded-full" style="top: 40%; left: 50%; animation: float 6s ease-in-out infinite; animation-delay: -2s;"></div>
+     <div class="absolute w-4 h-4 bg-accent/50 rounded-full" style="top: 80%; left: 20%; animation: float 4.5s ease-in-out infinite; animation-delay: -0.5s;"></div>
+     <div class="absolute w-2 h-2 bg-accent2/50 rounded-full" style="top: 10%; left: 70%; animation: float 5.5s ease-in-out infinite; animation-delay: -1.5s;"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10"><!-- Section Header -->
+     <div class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent2/10 border border-accent2/30 rounded-full text-accent2 text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent2 rounded-full animate-pulse"></span> Our Expertise
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">Core <span class="gradient-text">Capabilities</span></h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Leveraging cutting-edge technology to deliver transformative solutions across industries</p>
+     </div><!-- Capabilities Grid -->
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Capability 1 -->
+      <div class="capability-card group p-8 bg-gradient-to-br from-secondary/80 to-primary/80 backdrop-blur rounded-3xl border border-white/10 hover:border-accent/50 fade-in-up stagger-1">
+       <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Machine Learning</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Advanced ML models that learn and adapt to your business needs in real-time.</p>
+       <div class="mt-6 flex items-center gap-2 text-accent text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        Learn More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+       </div>
+      </div><!-- Capability 2 -->
+      <div class="capability-card group p-8 bg-gradient-to-br from-secondary/80 to-primary/80 backdrop-blur rounded-3xl border border-white/10 hover:border-accent2/50 fade-in-up stagger-2">
+       <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent2/20 to-accent2/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-accent2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Cloud Infrastructure</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Scalable, secure cloud solutions with 99.99% uptime guarantee.</p>
+       <div class="mt-6 flex items-center gap-2 text-accent2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        Learn More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+       </div>
+      </div><!-- Capability 3 -->
+      <div class="capability-card group p-8 bg-gradient-to-br from-secondary/80 to-primary/80 backdrop-blur rounded-3xl border border-white/10 hover:border-pink-500/50 fade-in-up stagger-3">
+       <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/20 to-pink-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Cybersecurity</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Enterprise-grade security protocols protecting your digital assets 24/7.</p>
+       <div class="mt-6 flex items-center gap-2 text-pink-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        Learn More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+       </div>
+      </div><!-- Capability 4 -->
+      <div class="capability-card group p-8 bg-gradient-to-br from-secondary/80 to-primary/80 backdrop-blur rounded-3xl border border-white/10 hover:border-green-500/50 fade-in-up stagger-4">
+       <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-500/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Data Analytics</h3>
+       <p class="text-gray-400 text-sm leading-relaxed">Transform raw data into actionable insights with our advanced analytics.</p>
+       <div class="mt-6 flex items-center gap-2 text-green-500 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        Learn More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="py-32 bg-gradient-to-b from-primary via-secondary to-primary">
+    <div class="max-w-7xl mx-auto px-6"><!-- Section Header -->
+     <div class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span> What We Offer
+      </div>
+      <h2 id="services-title" class="text-4xl lg:text-6xl font-display font-bold mb-6">Our <span class="gradient-text">Services</span></h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Comprehensive solutions tailored to accelerate your digital transformation</p>
+     </div><!-- Service 1 -->
+     <div class="service-card grid lg:grid-cols-2 gap-8 mb-16 items-center">
+      <div class="order-2 lg:order-1 p-8">
+       <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full text-accent text-xs font-medium mb-4">
+        SERVICE 01
+       </div>
+       <h3 class="text-3xl font-display font-bold mb-4">Cloud Migration Services</h3>
+       <p class="text-gray-400 mb-6 leading-relaxed">Seamlessly transition your legacy systems to modern cloud infrastructure. Our expert team ensures zero downtime migration with comprehensive data integrity checks and security protocols.</p>
+       <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Zero-downtime migration strategy</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Multi-cloud architecture support</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> 24/7 migration monitoring</li>
+       </ul><button class="px-6 py-3 bg-gradient-to-r from-accent to-accent2 rounded-full font-semibold hover:shadow-lg hover:shadow-accent/30 transition-all hover:scale-105"> Learn More </button>
+      </div>
+      <div class="order-1 lg:order-2 overflow-hidden rounded-3xl bg-gradient-to-br from-secondary to-primary border border-white/10">
+       <div class="aspect-video flex items-center justify-center p-12">
+        <svg class="service-image w-full h-full text-accent/30" viewbox="0 0 200 150" fill="none"><rect x="20" y="80" width="60" height="50" rx="5" stroke="currentColor" stroke-width="2" /> <rect x="120" y="30" width="60" height="100" rx="5" stroke="currentColor" stroke-width="2" /> <path d="M80 105 L120 80" stroke="currentColor" stroke-width="2" stroke-dasharray="5,5" /> <circle cx="100" cy="92" r="8" fill="currentColor" /> <path d="M97 92 L100 95 L103 89" stroke="#0f172a" stroke-width="1.5" /> <rect x="130" y="45" width="40" height="8" rx="2" fill="currentColor" opacity="0.5" /> <rect x="130" y="60" width="35" height="8" rx="2" fill="currentColor" opacity="0.5" /> <rect x="130" y="75" width="40" height="8" rx="2" fill="currentColor" opacity="0.5" /> <path d="M150 20 L150 30" stroke="currentColor" stroke-width="2" /> <path d="M145 25 L155 25" stroke="currentColor" stroke-width="2" />
+        </svg>
+       </div>
+      </div>
+     </div><!-- Service 2 -->
+     <div class="service-card grid lg:grid-cols-2 gap-8 mb-16 items-center">
+      <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-accent2/10 to-primary border border-white/10">
+       <div class="aspect-video flex items-center justify-center p-12">
+        <svg class="service-image w-full h-full text-accent2/30" viewbox="0 0 200 150" fill="none"><circle cx="100" cy="75" r="45" stroke="currentColor" stroke-width="2" /> <circle cx="100" cy="75" r="25" stroke="currentColor" stroke-width="2" /> <circle cx="100" cy="75" r="8" fill="currentColor" /> <path d="M100 30 L100 20" stroke="currentColor" stroke-width="2" /> <path d="M100 120 L100 130" stroke="currentColor" stroke-width="2" /> <path d="M55 75 L45 75" stroke="currentColor" stroke-width="2" /> <path d="M145 75 L155 75" stroke="currentColor" stroke-width="2" /> <path d="M68 43 L60 35" stroke="currentColor" stroke-width="2" /> <path d="M132 107 L140 115" stroke="currentColor" stroke-width="2" /> <path d="M132 43 L140 35" stroke="currentColor" stroke-width="2" /> <path d="M68 107 L60 115" stroke="currentColor" stroke-width="2" /> <circle cx="100" cy="30" r="5" fill="currentColor" /> <circle cx="100" cy="120" r="5" fill="currentColor" /> <circle cx="55" cy="75" r="5" fill="currentColor" /> <circle cx="145" cy="75" r="5" fill="currentColor" />
+        </svg>
+       </div>
+      </div>
+      <div class="p-8">
+       <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent2/10 rounded-full text-accent2 text-xs font-medium mb-4">
+        SERVICE 02
+       </div>
+       <h3 class="text-3xl font-display font-bold mb-4">AI Integration Solutions</h3>
+       <p class="text-gray-400 mb-6 leading-relaxed">Harness the power of artificial intelligence to automate processes, enhance decision-making, and unlock new opportunities. Our AI solutions are tailored to your specific industry needs.</p>
+       <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent2/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Custom ML model development</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent2/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Natural language processing</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-accent2/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-accent2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Predictive analytics integration</li>
+       </ul><button class="px-6 py-3 bg-gradient-to-r from-accent2 to-pink-500 rounded-full font-semibold hover:shadow-lg hover:shadow-accent2/30 transition-all hover:scale-105"> Learn More </button>
+      </div>
+     </div><!-- Service 3 -->
+     <div class="service-card grid lg:grid-cols-2 gap-8 mb-16 items-center">
+      <div class="order-2 lg:order-1 p-8">
+       <div class="inline-flex items-center gap-2 px-3 py-1 bg-pink-500/10 rounded-full text-pink-500 text-xs font-medium mb-4">
+        SERVICE 03
+       </div>
+       <h3 class="text-3xl font-display font-bold mb-4">DevOps &amp; Automation</h3>
+       <p class="text-gray-400 mb-6 leading-relaxed">Accelerate your development lifecycle with our comprehensive DevOps solutions. From CI/CD pipelines to infrastructure as code, we streamline your entire delivery process.</p>
+       <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-pink-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> CI/CD pipeline implementation</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-pink-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Infrastructure as code (IaC)</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-pink-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Container orchestration</li>
+       </ul><button class="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all hover:scale-105"> Learn More </button>
+      </div>
+      <div class="order-1 lg:order-2 overflow-hidden rounded-3xl bg-gradient-to-br from-pink-500/10 to-primary border border-white/10">
+       <div class="aspect-video flex items-center justify-center p-12">
+        <svg class="service-image w-full h-full text-pink-500/30" viewbox="0 0 200 150" fill="none"><path d="M30 75 L80 75 L100 55 L120 95 L140 65 L170 65" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /> <circle cx="30" cy="75" r="6" fill="currentColor" /> <circle cx="80" cy="75" r="6" fill="currentColor" /> <circle cx="100" cy="55" r="6" fill="currentColor" /> <circle cx="120" cy="95" r="6" fill="currentColor" /> <circle cx="140" cy="65" r="6" fill="currentColor" /> <circle cx="170" cy="65" r="6" fill="currentColor" /> <path d="M100 55 L100 35" stroke="currentColor" stroke-width="2" stroke-dasharray="3,3" /> <circle cx="100" cy="30" r="10" stroke="currentColor" stroke-width="2" /> <path d="M97 30 L100 33 L103 27" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+       </div>
+      </div>
+     </div><!-- Service 4 -->
+     <div class="service-card grid lg:grid-cols-2 gap-8 items-center">
+      <div class="overflow-hidden rounded-3xl bg-gradient-to-br from-green-500/10 to-primary border border-white/10">
+       <div class="aspect-video flex items-center justify-center p-12">
+        <svg class="service-image w-full h-full text-green-500/30" viewbox="0 0 200 150" fill="none"><rect x="40" y="30" width="50" height="35" rx="5" stroke="currentColor" stroke-width="2" /> <rect x="110" y="30" width="50" height="35" rx="5" stroke="currentColor" stroke-width="2" /> <rect x="40" y="85" width="50" height="35" rx="5" stroke="currentColor" stroke-width="2" /> <rect x="110" y="85" width="50" height="35" rx="5" stroke="currentColor" stroke-width="2" /> <path d="M90 47.5 L110 47.5" stroke="currentColor" stroke-width="2" /> <path d="M65 65 L65 85" stroke="currentColor" stroke-width="2" /> <path d="M135 65 L135 85" stroke="currentColor" stroke-width="2" /> <path d="M90 102.5 L110 102.5" stroke="currentColor" stroke-width="2" /> <circle cx="100" cy="75" r="15" stroke="currentColor" stroke-width="2" /> <path d="M100 65 L100 85 M90 75 L110 75" stroke="currentColor" stroke-width="2" />
+        </svg>
+       </div>
+      </div>
+      <div class="p-8">
+       <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 rounded-full text-green-500 text-xs font-medium mb-4">
+        SERVICE 04
+       </div>
+       <h3 class="text-3xl font-display font-bold mb-4">Managed IT Services</h3>
+       <p class="text-gray-400 mb-6 leading-relaxed">Focus on your core business while we handle your IT operations. Our 24/7 managed services ensure your systems run smoothly with proactive monitoring and rapid incident response.</p>
+       <ul class="space-y-3 mb-8">
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> 24/7 system monitoring</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Proactive threat detection</li>
+        <li class="flex items-center gap-3 text-gray-300">
+         <div class="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center">
+          <svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+         </div> Dedicated support team</li>
+       </ul><button class="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full font-semibold hover:shadow-lg hover:shadow-green-500/30 transition-all hover:scale-105"> Learn More </button>
+      </div>
+     </div>
+    </div>
+   </section><!-- News & Updates Section -->
+   <section id="news" class="py-32 bg-secondary">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span> Stay Updated
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">News &amp; <span class="gradient-text">Updates</span></h2>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6"><!-- News Card 1 -->
+      <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-accent/30 transition-all hover:transform hover:-translate-y-2">
+       <div class="flex items-center gap-2 text-accent text-sm mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg> January 15, 2024
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3 group-hover:text-accent transition-colors">Cloud Connect AI Achieves SOC 2 Compliance</h3>
+       <p class="text-gray-400 text-sm mb-4">We're proud to announce our SOC 2 Type II certification, demonstrating our commitment to data security.</p><a href="#" class="text-accent text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all"> Read More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div><!-- News Card 2 -->
+      <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-accent2/30 transition-all hover:transform hover:-translate-y-2">
+       <div class="flex items-center gap-2 text-accent2 text-sm mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg> January 10, 2024
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3 group-hover:text-accent2 transition-colors">Expanding Our Global Data Centers</h3>
+       <p class="text-gray-400 text-sm mb-4">New data centers in Singapore and Frankfurt to serve our growing international client base.</p><a href="#" class="text-accent2 text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all"> Read More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div><!-- News Card 3 -->
+      <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-pink-500/30 transition-all hover:transform hover:-translate-y-2">
+       <div class="flex items-center gap-2 text-pink-500 text-sm mb-4">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg> January 5, 2024
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3 group-hover:text-pink-500 transition-colors">Partnership with Leading AI Research Lab</h3>
+       <p class="text-gray-400 text-sm mb-4">Strategic partnership to bring cutting-edge AI capabilities to enterprise clients.</p><a href="#" class="text-pink-500 text-sm font-medium flex items-center gap-2 hover:gap-3 transition-all"> Read More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Blog Posts Section -->
+   <section id="blog" class="py-32 bg-gradient-to-b from-secondary to-primary">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent2/10 border border-accent2/30 rounded-full text-accent2 text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent2 rounded-full animate-pulse"></span> Knowledge Hub
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">Latest <span class="gradient-text">Blog Posts</span></h2>
+     </div>
+     <div class="grid lg:grid-cols-3 gap-8"><!-- Featured Blog Post -->
+      <div class="lg:col-span-2 group">
+       <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent/20 to-accent2/20 border border-white/10 h-full">
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent z-10"></div>
+        <div class="p-8 lg:p-12 relative z-20 h-full flex flex-col justify-end">
+         <div class="flex items-center gap-4 mb-4"><span class="px-3 py-1 bg-accent/20 rounded-full text-accent text-xs font-medium">Featured</span> <span class="text-gray-400 text-sm">15 min read</span>
+         </div>
+         <h3 class="text-2xl lg:text-3xl font-display font-bold mb-4 group-hover:text-accent transition-colors">The Future of Enterprise AI: Trends to Watch in 2024</h3>
+         <p class="text-gray-400 mb-6">Explore the emerging trends shaping enterprise AI adoption and how organizations can prepare for the next wave of digital transformation.</p>
+         <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-sm font-bold">
+            JD
+           </div>
+           <div>
+            <div class="font-medium text-sm">
+             Dr. Jane Doe
+            </div>
+            <div class="text-gray-500 text-xs">
+             Chief AI Officer
+            </div>
+           </div>
+          </div><a href="#" class="px-5 py-2.5 bg-white/10 rounded-full font-medium text-sm hover:bg-white/20 transition-colors flex items-center gap-2"> Read Article 
+           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+           </svg></a>
+         </div>
+        </div>
+       </div>
+      </div><!-- Side Blog Posts -->
+      <div class="space-y-6">
+       <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-accent/30 transition-all">
+        <div class="flex items-center gap-2 text-gray-400 text-xs mb-3"><span class="px-2 py-0.5 bg-accent/10 rounded text-accent">Cloud</span> <span>8 min read</span>
+        </div>
+        <h4 class="font-display font-semibold mb-2 group-hover:text-accent transition-colors">Best Practices for Multi-Cloud Architecture</h4>
+        <p class="text-gray-500 text-sm">Learn how to optimize your multi-cloud strategy for maximum efficiency.</p>
+       </div>
+       <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-accent2/30 transition-all">
+        <div class="flex items-center gap-2 text-gray-400 text-xs mb-3"><span class="px-2 py-0.5 bg-accent2/10 rounded text-accent2">Security</span> <span>6 min read</span>
+        </div>
+        <h4 class="font-display font-semibold mb-2 group-hover:text-accent2 transition-colors">Zero Trust Security: A Complete Guide</h4>
+        <p class="text-gray-500 text-sm">Implementing zero trust architecture in modern enterprises.</p>
+       </div>
+       <div class="group p-6 bg-primary/50 rounded-2xl border border-white/10 hover:border-pink-500/30 transition-all">
+        <div class="flex items-center gap-2 text-gray-400 text-xs mb-3"><span class="px-2 py-0.5 bg-pink-500/10 rounded text-pink-500">DevOps</span> <span>10 min read</span>
+        </div>
+        <h4 class="font-display font-semibold mb-2 group-hover:text-pink-500 transition-colors">Kubernetes Best Practices for 2024</h4>
+        <p class="text-gray-500 text-sm">Essential Kubernetes patterns every DevOps engineer should know.</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Clients Section -->
+   <section id="clients" class="py-32 bg-primary">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6">Trusted by <span class="gradient-text">Industry Leaders</span></h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Join 500+ enterprises that rely on Cloud Connect AI for their digital transformation</p>
+     </div><!-- Client Logos -->
+     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center mb-16">
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">TechCorp</span>
+      </div>
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">Innovate</span>
+      </div>
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">DataFlow</span>
+      </div>
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">CloudNet</span>
+      </div>
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">SecureTech</span>
+      </div>
+      <div class="client-logo flex items-center justify-center p-6 bg-white/5 rounded-xl"><span class="text-2xl font-display font-bold text-gray-400">AIFirst</span>
+      </div>
+     </div><!-- Testimonial -->
+     <div class="max-w-4xl mx-auto">
+      <div class="relative p-8 lg:p-12 bg-gradient-to-br from-secondary to-primary rounded-3xl border border-white/10">
+       <div class="absolute top-6 left-8 text-6xl text-accent/20 font-serif">
+        "
+       </div>
+       <blockquote class="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-8 relative z-10">
+        Cloud Connect AI transformed our entire IT infrastructure. Their expertise in cloud migration and AI integration helped us reduce costs by 40% while improving performance tenfold.
+       </blockquote>
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-full bg-gradient-to-br from-accent to-accent2 flex items-center justify-center text-lg font-bold">
+         MK
+        </div>
+        <div>
+         <div class="font-display font-semibold">
+          Michael Kim
+         </div>
+         <div class="text-gray-500">
+          CTO, TechCorp Industries
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Explore More Section -->
+   <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0 morph-bg" style="background: linear-gradient(270deg, #1e1b4b, #0f172a, #1e293b, #0f172a); background-size: 400% 400%;"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">Explore <span class="gradient-text">More</span></h2>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Discover additional resources and opportunities to grow with us</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Resource Card 1 -->
+      <div class="group p-8 bg-primary/60 backdrop-blur rounded-3xl border border-white/10 hover:border-accent/50 transition-all hover:transform hover:-translate-y-2">
+       <div class="w-14 h-14 rounded-2xl bg-accent/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Documentation</h3>
+       <p class="text-gray-400 text-sm mb-6">Comprehensive guides and API references for developers.</p><a href="#" class="text-accent font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"> View Docs 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div><!-- Resource Card 2 -->
+      <div class="group p-8 bg-primary/60 backdrop-blur rounded-3xl border border-white/10 hover:border-accent2/50 transition-all hover:transform hover:-translate-y-2">
+       <div class="w-14 h-14 rounded-2xl bg-accent2/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-accent2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Case Studies</h3>
+       <p class="text-gray-400 text-sm mb-6">Real success stories from our enterprise clients.</p><a href="#" class="text-accent2 font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"> Read Stories 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div><!-- Resource Card 3 -->
+      <div class="group p-8 bg-primary/60 backdrop-blur rounded-3xl border border-white/10 hover:border-pink-500/50 transition-all hover:transform hover:-translate-y-2">
+       <div class="w-14 h-14 rounded-2xl bg-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Careers</h3>
+       <p class="text-gray-400 text-sm mb-6">Join our team of innovators and industry experts.</p><a href="#" class="text-pink-500 font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"> View Openings 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div><!-- Resource Card 4 -->
+      <div class="group p-8 bg-primary/60 backdrop-blur rounded-3xl border border-white/10 hover:border-green-500/50 transition-all hover:transform hover:-translate-y-2">
+       <div class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-display font-semibold mb-3">Partner Program</h3>
+       <p class="text-gray-400 text-sm mb-6">Become a certified Cloud Connect AI partner.</p><a href="#" class="text-green-500 font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all"> Learn More 
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </section><!-- FAQ Section -->
+   <section id="faq" class="py-32 bg-gradient-to-b from-primary to-secondary">
+    <div class="max-w-4xl mx-auto px-6">
+     <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent text-sm font-medium mb-6"><span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span> Got Questions?
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">Frequently Asked <span class="gradient-text">Questions</span></h2>
+     </div><!-- FAQ Items -->
+     <div class="space-y-4" id="faq-container"><!-- FAQ 1 -->
+      <div class="faq-item border border-white/10 rounded-2xl overflow-hidden hover:border-accent/30 transition-colors"><button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)"> <span class="font-display font-semibold text-lg">What industries do you serve?</span>
+        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 transition-transform faq-icon">
+         <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg>
+        </div></button>
+       <div class="faq-content px-6 text-gray-400">
+        We serve a wide range of industries including healthcare, finance, retail, manufacturing, and technology. Our solutions are customizable to meet the unique requirements of each sector, ensuring compliance with industry-specific regulations and standards.
+       </div>
+      </div><!-- FAQ 2 -->
+      <div class="faq-item border border-white/10 rounded-2xl overflow-hidden hover:border-accent/30 transition-colors"><button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)"> <span class="font-display font-semibold text-lg">How long does a typical cloud migration take?</span>
+        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 transition-transform faq-icon">
+         <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg>
+        </div></button>
+       <div class="faq-content px-6 text-gray-400">
+        Migration timelines vary based on complexity and scale. A small business migration typically takes 2-4 weeks, while enterprise-level migrations can range from 3-6 months. We provide detailed project timelines during our initial assessment and work to minimize disruption to your operations.
+       </div>
+      </div><!-- FAQ 3 -->
+      <div class="faq-item border border-white/10 rounded-2xl overflow-hidden hover:border-accent/30 transition-colors"><button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)"> <span class="font-display font-semibold text-lg">What security measures do you implement?</span>
+        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 transition-transform faq-icon">
+         <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg>
+        </div></button>
+       <div class="faq-content px-6 text-gray-400">
+        We implement multi-layered security including end-to-end encryption, zero-trust architecture, regular security audits, and 24/7 threat monitoring. We're SOC 2 Type II certified and comply with GDPR, HIPAA, and other regulatory standards. Our security team continuously updates protocols to address emerging threats.
+       </div>
+      </div><!-- FAQ 4 -->
+      <div class="faq-item border border-white/10 rounded-2xl overflow-hidden hover:border-accent/30 transition-colors"><button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)"> <span class="font-display font-semibold text-lg">Do you offer 24/7 support?</span>
+        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 transition-transform faq-icon">
+         <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg>
+        </div></button>
+       <div class="faq-content px-6 text-gray-400">
+        Yes! Our dedicated support team is available 24/7/365. We offer multiple support channels including phone, email, chat, and a self-service portal. Enterprise clients also get a dedicated account manager and priority response times with SLA guarantees.
+       </div>
+      </div><!-- FAQ 5 -->
+      <div class="faq-item border border-white/10 rounded-2xl overflow-hidden hover:border-accent/30 transition-colors"><button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4" onclick="toggleFaq(this)"> <span class="font-display font-semibold text-lg">How do you handle data privacy?</span>
+        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 transition-transform faq-icon">
+         <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg>
+        </div></button>
+       <div class="faq-content px-6 text-gray-400">
+        Data privacy is our top priority. We follow strict data handling procedures, maintain full compliance with global privacy regulations, and never share client data with third parties. All data is encrypted at rest and in transit, with regular audits to ensure compliance.
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- CTA Section -->
+   <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-accent/20 via-accent2/20 to-pink-500/20"></div>
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0); background-size: 30px 30px;"></div>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+     <h2 class="text-4xl lg:text-6xl font-display font-bold mb-6">Ready to Transform Your <span class="gradient-text">Business?</span></h2>
+     <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Let's discuss how Cloud Connect AI can accelerate your digital transformation journey.</p>
+     <div class="flex flex-wrap justify-center gap-4"><button class="px-8 py-4 bg-gradient-to-r from-accent to-accent2 rounded-full font-semibold text-lg hover:shadow-2xl hover:shadow-accent/30 transition-all hover:scale-105"> Schedule a Consultation </button> <button class="px-8 py-4 border border-white/20 rounded-full font-semibold text-lg hover:bg-white/5 transition-all"> Contact Sales </button>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-16 bg-primary border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16"><!-- Brand -->
+      <div class="lg:col-span-2">
+       <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-accent2 flex items-center justify-center">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+         </svg>
+        </div><span class="text-xl font-display font-bold">Cloud Connect <span class="gradient-text">AI</span></span>
+       </div>
+       <p id="footer-tagline" class="text-gray-400 mb-6 max-w-sm">Transforming businesses through intelligent cloud solutions and cutting-edge AI technology.</p>
+       <div class="flex items-center gap-4"><a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent/20 transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent/20 transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+         </svg></a> <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent/20 transition-colors">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+         </svg></a>
+       </div>
+      </div><!-- Services -->
+      <div>
+       <h4 class="font-display font-semibold mb-6">Services</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Cloud Migration</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">AI Integration</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">DevOps</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Managed IT</a></li>
+       </ul>
+      </div><!-- Company -->
+      <div>
+       <h4 class="font-display font-semibold mb-6">Company</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+       </ul>
+      </div><!-- Support -->
+      <div>
+       <h4 class="font-display font-semibold mb-6">Support</h4>
+       <ul class="space-y-3">
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Status Page</a></li>
+        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-gray-500 text-sm">© 2024 Cloud Connect AI. All rights reserved.</p>
+      <div class="flex items-center gap-6 text-sm text-gray-500"><a href="#" class="hover:text-white transition-colors">Terms of Service</a> <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default Configuration
+    const defaultConfig = {
+      hero_title: 'Intelligent Cloud Solutions for Tomorrow',
+      hero_subtitle: 'Empower your enterprise with cutting-edge AI-driven cloud infrastructure. We deliver scalable, secure, and innovative solutions that transform how businesses operate in the digital age.',
+      services_title: 'Our Services',
+      company_tagline: 'Transforming businesses through intelligent cloud solutions and cutting-edge AI technology.',
+      background_color: '#0f172a',
+      surface_color: '#1e293b',
+      text_color: '#f8fafc',
+      primary_action_color: '#06b6d4',
+      secondary_action_color: '#8b5cf6',
+      font_family: 'Outfit',
+      font_size: 16
+    };
+
+    // Hero Image Rotation
+    const heroImages = [
+      `<svg class="w-48 h-48 text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 12v4m0 0l-2-2m2 2l2-2"/>
+      </svg>`,
+      `<svg class="w-48 h-48 text-accent2" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        <circle cx="12" cy="9" r="3" stroke-width="1.5"/>
+      </svg>`,
+      `<svg class="w-48 h-48 text-pink-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+      </svg>`,
+      `<svg class="w-48 h-48 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+      </svg>`
+    ];
+
+    let currentImageIndex = 0;
+    const heroImageContainer = document.getElementById('hero-image');
+
+    function rotateHeroImage() {
+      heroImageContainer.style.opacity = '0';
+      heroImageContainer.style.transform = 'scale(0.9)';
+      
+      setTimeout(() => {
+        currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+        heroImageContainer.innerHTML = heroImages[currentImageIndex];
+        heroImageContainer.style.opacity = '1';
+        heroImageContainer.style.transform = 'scale(1)';
+      }, 350);
+    }
+
+    setInterval(rotateHeroImage, 4000);
+
+    // FAQ Toggle Function
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const content = item.querySelector('.faq-content');
+      const icon = button.querySelector('.faq-icon');
+      const allItems = document.querySelectorAll('.faq-item');
+      
+      // Close other items
+      allItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          const otherContent = otherItem.querySelector('.faq-content');
+          const otherIcon = otherItem.querySelector('.faq-icon');
+          otherContent.classList.remove('open');
+          otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Toggle current item
+      content.classList.toggle('open');
+      icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update hero section
+          const heroTitle = document.getElementById('hero-title');
+          if (heroTitle) {
+            heroTitle.innerHTML = (config.hero_title || defaultConfig.hero_title).replace('Cloud Solutions', '<span class="gradient-text">Cloud Solutions</span>');
+          }
+          
+          const heroSubtitle = document.getElementById('hero-subtitle');
+          if (heroSubtitle) {
+            heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+          }
+          
+          // Update services title
+          const servicesTitle = document.getElementById('services-title');
+          if (servicesTitle) {
+            servicesTitle.innerHTML = (config.services_title || defaultConfig.services_title).replace('Services', '<span class="gradient-text">Services</span>');
+          }
+          
+          // Update footer tagline
+          const footerTagline = document.getElementById('footer-tagline');
+          if (footerTagline) {
+            footerTagline.textContent = config.company_tagline || defaultConfig.company_tagline;
+          }
+          
+          // Update fonts
+          const customFont = config.font_family || defaultConfig.font_family;
+          document.body.style.fontFamily = `${customFont}, Outfit, sans-serif`;
+          
+          // Update base font size
+          const baseSize = config.font_size || defaultConfig.font_size;
+          document.body.style.fontSize = `${baseSize}px`;
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => {
+                config.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => config.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                config.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => config.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                config.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                config.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['services_title', config.services_title || defaultConfig.services_title],
+          ['company_tagline', config.company_tagline || defaultConfig.company_tagline]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d88ae6d821b5faa',t:'MTc3Mjg3Njg3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
