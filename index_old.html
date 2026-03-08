@@ -1,0 +1,1814 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Connect AI - CCAI</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <script>
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    });
+  </script>
+  <style>
+
+/* data-animate="fade-right" data-delay="200" 
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const elements = document.querySelectorAll("[data-animate]");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        // 👇 This makes it work when scrolling UP and DOWN
+        entry.target.classList.remove("active");
+      }
+
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  elements.forEach(el => observer.observe(el));
+
+});
+</script> */
+
+
+
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.0s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+
+    /* Base animation setup */
+[data-animate] {
+  opacity: 0.2;
+  transition: all 3.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Initial transform positions */
+[data-animate="fade-up"]    { transform: translateY(90px); }
+[data-animate="fade-left"]  { transform: translateX(-90px); }
+[data-animate="fade-right"] { transform: translateX(90px); }
+[data-animate="zoom"]       { transform: scale(0.88); }
+
+/* When element becomes visible */
+[data-animate].active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+
+
+
+    :root {
+      color-scheme: light dark;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafb;
+      --bg-tertiary: #f3f4f6;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --border-color: #e5e7eb;
+      --accent-1: #6366f1;
+      --accent-2: #0890b2d4;
+      --accent-3: #7c3aed;
+      --card-bg: #ffffff;
+      --surface-overlay: rgba(0, 0, 0, 0.02);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #0f172a;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --border-color: #334155;
+      --accent-1: #818cf8;
+      --accent-2: #06b6d4;
+      --accent-3: #a78bfa;
+      --card-bg: #1e293b;
+      --surface-overlay: rgba(255, 255, 255, 0.05);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-gradient {
+      background: radial-gradient(ellipse at top, var(--accent-1) 0%, transparent 50%),
+                  radial-gradient(ellipse at bottom right, var(--accent-2) 0%, transparent 40%);
+      opacity: 0.1;
+    }
+
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px var(--surface-overlay);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--accent-1);
+      box-shadow: 0 20px 40px var(--surface-overlay);
+    }
+
+    .card-hover:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-icon {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, var(--accent-1), #818cf8) !important;
+      color: white !important;
+      border: none !important;
+    }
+
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-glow:hover::before {
+      left: 100%;
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 30px var(--accent-1);
+      transform: translateY(-2px);
+    }
+
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .carousel-item {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .carousel-item img {
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .carousel-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-2);
+    }
+
+    .tech-badge {
+      transition: all 0.3s ease;
+      background: var(--surface-overlay) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-secondary) !important;
+    }
+
+    .tech-badge:hover {
+      transform: scale(1.1);
+      background: var(--accent-1) !important;
+      color: white !important;
+      border: 1px solid var(--accent-1) !important;
+    }
+
+    .main-wrapper {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: var(--bg-primary);
+    }
+
+    /* Feature Cards Section Transitions */
+    .feature-card-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 4rem 0;
+      overflow: hidden;
+    }
+
+    .feature-card-image {
+      position: relative;
+      height: 400px;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-card-content {
+      padding: 2rem;
+    }
+
+    /* Card 1: Slide Up from Left */
+    .card-1-image {
+      animation: slideUpLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideUpLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px) translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+      }
+    }
+
+    .card-1-content {
+      animation: fadeInRight 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .card-1-content:hover {
+      transform: translateX(10px);
+    }
+
+    /* Card 2: Scale & Rotate */
+    .card-2-image {
+      animation: scaleRotate 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+      transform-origin: center;
+    }
+
+    @keyframes scaleRotate {
+      from {
+        opacity: 0;
+        transform: scale(0.5) rotateY(90deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+      }
+    }
+
+    .card-2-content {
+      animation: slideInFromRight 0.8s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .card-2-content:hover {
+      background: var(--surface-overlay);
+      border-radius: 0.5rem;
+    }
+
+    /* Card 3: Bounce In */
+    .card-3-image {
+      animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+      opacity: 0;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .card-3-content {
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-3-content:hover {
+      transform: scale(1.02);
+    }
+
+    /* Reverse layout for alternating cards */
+    .feature-card-container.reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .feature-card-container.reverse .feature-card-image {
+      order: 2;
+    }
+
+    .feature-card-container.reverse .feature-card-content {
+      order: 1;
+    }
+@media (max-width: 768px) {
+  .feature-card-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;                    /* space between whole sections */
+  }
+
+  /* Make EVERY image container take full width and fixed height */
+  .feature-card-image {
+    width: 100% !important;
+    height: 300px !important;       /* ← choose your preferred height: 280–340px looks good on most phones */
+    min-height: 300px;
+    max-height: 340px;              /* prevents extreme stretching on very wide small screens */
+    border-radius: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;                 /* prevents image from shrinking */
+  }
+
+  /* Center content inside image better */
+  .feature-card-image > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* All cards: text/content first → image below */
+  .feature-card-container {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .feature-card-content {
+    order: 2 !important;
+    padding: 1.5rem 1rem;
+  }
+
+  .feature-card-image {
+    order: 1 !important;
+  }
+
+  /* Improve text readability on small screens */
+  .feature-card-content h3 {
+    font-size: 1.75rem;             /* ≈28px */
+    line-height: 1.3;
+  }
+
+  .feature-card-content p,
+  .feature-card-content ul {
+    font-size: 1rem;
+  }
+
+  .feature-card-content ul li {
+    font-size: 0.95rem;
+  }
+}
+    .stats-number {
+      transition: transform 0.3s ease;
+    }
+
+    .stats-number:hover {
+      transform: scale(1.1);
+    }
+
+    .navbar {
+      background: var(--card-bg) !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      box-shadow: 0 1px 3px var(--surface-overlay) !important;
+    }
+
+    .badge {
+      background: var(--surface-overlay) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-secondary) !important;
+    }
+
+
+
+
+
+/* ────────────────────────────────────────────────
+   Techy Hero Background – Big Orbs + Network Nodes
+───────────────────────────────────────────────── */
+
+.tech-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 18% 28%, var(--accent-1) 0%, transparent 38%),
+    radial-gradient(circle at 78% 68%, var(--accent-2) 0%, transparent 42%),
+    radial-gradient(circle at 42% 82%, var(--accent-3) 0%, transparent 32%);
+  background-size: 170% 170%, 210% 210%, 190% 190%;
+  animation: 
+    gradientFlow 13s ease-in-out infinite,
+    gradientShift 20s ease-in-out infinite alternate;
+  opacity: 0.15;
+  filter: blur(36px);
+}
+
+.tech-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(99,102,241,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6,182,212,0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.65;
+  animation: gridDrift 55s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.tech-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(167,139,250,0.09) 48%, transparent 52%);
+  background-size: 100% 320%;
+  animation: scanFast 8.5s linear infinite;
+  opacity: 0.38;
+}
+
+/* ─── Big floating orbs (your original large particles) ─── */
+.big-particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.22;
+  pointer-events: none;
+  animation: floatTech 22s infinite ease-in-out;
+  filter: blur(4px);
+}
+
+.big-1 { width: 180px; height: 180px; top: 15%; left: 12%; background: var(--accent-1); box-shadow: 0 0 80px var(--accent-1); animation-delay: 0s; }
+.big-2 { width: 140px; height: 140px; top: 55%; left: 68%; background: var(--accent-2); box-shadow: 0 0 70px var(--accent-2); animation-delay: -6s; }
+.big-3 { width: 220px; height: 220px; top: 72%; left: 18%; background: var(--accent-3); box-shadow: 0 0 90px var(--accent-3); animation-delay: -11s; }
+.big-4 { width: 100px; height: 100px;  top: 28%; left: 82%; opacity: 0.18; animation-delay: -16s; }
+.big-5 { width: 160px; height: 160px;  top: 8%;  left: 45%; opacity: 0.20; animation-delay: -4s; }
+
+/* ─── Smaller pulsing network nodes ─── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent-1);
+  box-shadow: 0 0 22px var(--accent-1), 0 0 44px var(--accent-1), inset 0 0 14px rgba(255,255,255,0.45);
+  opacity: 0.38;
+  pointer-events: none;
+  animation: floatTech 17s infinite ease-in-out, pulseGlow 4.8s infinite alternate;
+}
+
+.particle-1 { width: 15px; height: 15px; top: 16%; left: 13%; animation-delay: 0s, 0s; background: var(--accent-1); }
+.particle-2 { width: 19px; height: 19px; top: 54%; left: 74%; animation-delay: -3.8s, -1.6s; background: var(--accent-2); }
+.particle-3 { width: 24px; height: 24px; top: 71%; left: 21%; animation-delay: -7.8s, -2.7s; background: var(--accent-3); }
+.particle-4 { width: 12px; height: 12px; top: 29%; left: 79%; animation-delay: -11.5s, -2.2s; opacity: 0.55; }
+.particle-5 { width: 17px; height: 17px; top: 11%; left: 46%; animation-delay: -5.5s, -3.6s; opacity: 0.65; }
+.particle-6 { width: 14px; height: 14px; top: 83%; left: 33%; animation-delay: -9.2s, -1.1s; background: var(--accent-1); }
+
+/* Animations (same as before) */
+@keyframes gradientFlow { 0% { background-position: 0% 50%, 100% 50%, 50% 50%; } 50% { background-position: 100% 50%, 0% 50%, 50% 100%; } 100% { background-position: 0% 50%, 100% 50%, 50% 50%; } }
+@keyframes gradientShift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(5%, -4%) scale(1.07); } }
+@keyframes gridDrift { 0% { transform: translate(0,0); } 100% { transform: translate(-50px,-50px); } }
+@keyframes scanFast { 0% { background-position: 0 0%; } 100% { background-position: 0 320%; } }
+@keyframes floatTech { 0%,100% { transform: translate(0,0) scale(1); } 20% { transform: translate(50px,-40px) scale(1.14); } 40% { transform: translate(-30px,60px) scale(0.9); } 60% { transform: translate(-70px,-20px) scale(1.1); } 80% { transform: translate(35px,45px) scale(0.94); } }
+@keyframes pulseGlow { 0% { opacity: 0.38; box-shadow: 0 0 22px currentColor, 0 0 44px currentColor; } 100% { opacity: 0.75; box-shadow: 0 0 40px currentColor, 0 0 80px currentColor; } }
+
+@media (prefers-color-scheme: light) {
+  .tech-bg        { opacity: 0.10; }
+  .tech-bg::before { opacity: 0.45; }
+  .tech-bg::after  { opacity: 0.25; }
+  .big-particle   { opacity: 0.14; }
+  .particle       { opacity: 0.25; filter: brightness(1.2); }
+}
+
+/* Infinite horizontal marquee for tech badges */
+.animate-marquee {
+  animation: marquee 60s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover (optional – looks nice) */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+
+
+
+
+  </style>
+
+
+<style>
+
+
+
+.nav-link {
+  position: relative;
+  transition: color 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link:hover {
+  color: var(--accent-2);
+}
+
+/* ── ACTIVE / CURRENT PAGE ──────────────────────────────── */
+.nav-link.active,
+.menu a.active {
+  color: var(--accent-2) !important;
+  font-weight: 700;
+}
+
+.nav-link.active::after,
+.menu a.active::after {
+  width: 100% !important;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2)) !important;
+}
+
+/* Optional: nicer mobile active look */
+.menu-sm a.active {
+  background-color: rgba(99, 102, 241, 0.1); /* accent-1 with opacity */
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+}
+
+
+</style>
+
+<script>
+// Auto-highlight current page in navigation
+document.addEventListener('DOMContentLoaded', () => {
+  let path = window.location.pathname;
+  let currentFile = path.split('/').pop() || 'index.html';
+  if (currentFile === '') currentFile = 'index.html';
+
+  const pageMap = {
+    'index.html':   'Home',
+    'index5.html':  'Solutions',
+    'about.html':   'About',
+    'contact.html': 'Contact'
+  };
+
+  const currentLabel = pageMap[currentFile] || '';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if (link.textContent.trim() === currentLabel) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+<style>
+
+  /* ────────────────────────────────────────────────
+   Light mode hero improvements – dark mode untouched
+───────────────────────────────────────────────── */
+
+[data-theme="dark"] .black_sheet {
+background-color: black;
+opacity: 0.50;
+}
+
+
+[data-theme="light"] #hero-title span:not(.gradient-text),
+[data-theme="light"] #hero-title {
+  color: #0f172a !important;           /* very dark slate for strong contrast */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+[data-theme="light"] #hero-subtitle,
+[data-theme="light"] #hero-subtitle span {
+  color: #1f2937 !important;           /* gray-800 */
+}
+
+[data-theme="light"] .tech-badge {
+  background: rgba(255,255,255,0.75) !important;
+  border-color: rgba(99,102,241,0.18) !important;
+  color: #374151 !important;           /* gray-700 */
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Ensure primary button text stays white in light mode too (glow button) */
+.btn-glow {
+  color: white !important;
+}
+</style>
+
+
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="main-wrapper">
+    
+    
+    <!-- Navigation -->
+<!-- Navigation ──────────────────────────────────────── -->
+<nav class="navbar sticky top-0 z-50">
+
+  <!-- LEFT: Logo -->
+  <div class="navbar-start">
+    <a href="index.html" class="btn btn-ghost text-xl font-heading font-bold">
+      <svg class="w-8 h-8 mr-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="2" fill="none" />
+        <circle cx="20" cy="20" r="10" fill="url(#grad1)" opacity="0.3" />
+        <circle cx="20" cy="12" r="3" fill="#6366f1" />
+        <circle cx="13" cy="24" r="3" fill="#0891b2" />
+        <circle cx="27" cy="24" r="3" fill="#6366f1" />
+        <line x1="20" y1="12" x2="13" y2="24" stroke="#6366f1" stroke-width="1.5" />
+        <line x1="20" y1="12" x2="27" y2="24" stroke="#0891b2" stroke-width="1.5" />
+        <line x1="13" y1="24" x2="27" y2="24" stroke="#6366f1" stroke-width="1.5" />
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#6366f1" />
+            <stop offset="100%" style="stop-color:#0891b2" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <span class="gradient-text">CCAI</span>
+    </a>
+  </div>
+
+  <!-- CENTER MENU (Desktop Only) -->
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-2">
+      <li><a href="index.html"   class="nav-link font-medium">Home</a></li>
+      <li><a href="index5.html"  class="nav-link font-medium">Solutions</a></li>
+      <li><a href="about.html"   class="nav-link font-medium">About</a></li>
+      <li><a href="contact.html" class="nav-link font-medium">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- RIGHT: Toggle + Burger -->
+  <div class="navbar-end gap-2">
+
+    <!-- Theme Toggle -->
+    <button
+      class="btn btn-ghost btn-circle text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 transition-colors"
+      id="theme-toggle"
+      title="Toggle dark/light mode"
+      aria-label="Toggle between dark and light mode"
+    >
+      <span id="sun-icon" class="text-xl">☀️</span>
+      <span id="moon-icon" class="text-xl hidden">🌙</span>
+    </button>
+
+    <!-- Burger Menu (Mobile Only) -->
+    <div class="dropdown dropdown-end lg:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor">
+          <path stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </div>
+
+      <ul tabindex="0"
+          class="menu menu-sm dropdown-content mt-3 z-[1] p-3 rounded-box w-52 shadow-lg"
+          style="background: var(--card-bg);">
+        <li><a href="index.html"   class="nav-link font-medium">Home</a></li>
+        <li><a href="index5.html"  class="nav-link font-medium">Solutions</a></li>
+        <li><a href="about.html"   class="nav-link font-medium">About</a></li>
+        <li><a href="contact.html" class="nav-link font-medium">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</nav>
+   
+
+   
+   
+   <!-- Hero Section -->
+
+<!-- Hero Section – Techy with Big Particles + Enhanced Network Feel -->
+
+<section class="min-h-[90vh] flex items-center justify-center px-4 py-16 md:py-24 relative overflow-hidden ">
+
+  <!-- === Animated Tech Background Layer === -->
+  <div class="absolute inset-0 tech-bg pointer-events-none"></div>
+  
+
+  <!-- Subtle contrast overlay – original for dark, softer & cleaner for light -->
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(15,23,42,0.18)] to-[rgba(15,23,42,0.40)] 
+              dark:via-[rgba(241,245,249,0.10)] dark:to-[rgba(241,245,249,0.22)] pointer-events-none"></div>
+
+  <!-- Light mode only: very gentle additional veil to improve text contrast -->
+  <div class="absolute inset-0 pointer-events-none hidden dark:block" 
+       style="background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.08) 40%, rgba(255,255,255,0.20) 100%);">
+  </div>
+
+  <!-- === Big floating energy orbs + smaller pulsing nodes === -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Big classic particles / orbs -->
+    <div class="big-particle big-1"></div>
+    <div class="big-particle big-2"></div>
+    <div class="big-particle big-3"></div>
+    <div class="big-particle big-4"></div>
+    <div class="big-particle big-5"></div>
+
+    <!-- Smaller pulsing network nodes -->
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+    <div class="particle particle-5"></div>
+    <div class="particle particle-6"></div>
+  </div>
+
+  
+  <!-- === Main Hero Content === -->
+<!-- ✅ Dark Overlay -->
+<div  class="black_sheet absolute inset-0  pointer-events-none z-[5]"></div>
+
+
+<!-- Main Hero Content -->
+  <div class="max-w-7xl mx-auto text-center relative z-10 w-full">
+    
+
+    <!-- Badge – theme adaptive text & background -->
+    <div class="fade-in mb-6 md:mb-8" style="animation-delay: 0.1s;">
+      <span class="badge badge-lg py-3 px-7 text-sm md:text-base font-medium 
+                   bg-gradient-to-r from-[var(--accent-1)]/10 to-[var(--accent-2)]/10 
+                   border border-[var(--accent-1)]/30 
+                   text-[var(--text-primary)] 
+                   backdrop-blur-md">
+        Next-Gen Digital Infrastructure
+      </span>
+    </div>
+
+    <!-- Headline – gradient part stays colorful, main title uses theme text -->
+    <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 md:mb-8 fade-in" 
+        id="hero-title" style="animation-delay: 0.25s;">
+      <span class="gradient-text block">Born to Connect</span>
+      <span class="block mt-2 md:mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[var(--text-primary)]">
+        Cloud Connect AI
+      </span>
+    </h1>
+
+    <!-- Subtitle – uses theme-aware colors -->
+    <p class="text-lg md:text-xl lg:text-2xl text-[var(--text-secondary)] max-w-4xl mx-auto mb-10 md:mb-14 leading-relaxed fade-in" 
+       id="hero-subtitle" style="animation-delay: 0.4s;">
+      Where cloud, mobile, AI, agents and enterprise transformation become one powerful ecosystem.
+      <br class="hidden sm:block" />
+      <span class="font-semibold text-[var(--accent-1)] dark:text-[var(--accent-2)]">
+        Built for tomorrow. Engineered today.
+      </span>
+    </p>
+
+    <!-- CTA buttons – primary button always white text (because of glow), secondary adapts -->
+    <div class="flex flex-wrap justify-center gap-5 md:gap-6 fade-in" style="animation-delay: 0.55s;">
+      <a href="contact.html" 
+         class="btn btn-lg btn-glow min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 
+                shadow-xl shadow-[var(--accent-1)]/40 hover:shadow-[var(--accent-1)]/60 
+                transition-all duration-300 inline-flex items-center justify-center text-white">
+        Get Connected
+        <svg class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+
+      <a href="index5.html" 
+         class="btn btn-lg border-2 hover:border-[var(--accent-2)] 
+                hover:text-[var(--accent-2)] bg-gray-700 text-white 
+                min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 
+                backdrop-blur-md transition-all duration-300 inline-flex items-center justify-center">
+        Discover More
+        <svg class="h-5 w-5 md:h-6 md:w-6 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Infinite scrolling tech badges strip -->
+    <div class="mt-10 w-[50vw] max-w-3xl mx-auto overflow-hidden" style="animation-delay: 0.7s;">
+      <div class="inline-flex flex-nowrap animate-marquee whitespace-nowrap gap-6 md:gap-10 py-4">
+        <!-- First set -->
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AWS</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Azure</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Google Cloud</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">React Native</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Flutter</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Kotlin</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Swift</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Node.js</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Python</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">PostgreSQL</span>
+
+        <!-- Second set (duplicate for seamless loop) -->
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">MongoDB</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">LangChain</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">LlamaIndex</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AutoGen</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">RAG Systems</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Generative AI</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">AI Agents</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Digital Transformation</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">DevOps</span>
+        <span class="tech-badge badge badge-lg py-3 px-6 text-sm md:text-base backdrop-blur-lg bg-white/5 dark:bg-black/25 border border-gray-300/30 dark:border-white/15">Zero-Trust Security</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+   <!-- Image Carousel Section -->
+  <!-- <section class="py-16 px-4" style="background-color: rgba(30, 41, 59, 0.2);"  data-animate="fade-up" data-delay="200">
+    <div class="max-w-6xl mx-auto">
+     <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Our Solutions in Action</span></h2>
+     <div class="carousel w-full rounded-2xl overflow-hidden" style="border: 1px solid var(--border-color);">
+      <div id="slide1" class="carousel-item relative w-full">
+       <div class="w-full h-80 md:h-96 flex items-center justify-center" style="background: linear-gradient(to bottom right, rgba(99, 102, 241, 0.15), rgba(99, 102, 241, 0.05)); border: 1px solid var(--border-color);">
+        <div class="text-center p-8">
+         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="30" width="80" height="50" rx="4" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <circle cx="50" cy="20" r="12" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <line x1="50" y1="32" x2="50" y2="30" stroke="currentColor" stroke-width="2" opacity="0.3" />
+         </svg>
+         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">Cloud Infrastructure</h3>
+         <p style="color: var(--text-secondary);">Scalable, secure, and lightning-fast</p>
+        </div>
+       </div>
+       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide3" class="btn btn-circle btn-sm" style="background: var(--accent-1); border: none; color: white;">❮</a> <a href="#slide2" class="btn btn-circle btn-sm" style="background: var(--accent-1); border: none; color: white;">❯</a>
+       </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+       <div class="w-full h-80 md:h-96 flex items-center justify-center" style="background: linear-gradient(to bottom right, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.05)); border: 1px solid var(--border-color);">
+        <div class="text-center p-8">
+         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <path d="M35 50 L45 60 L65 40" stroke="currentColor" stroke-width="3" fill="none" opacity="0.3" />
+         </svg>
+         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">AI Integration</h3>
+         <p style="color: var(--text-secondary);">Intelligent automation at scale</p>
+        </div>
+       </div>
+       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide1" class="btn btn-circle btn-sm" style="background: var(--accent-2); border: none; color: white;">❮</a> <a href="#slide3" class="btn btn-circle btn-sm" style="background: var(--accent-2); border: none; color: white;">❯</a>
+       </div>
+      </div>
+      <div id="slide3" class="carousel-item relative w-full">
+       <div class="w-full h-80 md:h-96 flex items-center justify-center" style="background: linear-gradient(to bottom right, rgba(167, 139, 250, 0.15), rgba(167, 139, 250, 0.05)); border: 1px solid var(--border-color);">
+        <div class="text-center p-8">
+         <svg class="w-24 h-24 mx-auto mb-4 opacity-60" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="60" rx="8" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3" /> <line x1="20" y1="40" x2="80" y2="40" stroke="currentColor" stroke-width="2" opacity="0.3" />
+         </svg>
+         <h3 class="text-2xl font-heading font-bold mb-2" style="color: var(--text-primary);">Custom Dashboards</h3>
+         <p style="color: var(--text-secondary);">Real-time insights and analytics</p>
+        </div>
+       </div>
+       <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"><a href="#slide2" class="btn btn-circle btn-sm" style="background: var(--accent-3); border: none; color: white;">❮</a> <a href="#slide1" class="btn btn-circle btn-sm" style="background: var(--accent-3); border: none; color: white;">❯</a>
+       </div>
+      </div>
+     </div>
+      //Carousel Indicators 
+     <div class="flex justify-center gap-2 mt-6"><a href="#slide1" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1);"></a> <a href="#slide2" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1); opacity: 0.5;"></a> <a href="#slide3" class="w-3 h-3 rounded-full transition-all" style="background: var(--accent-1); opacity: 0.5;"></a>
+     </div>
+    </div>
+   </section> --> 
+
+
+   <!-- Transparent Image Carousel -->
+<section class="relative py-5 px-4 overflow-hidden">
+
+  <!-- Carousel Wrapper -->
+  <div class="max-w-6xl mx-auto relative">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-12"><span class="gradient-text">Our Core Features</span></h2>
+
+    <div id="autoCarousel" class="relative w-full h-[400px] rounded-3xl overflow-hidden">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">Next-Gen Cloud Infrastructure</h2>
+            <p class="text-lg opacity-90">Powerful. Secure. Scalable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">AI Powered Automation</h2>
+            <p class="text-lg opacity-90">Smarter Decisions. Faster Results.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">Enterprise Security</h2>
+            <p class="text-lg opacity-90">Protection You Can Trust</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slides = document.querySelectorAll(".carousel-slide");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? "1" : "0";
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  setInterval(nextSlide, 4000); // change every 4 seconds
+
+});
+</script>
+
+
+</section>
+
+
+
+
+
+   <!-- Features Section -->
+   <section class="py-20 px-4" style="background-color: var(--bg-primary);">
+    <div class="max-w-7xl mx-auto">
+     <div class="text-center mb-16"><span class="badge badge-lg mb-4 py-3 px-5"> ✨ Why Choose Us </span>
+      <h2 class="font-heading text-4xl md:text-5xl font-bold mb-4" id="features-title"><span>Powerful Features for</span><br><span class="gradient-text">Modern Businesses</span></h2>
+      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">Everything you need to scale your business in the cloud era</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20" ><!-- Feature 1 -->
+      <div class="card-hover rounded-2xl p-8 group" data-animate="fade-left" data-delay="400">
+       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(34, 211, 238, 0.1));">
+        <svg class="w-8 h-8" style="color: var(--accent-1);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3">Cloud Migration</h3>
+       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Seamlessly migrate your infrastructure to the cloud with zero downtime and maximum efficiency.</p>
+      </div><!-- Feature 2 -->
+      <div class="card-hover rounded-2xl p-8 group" data-animate="fade-up" data-delay="400">
+       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(99, 102, 241, 0.1));">
+        <svg class="w-8 h-8" style="color: var(--accent-2);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+        </svg>
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3">AI &amp; Machine Learning</h3>
+       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Leverage cutting-edge AI models to automate processes and gain predictive insights.</p>
+      </div><!-- Feature 3 -->
+      <div class="card-hover rounded-2xl p-8 group" data-animate="fade-right" data-delay="400">
+       <div class="card-icon w-16 h-16 rounded-xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(167, 139, 250, 0.1));">
+        <svg class="w-8 h-8" style="color: var(--accent-3);" fill="none" viewbox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+       </div>
+       <h3 class="font-heading text-xl font-bold mb-3">Enterprise Security</h3>
+       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">Bank-grade security protocols protecting your data with end-to-end encryption.</p>
+      </div>
+     </div>
+     
+  <h2 class="font-heading text-3xl md:text-4xl font-bold text-center mb-12">
+  <span class="gradient-text">Our Comprehensive Solutions</span>
+</h2>   
+<!-- Feature Card 1: Digital Transformation -->
+<div class="feature-card-container" data-animate="fade-right" data-delay="200">
+  <div class="feature-card-image card-1-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-2));">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Digital Transformation</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content card-1-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Digital Transformation</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">We empower organizations to leverage data, automation, and intelligent systems to unlock efficiency, agility, and superior decision-making at enterprise scale.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Enterprise-scale operational modernization</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Cloud, AI, and advanced analytics integration</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Strategic consulting & digital roadmap</li>
+    </ul>
+    <a href="index5.html#service1" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 2: Cybersecurity -->
+<div class="feature-card-container reverse" data-animate="fade-left" data-delay="200">
+  <div class="feature-card-image card-2-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), var(--accent-3));">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Cybersecurity</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content card-2-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Cybersecurity Solutions</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Defense-grade protection tailored for enterprises, governments, and high-security environments against evolving cyber threats.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> VAPT – Vulnerability Assessment & Penetration Testing</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Social media threat monitoring & personnel vetting</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Proactive cybercrime prevention</li>
+    </ul>
+    <a href="index5.html#service2" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 3: Big Data Analytics -->
+<div class="feature-card-container" data-animate="fade-right" data-delay="200">
+  <div class="feature-card-image card-3-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), var(--accent-3));">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Big Data</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Big Data Analytics</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Turn complex data into strategic intelligence using OSINT and premium commercial sources.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Advanced OSINT + commercial data aggregation</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Strategic Business Intelligence for finance</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Investigative support for security agencies</li>
+    </ul>
+    <a href="index5.html#service3" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 4: Artificial Intelligence -->
+<div class="feature-card-container reverse" data-animate="fade-left" data-delay="200">
+  <div class="feature-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-2), #818cf8);">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Artificial Intelligence</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Artificial Intelligence</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Bespoke AI solutions that enhance decision-making, detect threats, and build strategic narratives.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Mis/disinformation detection engines</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Conversational AI (STT / TTS)</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> AI-enhanced OSINT & narrative intelligence</li>
+    </ul>
+    <a href="index5.html#service4" class="btn btn-glow text-white border-0 px-8">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 5: Software Development -->
+<div class="feature-card-container" data-animate="fade-right" data-delay="200">
+  <div class="feature-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-3), var(--accent-1));">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Software Development</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Software Development</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Mission-critical, scalable software built for defense, intelligence, finance, and enterprise needs.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> Custom platforms for defense & security</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> AI-integrated intelligence & financial systems</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-3);">✓</span> End-to-end enterprise architecture</li>
+    </ul>
+    <a href="index5.html#service5" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 6: HR Development -->
+<div class="feature-card-container reverse" data-animate="fade-left" data-delay="200">
+  <div class="feature-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, #a78bfa, var(--accent-2));">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">HR Development</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">HR Development</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Building digital-ready teams through targeted training in cybersecurity, AI, and modern technologies.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Cybersecurity & social media awareness</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> AI and digital tool proficiency programs</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-2);">✓</span> Scalable training – SME to enterprise</li>
+    </ul>
+    <a href="index5.html#service6" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+
+<!-- Feature Card 7: Cloud & Network -->
+<div class="feature-card-container" data-animate="fade-right" data-delay="200">
+  <div class="feature-card-image" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+    <div class="w-full h-full flex items-center justify-center p-8">
+      <div class="text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-1), #06b6d4);">
+          <svg class="w-20 h-20 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+          </svg>
+        </div>
+        <p class="text-sm" style="color: var(--text-secondary);">Cloud & Network</p>
+      </div>
+    </div>
+  </div>
+  <div class="feature-card-content">
+    <h3 class="font-heading text-3xl font-bold mb-4">Cloud Computing & Network</h3>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">Enterprise-grade cloud infrastructure with strong security, performance, and 24/7 optimization.</p>
+    <ul class="space-y-2 mb-6">
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Multi-cloud strategy & optimization</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Advanced network security & monitoring</li>
+      <li class="flex items-center gap-3"><span style="color: var(--accent-1);">✓</span> Always-on infrastructure support</li>
+    </ul>
+    <a href="index5.html#service7" class="btn btn-glow text-white explore-btn px-6 py-3 rounded-lg font-medium">
+      Explore More →
+    </a>
+  </div>
+</div>
+    </div>
+   </section><!-- Stats Section -->
+   <section class="py-20 px-4" style="background-color: var(--bg-secondary);">
+    <div class="max-w-6xl mx-auto">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center group">
+       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
+        500+
+       </div>
+       <p style="color: var(--text-secondary);">Enterprise Clients</p>
+      </div>
+      <div class="text-center group">
+       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
+        99.9%
+       </div>
+       <p style="color: var(--text-secondary);">Uptime SLA</p>
+      </div>
+      <div class="text-center group">
+       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
+        50+
+       </div>
+       <p style="color: var(--text-secondary);">Global Regions</p>
+      </div>
+      <div class="text-center group">
+       <div class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2 stats-number">
+        24/7
+       </div>
+       <p style="color: var(--text-secondary);">Expert Support</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   
+ <!-- FAQ Section – Compact & Clean Version -->
+<!-- FAQ Section – Compact, Toggle on Click (Open/Close) -->
+<section class="py-20 px-4" style="background-color: var(--bg-primary);" id="faq">
+  <div class="max-w-4xl mx-auto">
+
+    <!-- Title -->
+    <div class="text-center mb-10 md:mb-14" data-animate="fade-up">
+      <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        Frequently Asked <span class="gradient-text">Questions</span>
+      </h2>
+      <p class="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+        Answers to the questions we hear most often.
+      </p>
+    </div>
+
+    <!-- FAQ Items – Checkbox-based toggle (open/close on click) -->
+    <div class="space-y-4" data-animate="fade-up" data-delay="200"  data-animate="zoom">
+
+      <!-- Q1 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md" data-animate="fade-right" data-delay="200">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          What kind of projects does Cloud Connect AI take on?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <p>We specialize in full-stack digital solutions including:</p>
+          <ul class="list-disc pl-6 mt-3 space-y-1.5 text-sm md:text-base">
+            <li>Web & mobile app development (React, Flutter, Kotlin, Swift)</li>
+            <li>Backend & database architecture (Node.js, Python, PostgreSQL, MongoDB)</li>
+            <li>Cloud infrastructure & DevOps (AWS, Azure, GCP)</li>
+            <li>AI/ML solutions, generative AI, autonomous agents & RAG systems</li>
+            <li>Complete digital transformation & enterprise modernization</li>
+          </ul>
+          <p class="mt-4">From startups to large enterprises — we adapt to your scale and industry.</p>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md"data-animate="fade-right" data-delay="200">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          How long does it usually take to build an app or AI solution?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <ul class="list-disc pl-6 mt-2 space-y-1.5 text-sm md:text-base">
+            <li>Simple MVP mobile/web app → 2–4 months</li>
+            <li>Medium complexity product → 4–7 months</li>
+            <li>Enterprise system or advanced AI solution → 6–14 months</li>
+            <li>AI proof-of-concept / prototype → 4–12 weeks</li>
+          </ul>
+          <p class="mt-4">We provide a detailed timeline during the discovery phase.</p>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md"data-animate="fade-left" data-delay="300">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          Do you provide ongoing support after launch?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <p>Yes — flexible post-launch support includes:</p>
+          <ul class="list-disc pl-6 mt-3 space-y-1.5 text-sm md:text-base">
+            <li>Maintenance & bug fixes</li>
+            <li>Performance & cloud cost optimization</li>
+            <li>AI model retraining</li>
+            <li>Security updates & compliance monitoring</li>
+            <li>Feature additions & scaling</li>
+          </ul>
+          <p class="mt-4">Most clients choose 12–24 month support retainers.</p>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md"data-animate="fade-left" data-delay="300">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          How do you ensure data privacy and security?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <ul class="list-disc pl-6 mt-2 space-y-1.5 text-sm md:text-base">
+            <li>Zero-trust architecture by default</li>
+            <li>End-to-end encryption</li>
+            <li>ISO 27001-aligned processes</li>
+            <li>GDPR / CCPA / HIPAA-ready when required</li>
+            <li>Regular penetration testing & audits</li>
+            <li>Private AI deployments available</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md"data-animate="fade-up" data-delay="400">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          Can you integrate with our existing team or legacy systems?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <p>Yes. Common scenarios include:</p>
+          <ul class="list-disc pl-6 mt-3 space-y-1.5 text-sm md:text-base">
+            <li>API & middleware integration with legacy systems</li>
+            <li>Modernizing monolithic applications</li>
+            <li>Extending existing codebases</li>
+            <li>Hybrid team collaboration</li>
+            <li>Knowledge transfer & documentation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md" data-animate="fade-up" data-delay="400">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          What is your pricing / engagement model?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <ul class="list-disc pl-6 mt-2 space-y-1.5 text-sm md:text-base">
+            <li>Fixed-price for clear MVPs & prototypes</li>
+            <li>Time & Materials for complex / evolving work</li>
+            <li>Dedicated team / extended capacity</li>
+            <li>AI product development retainer</li>
+            <li>Discovery phase (fixed fee) → full proposal</li>
+          </ul>
+          <p class="mt-4">We always begin with a free 30–60 min scoping call.</p>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="collapse collapse-plus bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl shadow-md" data-animate="fade-up" data-delay="400">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-lg md:text-xl font-medium text-[var(--text-primary)] py-4 px-6">
+          How do we get started?
+        </div>
+        <div class="collapse-content text-[var(--text-secondary)] leading-relaxed px-6 pb-6 pt-2">
+          <ol class="list-decimal pl-6 mt-2 space-y-2 text-sm md:text-base">
+            <li><strong>Book a free consultation</strong> — tell us your goals</li>
+            <li><strong>Receive a tailored proposal</strong> — scope, timeline, budget range</li>
+            <li><strong>Kick-off & discovery</strong> — we align and start building</li>
+          </ol>
+          <p class="mt-5 font-medium text-[var(--accent-2)]">
+            Click “Get Connected” or reach out — we usually reply within 24 hours.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+   
+   
+   <!-- CTA Section -->
+   <section class="py-10 px-4" style="background-color: var(--bg-primary);" data-animate="zoom" data-delay="400">
+    <div class="max-w-4xl mx-auto">
+     <div class="rounded-3xl p-10 md:p-16 text-center relative overflow-hidden" style="background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: 0 20px 40px var(--surface-overlay);">
+      <div class="absolute top-0 right-0 w-64 h-64 hero-gradient rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 hero-gradient rounded-full blur-3xl"></div>
+      <div class="relative z-10">
+       <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+       <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 max-w-xl mx-auto">Join hundreds of companies already leveraging Cloud Connect AI to power their digital transformation.</p>
+             <p class="text-base md:text-lg text-[var(--text-secondary)] mb-6">
+        Still have questions?
+      </p>
+       <div class="flex flex-wrap justify-center gap-4">
+        
+          <!-- Discover More → goes to index5.html -->
+        
+  <!-- Get Connected → goes to contact.html -->
+  <a href="contact.html" class="btn btn-lg btn-glow min-w-[180px] md:min-w-[240px] text-base md:text-lg px-8 md:px-12 shadow-xl shadow-[var(--accent-1)]/40 hover:shadow-[var(--accent-1)]/60 transition-all duration-300 inline-flex items-center justify-center">
+    Get Connected
+  </a>
+
+
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+
+   
+   
+   <!-- Footer -->
+<!-- Footer -->
+<footer class="py-12 px-4" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8 mb-12">
+
+      <!-- Brand + Description Column -->
+      <div class="space-y-5">
+        <div class="flex items-center gap-3">
+          <svg class="w-9 h-9 flex-shrink-0" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="url(#grad-footer)" stroke-width="2" fill="none"/>
+            <circle cx="20" cy="20" r="10" fill="url(#grad-footer)" opacity="0.3"/>
+            <circle cx="20" cy="12" r="3" fill="#6366f1"/>
+            <circle cx="13" cy="24" r="3" fill="#0891b2"/>
+            <circle cx="27" cy="24" r="3" fill="#6366f1"/>
+            <defs>
+              <linearGradient id="grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#0891b2"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <h3 class="font-heading font-bold text-2xl gradient-text">Cloud Connect AI</h3>
+        </div>
+
+        <p class="text-[--text-secondary] leading-relaxed text-base">
+          Augment your intelligence with your own AI twin.<br>Personalized. Private. Powerful.
+        </p>
+
+        <p class="company-tagline text-sm font-medium gradient-text mt-2">
+          Empowering the Future with Connectivity, Security & Intelligence.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+
+
+      <!-- Empty / future column (matching your provided structure) -->
+      <div class="hidden lg:block"></div>
+      <div>
+        <h4 class="font-heading font-semibold text-lg mb-5 text-[--text-primary]">Navigation</h4>
+        <ul class="space-y-3 text-[--text-secondary]">
+          <li>
+            <a href="index.html" class="hover:text-[--accent-2] transition-colors duration-200">Home</a>
+          </li>
+          <li>
+            <a href="index5.html" class="hover:text-[--accent-2] transition-colors duration-200">Services</a>
+          </li>
+          <li>
+            <a href="contact.html" class="hover:text-[--accent-2] transition-colors duration-200">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Legal -->
+      <div>
+        <h4 class="font-heading font-semibold text-lg mb-5 text-[--text-primary]">Legal</h4>
+        <ul class="space-y-3 text-[--text-secondary]">
+          <li>
+            <a href="about.html" class="hover:text-[--accent-2] transition-colors duration-200">About</a>
+          </li>
+          <li>
+            <a href="privacy.html" class="hover:text-[--accent-2] transition-colors duration-200">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="terms.html" class="hover:text-[--accent-2] transition-colors duration-200">Terms & Conditions</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+<!-- Bottom bar -->
+    <div class="pt-8 border-t border-[--border-color] text-center text-sm text-[--text-secondary]">
+      <p>© <span id="current-year"></span> Cloud Connect AI. All rights reserved.</p>
+      <p class="mt-2 text-xs opacity-75">Built with privacy, security, and intelligence in mind.</p>
+<!-- Tiny JS to update copyright year automatically -->
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+   
+    </div>
+
+
+
+  </div>
+</footer>
+
+
+  </div>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcons(savedTheme);
+    
+    function updateThemeIcons(theme) {
+      if (theme === 'dark') {
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      } else {
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      }
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcons(newTheme);
+    });
+
+    const defaultConfig = {
+      background_color: '#ffffff',
+      surface_color: '#f8fafb',
+      text_color: '#111827',
+      accent_1: '#6366f1',
+      accent_2: '#0891b2',
+      accent_3: '#7c3aed',
+      font_family: 'Space Grotesk',
+      font_size: 16,
+      hero_title: 'Elevate Your Business with',
+      hero_subtitle: 'Transform your digital infrastructure with intelligent cloud solutions. Seamless integration, unmatched performance, infinite possibilities.',
+      features_title: 'Powerful Features for',
+      cta_button_text: 'Start Free Trial',
+      card1_title: 'Infrastructure',
+      card1_desc: 'Build, deploy, and scale your applications on a globally distributed infrastructure with 99.9% uptime guarantee and automatic failover capabilities.',
+      card2_title: 'Real-Time Analytics',
+      card2_desc: 'Get comprehensive insights into your business metrics with powerful visualization tools and customizable dashboards for data-driven decision making.',
+      card3_title: 'Security',
+      card3_desc: 'Protect your sensitive data with industry-leading security standards, encryption protocols, and compliance certifications across all cloud platforms.'
+    };
+
+    async function onConfigChange(config) {
+      const root = document.documentElement;
+      root.style.setProperty('--bg-primary', config.background_color || defaultConfig.background_color);
+      root.style.setProperty('--surface-color', config.surface_color || defaultConfig.surface_color);
+      root.style.setProperty('--text-primary', config.text_color || defaultConfig.text_color);
+      root.style.setProperty('--accent-1', config.accent_1 || defaultConfig.accent_1);
+      root.style.setProperty('--accent-2', config.accent_2 || defaultConfig.accent_2);
+      root.style.setProperty('--accent-3', config.accent_3 || defaultConfig.accent_3);
+
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      
+      document.querySelectorAll('.font-heading, h1, h2, h3, h4').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, sans-serif`;
+      });
+      
+      document.body.style.fontSize = `${fontSize}px`;
+      
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) {
+        heroTitle.innerHTML = `<span>${config.hero_title || defaultConfig.hero_title}</span><br><span class="gradient-text">Cloud Connect AI</span>`;
+      }
+      
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      if (heroSubtitle) {
+        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      }
+      
+      const featuresTitle = document.getElementById('features-title');
+      if (featuresTitle) {
+        featuresTitle.innerHTML = `<span>${config.features_title || defaultConfig.features_title}</span><br><span class="gradient-text">Modern Businesses</span>`;
+      }
+
+      ['card1_title', 'card2_title', 'card3_title'].forEach((key, idx) => {
+        const el = document.getElementById(key);
+        if (el) el.textContent = config[key] || defaultConfig[key];
+      });
+
+      ['card1_desc', 'card2_desc', 'card3_desc'].forEach((key, idx) => {
+        const el = document.getElementById(key);
+        if (el) el.textContent = config[key] || defaultConfig[key];
+      });
+      
+      const ctaText = config.cta_button_text || defaultConfig.cta_button_text;
+      ['cta-nav-btn', 'cta-main-btn', 'cta-bottom-btn'].forEach(id => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          if (id === 'cta-main-btn') {
+            btn.innerHTML = `${ctaText}<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>`;
+          } else if (id === 'cta-bottom-btn') {
+            btn.textContent = ctaText;
+          } else {
+            btn.textContent = 'Get Started';
+          }
+        }
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => { config.surface_color = value; window.elementSdk.setConfig({ surface_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.accent_1 || defaultConfig.accent_1,
+            set: (value) => { config.accent_1 = value; window.elementSdk.setConfig({ accent_1: value }); }
+          },
+          {
+            get: () => config.accent_2 || defaultConfig.accent_2,
+            set: (value) => { config.accent_2 = value; window.elementSdk.setConfig({ accent_2: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['features_title', config.features_title || defaultConfig.features_title],
+        ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
+        ['card1_title', config.card1_title || defaultConfig.card1_title],
+        ['card1_desc', config.card1_desc || defaultConfig.card1_desc],
+        ['card2_title', config.card2_title || defaultConfig.card2_title],
+        ['card2_desc', config.card2_desc || defaultConfig.card2_desc],
+        ['card3_title', config.card3_title || defaultConfig.card3_title],
+        ['card3_desc', config.card3_desc || defaultConfig.card3_desc]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const elements = document.querySelectorAll("[data-animate]");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        // 👇 This makes it work when scrolling UP and DOWN
+        entry.target.classList.remove("active");
+      }
+
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  elements.forEach(el => observer.observe(el));
+
+});
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d2d3612e09871f4',t:'MTc3MTkxNzc0MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
