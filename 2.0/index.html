@@ -129,6 +129,12 @@
       opacity: 0.05;
       z-index: 3;
     }
+
+    .orb_blur{
+
+      border-radius: 10%;
+      filter: blur(0px);
+    }
     
     .nav-link {
       position: relative;
@@ -182,7 +188,39 @@
       opacity: 1;
       transform: translate(0, 0) scale(1);
     }
+
+
+    /* Add to your <style> if missing */
+.slide {
+  opacity: 0;
+  transition: opacity 8s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+
+}
   </style>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".carousel-slide");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? "1" : "0";
+    });
+  }
+
+  showSlide(0); // start with first slide visible
+  setInterval(() => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }, 4000); // change every 4 seconds
+});
+</script>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
@@ -231,19 +269,35 @@
        </div>
       </div>
      </div>
-    </nav><!-- Hero Section -->
-    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
-     <div class="text-center max-w-4xl mx-auto">
+    </nav>
+    
+    <!-- Hero Section -->
+<!-- Hero Section -->
+<!-- Hero Section -->
+<main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20 lg:pb-32 overflow-hidden">
+  <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start relative z-10">
+
+    <!-- LEFT COLUMN – Main content (left aligned on lg+) -->
+    <div class="text-left lg:pr-6">
+
       <!-- Badge -->
-      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
-       <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> <span class="text-gray-300 text-sm">Connecting enterprises globally</span>
-      </div><!-- Main Heading -->
-      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">Born to<br><span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span></h1><!-- Subtitle -->
-      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-6 sm:mb-8">
+        <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+        <span class="text-gray-300 text-sm">Connecting enterprises globally</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">
+        Born to<br><span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-xl mb-10 leading-relaxed">
         Cloud Connect AI integrates your enterprise infrastructure with intelligent connectivity solutions. Unified, secure, and infinitely scalable.
       </p>
+
       <!-- CTA Buttons -->
-      <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
+      <div class="slide-up delay-400 flex flex-col sm:flex-row items-start gap-4 mb-12 sm:mb-16">
         <button id="cta-primary-btn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg">
           <span>Get Started Free</span>
           <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -258,37 +312,99 @@
           <span>Watch Demo</span>
         </button>
       </div>
-      <!-- Stats -->
-      <div class="slide-up delay-500 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-        <div class="glass rounded-2xl p-6 text-center">
-          <div class="text-3xl font-bold text-blue-400 mb-1">500+</div>
-          <div class="text-gray-400 text-sm">Enterprise Clients</div>
+
+    </div>
+
+    <!-- RIGHT COLUMN – Carousel with the height & position you liked -->
+    <div class=" hidden lg:block relative lg:min-h-[520px] lg:flex lg:items-top lg:justify-center lg:opacity-80">
+
+      <!-- Transparent Image Carousel -->
+      <div class=" relative w-full max-w-[520px] lg:max-w-[620px] h-[400px] lg:h-[420px] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+
+
+        <!-- style="position: relative; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; -->
+
+        <!-- Slide 1 -->
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1500 ease-in-out" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200'); opacity: 1;">
+          <div class="absolute inset-0 bg-black/60"></div>
+          <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-8">
+            <div>
+              <h2 class="text-3xl lg:text-4xl font-bold mb-4">Next-Gen Cloud Infrastructure</h2>
+              <p class="text-lg opacity-90">Powerful. Secure. Scalable.</p>
+            </div>
+          </div>
         </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <div class="text-3xl font-bold text-purple-400 mb-1">99.99%</div>
-          <div class="text-gray-400 text-sm">Uptime SLA</div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1500 ease-in-out" style="opacity: 0; background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200');">
+          <div class="absolute inset-0 bg-black/60"></div>
+          <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-8">
+            <div>
+              <h2 class="text-3xl lg:text-4xl font-bold mb-4">AI Powered Automation</h2>
+              <p class="text-lg opacity-90">Smarter Decisions. Faster Results.</p>
+            </div>
+          </div>
         </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <div class="text-3xl font-bold text-cyan-400 mb-1">150+</div>
-          <div class="text-gray-400 text-sm">Countries</div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1500 ease-in-out" style="opacity: 0; background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200');">
+          <div class="absolute inset-0 bg-black/60"></div>
+          <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-8">
+            <div>
+              <h2 class="text-3xl lg:text-4xl font-bold mb-4">Enterprise Security</h2>
+              <p class="text-lg opacity-90">Protection You Can Trust</p>
+            </div>
+          </div>
         </div>
-        <div class="glass rounded-2xl p-6 text-center">
-          <div class="text-3xl font-bold text-blue-300 mb-1">24/7</div>
-          <div class="text-gray-400 text-sm">Global Support</div>
-        </div>
+
+        
+
       </div>
-      <!-- Trust Logos -->
-      <div class="mt-20 slide-up delay-500" >
-        <p class="text-gray-500 text-sm mb-8">Trusted by leading innovators</p>
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
-          <div class="text-gray-400 font-bold text-lg tracking-wider">TECHCORP</div>
-          <div class="text-gray-400 font-bold text-lg tracking-wider">INNOVATE</div>
-          <div class="text-gray-400 font-bold text-lg tracking-wider">CLOUDSYS</div>
-          <div class="text-gray-400 font-bold text-lg tracking-wider">NEXTGEN</div>
-          <div class="text-gray-400 font-bold text-lg tracking-wider">QUANTUM</div>
-        </div>
+
+      
+
+    </div>
+
+  </div>
+
+  <!-- Stats & Trust logos – always centered -->
+  <div class="mt-16 lg:mt-20 slide-up delay-500">
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6 max-w-4xl mx-auto mb-12 lg:mb-16">
+      <div class="glass rounded-2xl p-5 sm:p-6 text-center">
+        <div class="text-2xl sm:text-3xl font-bold text-blue-400 mb-1">500+</div>
+        <div class="text-gray-400 text-xs sm:text-sm">Enterprise Clients</div>
       </div>
-    </main>
+      <div class="glass rounded-2xl p-5 sm:p-6 text-center">
+        <div class="text-2xl sm:text-3xl font-bold text-purple-400 mb-1">99.99%</div>
+        <div class="text-gray-400 text-xs sm:text-sm">Uptime SLA</div>
+      </div>
+      <div class="glass rounded-2xl p-5 sm:p-6 text-center">
+        <div class="text-2xl sm:text-3xl font-bold text-cyan-400 mb-1">150+</div>
+        <div class="text-gray-400 text-xs sm:text-sm">Countries</div>
+      </div>
+      <div class="glass rounded-2xl p-5 sm:p-6 text-center">
+        <div class="text-2xl sm:text-3xl font-bold text-blue-300 mb-1">24/7</div>
+        <div class="text-gray-400 text-xs sm:text-sm">Global Support</div>
+      </div>
+    </div>
+
+    <!-- Trust Logos -->
+    <div class="text-center">
+      <p class="text-gray-500 text-sm mb-6 sm:mb-8">Trusted by leading innovators</p>
+      <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-12 opacity-60">
+        <div class="text-gray-400 font-bold text-base sm:text-lg tracking-wider">TECHCORP</div>
+        <div class="text-gray-400 font-bold text-base sm:text-lg tracking-wider">INNOVATE</div>
+        <div class="text-gray-400 font-bold text-base sm:text-lg tracking-wider">CLOUDSYS</div>
+        <div class="text-gray-400 font-bold text-base sm:text-lg tracking-wider">NEXTGEN</div>
+        <div class="text-gray-400 font-bold text-base sm:text-lg tracking-wider">QUANTUM</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
     <!-- Added FAQ Section Here -->
     <!-- FAQ Section – Compact, Toggle on Click (Open/Close) -->
     <section class="py-20 px-4" id="faq">
