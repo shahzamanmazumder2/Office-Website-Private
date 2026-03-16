@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Cloud Connect AI</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Space Grotesk', sans-serif; }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0d0d1f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tech-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: 2;
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 80px rgba(59, 130, 246, 0.6);
+    }
+    
+    .btn-glow {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    
+    .btn-glow:hover {
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(30px, -40px); }
+      50% { transform: translate(-20px, -60px); }
+      75% { transform: translate(40px, -30px); }
+    }
+    
+    @keyframes floatReverse {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-35px, 45px); }
+      50% { transform: translate(25px, 55px); }
+      75% { transform: translate(-40px, 35px); }
+    }
+    
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 3;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+    }
+
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .scroll-animate.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-animate-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .scroll-animate-left.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scroll-animate-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .scroll-animate-right.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .service-card {
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, rgba(10, 14, 39, 0.8), rgba(30, 20, 60, 0.8));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    
+    .capability-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .capability-check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
+   <div class="tech-pattern"></div>
+   <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="animation: float 15s ease-in-out infinite;"></div>
+   <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
+   <div class="content-wrapper"><!-- Navbar -->
+    <nav class="relative fade-in">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20"><a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span class="text-white font-bold text-xl tracking-tight">CCAI</span> </a>
+       <div class="hidden md:flex items-center gap-4"><a href="/" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">← Back to Home</a>
+       </div>
+      </div>
+     </div>
+    </nav><!-- 1. Hero Section -->
+    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
+     <div class="text-center max-w-4xl mx-auto">
+      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8"><span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> <span class="text-gray-300 text-sm">Enterprise Technology Services</span>
+      </div>
+      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">Advanced Digital &amp; Intelligence Solutions</h1>
+      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.</p>
+      <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"><button id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg"> <span>Explore Services</span>
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg></button> <button id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg><span>Contact Our Team</span> </button>
+      </div>
+     </div>
+    </main><!-- 2. Services Overview -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Core Services</h2>
+      <p class="text-xl text-gray-400">Comprehensive technology solutions for modern enterprises</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-left">
+       <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Digital Transformation</h3>
+       <p class="text-gray-400 mb-6">Modernizing enterprise systems through AI, automation, and cloud integration.</p><a href="#dt-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate">
+       <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Cybersecurity Solutions</h3>
+       <p class="text-gray-400 mb-6">Defense-grade security strategies protecting enterprise infrastructure from threats.</p><a href="#cs-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-right">
+       <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Big Data Analytics</h3>
+       <p class="text-gray-400 mb-6">Actionable insights from complex data using advanced OSINT and business intelligence.</p><a href="#bd-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-left">
+       <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Artificial Intelligence</h3>
+       <p class="text-gray-400 mb-6">Next-generation AI solutions including misinformation detection and conversational agents.</p><a href="#ai-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate">
+       <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Software Development</h3>
+       <p class="text-gray-400 mb-6">Intelligence-driven custom software for defense agencies and enterprise platforms.</p><a href="#sd-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-right">
+       <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z" />
+        </svg>
+       </div>
+       <h3 class="text-xl font-bold text-white mb-3">Human Resource Development</h3>
+       <p class="text-gray-400 mb-6">Upskilling workforce with cybersecurity, AI, and digital proficiency programs.</p><a href="#hr-section" class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">Learn More →</a>
+      </div>
+     </div>
+    </section><!-- 3. Digital Transformation Service -->
+    <section id="dt-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+       <h2 id="service_dt_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Empowering the Future of Enterprise</h2>
+       <p class="text-lg text-gray-400 mb-8">Modernizing enterprise systems through AI, automation, and cloud integration to create agile, intelligent organizations ready for tomorrow's challenges.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Enterprise-scale Modernization</h4>
+          <p class="text-gray-400 text-sm">Transform legacy systems into cloud-native, scalable infrastructure</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Cloud, AI &amp; Analytics</h4>
+          <p class="text-gray-400 text-sm">Integrate advanced analytics and AI capabilities across platforms</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Strategic Roadmap</h4>
+          <p class="text-gray-400 text-sm">Expert consulting for digital transformation and strategic planning</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
+       <svg class="w-full h-full text-blue-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg>
+      </div>
+     </div>
+    </section><!-- 4. Cybersecurity Solutions -->
+    <section id="cs-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
+       <svg class="w-full h-full text-purple-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+       </svg>
+      </div>
+      <div class="order-1 lg:order-2">
+       <h2 id="service_cs_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Defending Your Digital Frontier</h2>
+       <p class="text-lg text-gray-400 mb-8">Comprehensive security strategies that protect enterprise infrastructure, detect threats, and safeguard critical assets against emerging cyber threats.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Vulnerability Assessment &amp; VAPT</h4>
+          <p class="text-gray-400 text-sm">Penetration testing and vulnerability assessment for complete security evaluation</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Threat Monitoring</h4>
+          <p class="text-gray-400 text-sm">Social media threat monitoring and personnel investigation capabilities</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Proactive Defense</h4>
+          <p class="text-gray-400 text-sm">Advanced cybercrime prevention and critical asset defense mechanisms</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- 5. Big Data Analytics -->
+    <section id="bd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+       <h2 id="service_bd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Actionable Insights from Complex Data</h2>
+       <p class="text-lg text-gray-400 mb-8">Leverage advanced analytics and OSINT to transform raw data into strategic intelligence for financial sectors, security organizations, and enterprises.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Advanced OSINT</h4>
+          <p class="text-gray-400 text-sm">Comprehensive open-source intelligence gathering and analysis</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Business Intelligence</h4>
+          <p class="text-gray-400 text-sm">Strategic BI solutions specifically designed for financial sectors</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Investigative Support</h4>
+          <p class="text-gray-400 text-sm">Data analytics support for security organizations and investigations</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
+       <svg class="w-full h-full text-cyan-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+       </svg>
+      </div>
+     </div>
+    </section><!-- 6. Artificial Intelligence -->
+    <section id="ai-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
+       <svg class="w-full h-full text-indigo-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg>
+      </div>
+      <div class="order-1 lg:order-2">
+       <h2 id="service_ai_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Next-Generation AI &amp; Cognitive Solutions</h2>
+       <p class="text-lg text-gray-400 mb-8">Deploy cutting-edge AI technologies to detect misinformation, build intelligent conversational systems, and enhance your organization's cognitive capabilities.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Misinformation Detection</h4>
+          <p class="text-gray-400 text-sm">AI systems to detect and counter misinformation and disinformation</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Conversational AI</h4>
+          <p class="text-gray-400 text-sm">Speech-to-Text and Text-to-Speech AI agents for intelligent interactions</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">AI-Enhanced OSINT</h4>
+          <p class="text-gray-400 text-sm">Advanced intelligence gathering for strategic narrative building</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- 7. Software Development -->
+    <section id="sd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+       <h2 id="service_sd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Intelligence-Driven Software Engineering</h2>
+       <p class="text-lg text-gray-400 mb-8">Build intelligent enterprise solutions specifically designed for defense agencies, security organizations, and financial platforms with AI-integrated architectures.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Defense &amp; Security Software</h4>
+          <p class="text-gray-400 text-sm">Custom solutions built for defense agencies and security organizations</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">AI-Integrated Platforms</h4>
+          <p class="text-gray-400 text-sm">Intelligence and financial platforms enhanced with AI capabilities</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Enterprise Architecture</h4>
+          <p class="text-gray-400 text-sm">End-to-end software architecture and development services</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
+       <svg class="w-full h-full text-pink-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+       </svg>
+      </div>
+     </div>
+    </section><!-- 8. Human Resource Development -->
+    <section id="hr-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
+       <svg class="w-full h-full text-orange-500 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z" />
+       </svg>
+      </div>
+      <div class="order-1 lg:order-2">
+       <h2 id="service_hr_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Upskilling the Workforce for the Digital Era</h2>
+       <p class="text-lg text-gray-400 mb-8">Comprehensive training programs that equip your workforce with essential cybersecurity, AI, and digital capabilities needed for modern enterprise operations.</p>
+       <div class="space-y-4">
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Cybersecurity Training</h4>
+          <p class="text-gray-400 text-sm">Comprehensive cybersecurity and social media awareness programs</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">AI &amp; Digital Proficiency</h4>
+          <p class="text-gray-400 text-sm">Programs to build AI literacy and digital interface proficiency</p>
+         </div>
+        </div>
+        <div class="capability-item">
+         <div class="capability-check">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+         </div>
+         <div>
+          <h4 class="text-white font-semibold mb-1">Scalable Training</h4>
+          <p class="text-gray-400 text-sm">Flexible upskilling programs for enterprises of any size</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- 9. Technologies & Platforms -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Technologies &amp; Platforms We Work With</h2>
+      <p id="tech_description" class="text-xl text-gray-400 max-w-3xl mx-auto">Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.</p>
+     </div>
+     <div class="tech-grid">
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 20h8a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">Mobile Applications</h3>
+       <p class="text-gray-400 text-sm">Enterprise mobile apps for business operations and digital platforms</p>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">Android Development</h3>
+       <p class="text-gray-400 text-sm">Native Android application development optimized for performance</p>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.05 13.5c-.91 0-1.82-.33-2.5-1.02L7.07 19c.78.78 2.05 1 3.18.35l7.85-4.32c.52.1 1.04.15 1.57.15 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .3.03.59.07.88l-5.88 3.23c-.52-.09-1.04-.14-1.57-.14-2.76 0-5 2.24-5 5s2.24 5 5 5c.53 0 1.05-.05 1.57-.15l4.32-2.36c.26.2.56.38.89.5.52.19 1.08.28 1.64.28 2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">iOS Development</h3>
+       <p class="text-gray-400 text-sm">Custom iPhone and iPad applications built for Apple ecosystems</p>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">Web Development</h3>
+       <p class="text-gray-400 text-sm">Modern responsive websites and web platforms for enterprises</p>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2M5 12a2 2 0 00-2 2v5a2 2 0 002 2h14a2 2 0 002-2v-5a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">Server &amp; Backend</h3>
+       <p class="text-gray-400 text-sm">Robust APIs, databases, and backend architectures for scale</p>
+      </div>
+      <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center">
+       <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+       </div>
+       <h3 class="text-lg font-bold text-white mb-2">Cloud Infrastructure</h3>
+       <p class="text-gray-400 text-sm">Scalable cloud platforms supporting high-performance applications</p>
+      </div>
+     </div>
+    </section><!-- 10. Development Process -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+     <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Development Process</h2>
+      <p class="text-xl text-gray-400">Proven methodology ensuring quality, security, and timely delivery</p>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4">
+      <div class="glass rounded-2xl p-6 scroll-animate-left text-center group hover:border-blue-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">1</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Research</h3>
+       <p class="text-gray-400 text-xs">Deep analysis</p>
+      </div>
+      <div class="hidden md:flex items-center justify-center">
+       <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+      </div>
+      <div class="glass rounded-2xl p-6 scroll-animate text-center group hover:border-purple-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">2</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Planning</h3>
+       <p class="text-gray-400 text-xs">Strategy design</p>
+      </div>
+      <div class="hidden md:flex items-center justify-center">
+       <div class="w-full h-1 bg-gradient-to-r from-purple-500 to-cyan-500"></div>
+      </div>
+      <div class="glass rounded-2xl p-6 scroll-animate text-center group hover:border-cyan-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">3</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Design</h3>
+       <p class="text-gray-400 text-xs">UI/UX specs</p>
+      </div>
+      <div class="hidden md:flex items-center justify-center">
+       <div class="w-full h-1 bg-gradient-to-r from-cyan-500 to-indigo-500"></div>
+      </div>
+      <div class="glass rounded-2xl p-6 scroll-animate-right text-center group hover:border-indigo-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">4</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Dev</h3>
+       <p class="text-gray-400 text-xs">Build &amp; test</p>
+      </div>
+      <div class="lg:col-start-2 glass rounded-2xl p-6 scroll-animate text-center group hover:border-pink-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">5</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Testing</h3>
+       <p class="text-gray-400 text-xs">QA &amp; security</p>
+      </div>
+      <div class="hidden md:flex items-center justify-center">
+       <div class="w-full h-1 bg-gradient-to-r from-pink-500 to-orange-500"></div>
+      </div>
+      <div class="glass rounded-2xl p-6 scroll-animate text-center group hover:border-orange-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">6</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Deploy</h3>
+       <p class="text-gray-400 text-xs">Go live</p>
+      </div>
+      <div class="hidden md:flex items-center justify-center">
+       <div class="w-full h-1 bg-gradient-to-r from-orange-500 to-red-500"></div>
+      </div>
+      <div class="glass rounded-2xl p-6 scroll-animate-right text-center group hover:border-red-500 border border-transparent transition-all">
+       <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform"><span class="text-white font-bold text-lg">7</span>
+       </div>
+       <h3 class="text-sm font-bold text-white mb-1">Support</h3>
+       <p class="text-gray-400 text-xs">Maintenance</p>
+      </div>
+     </div>
+    </section><!-- 11. Final CTA Section -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+     <div class="cta-section rounded-3xl p-12 md:p-16 text-center scroll-animate">
+      <h2 id="cta_final_title" class="text-4xl md:text-5xl font-bold text-white mb-4">Ready to build intelligent digital solutions for your organization?</h2>
+      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let our expert team develop tailored solutions that drive innovation, enhance security, and accelerate your digital transformation journey.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4"><button id="cta_final_primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow text-lg">Start a Project</button> <button id="cta_final_secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 text-lg">Contact Us</button>
+      </div>
+      <p class="text-gray-400 text-sm mt-8">Our team typically responds within 24 hours • Free consultation</p>
+     </div>
+    </section><!-- 12. Footer -->
+    <footer class="relative border-t border-white/10">
+     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+       <div class="col-span-2 md:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+         </div><span class="text-white font-bold">CCAI</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed">Revolutionizing enterprise connectivity through AI-driven cloud integration.</p>
+       </div>
+       <div>
+        <h4 class="text-white font-bold mb-4 text-sm">Product</h4>
+        <ul class="space-y-3">
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Platform</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Integrations</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Pricing</a></li>
+        </ul>
+       </div>
+       <div>
+        <h4 class="text-white font-bold mb-4 text-sm">Company</h4>
+        <ul class="space-y-3">
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Blog</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+        </ul>
+       </div>
+       <div>
+        <h4 class="text-white font-bold mb-4 text-sm">Legal</h4>
+        <ul class="space-y-3">
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a></li>
+         <li><a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Security</a></li>
+        </ul>
+       </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-4">
+       <p id="footer_text" class="text-gray-500 text-sm">© 2024 Cloud Connect AI. All rights reserved.</p>
+      </div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      hero_title: 'Advanced Digital & Intelligence Solutions',
+      hero_subtitle: 'We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.',
+      hero_cta_primary: 'Explore Services',
+      hero_cta_secondary: 'Contact Our Team',
+      service_dt_title: 'Empowering the Future of Enterprise',
+      service_cs_title: 'Defending Your Digital Frontier',
+      service_bd_title: 'Actionable Insights from Complex Data',
+      service_ai_title: 'Next-Generation AI & Cognitive Solutions',
+      service_sd_title: 'Intelligence-Driven Software Engineering',
+      service_hr_title: 'Upskilling the Workforce for the Digital Era',
+      tech_description: 'Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.',
+      cta_final_title: 'Ready to build intelligent digital solutions for your organization?',
+      cta_final_primary: 'Start a Project',
+      cta_final_secondary: 'Contact Us',
+      footer_text: '© 2024 Cloud Connect AI. All rights reserved.',
+      font_family: 'Space Grotesk',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('hero-cta-primary').querySelector('span').textContent = config.hero_cta_primary || defaultConfig.hero_cta_primary;
+      document.getElementById('hero-cta-secondary').querySelector('span').textContent = config.hero_cta_secondary || defaultConfig.hero_cta_secondary;
+      
+      document.getElementById('service_dt_title').textContent = config.service_dt_title || defaultConfig.service_dt_title;
+      document.getElementById('service_cs_title').textContent = config.service_cs_title || defaultConfig.service_cs_title;
+      document.getElementById('service_bd_title').textContent = config.service_bd_title || defaultConfig.service_bd_title;
+      document.getElementById('service_ai_title').textContent = config.service_ai_title || defaultConfig.service_ai_title;
+      document.getElementById('service_sd_title').textContent = config.service_sd_title || defaultConfig.service_sd_title;
+      document.getElementById('service_hr_title').textContent = config.service_hr_title || defaultConfig.service_hr_title;
+      
+      document.getElementById('tech_description').textContent = config.tech_description || defaultConfig.tech_description;
+      
+      document.getElementById('cta_final_title').textContent = config.cta_final_title || defaultConfig.cta_final_title;
+      document.getElementById('cta_final_primary').textContent = config.cta_final_primary || defaultConfig.cta_final_primary;
+      document.getElementById('cta_final_secondary').textContent = config.cta_final_secondary || defaultConfig.cta_final_secondary;
+      
+      document.getElementById('footer_text').textContent = config.footer_text || defaultConfig.footer_text;
+
+      document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.getElementById('hero-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['hero_title', config.hero_title || defaultConfig.hero_title],
+        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+        ['hero_cta_primary', config.hero_cta_primary || defaultConfig.hero_cta_primary],
+        ['hero_cta_secondary', config.hero_cta_secondary || defaultConfig.hero_cta_secondary],
+        ['service_dt_title', config.service_dt_title || defaultConfig.service_dt_title],
+        ['service_cs_title', config.service_cs_title || defaultConfig.service_cs_title],
+        ['service_bd_title', config.service_bd_title || defaultConfig.service_bd_title],
+        ['service_ai_title', config.service_ai_title || defaultConfig.service_ai_title],
+        ['service_sd_title', config.service_sd_title || defaultConfig.service_sd_title],
+        ['service_hr_title', config.service_hr_title || defaultConfig.service_hr_title],
+        ['tech_description', config.tech_description || defaultConfig.tech_description],
+        ['cta_final_title', config.cta_final_title || defaultConfig.cta_final_title],
+        ['cta_final_primary', config.cta_final_primary || defaultConfig.cta_final_primary],
+        ['cta_final_secondary', config.cta_final_secondary || defaultConfig.cta_final_secondary],
+        ['footer_text', config.footer_text || defaultConfig.footer_text]
+      ]);
+    }
+
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+      scrollObserver.observe(el);
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9db26c4b9412f257',t:'MTc3MzMxNDU2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
