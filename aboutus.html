@@ -213,7 +213,45 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+
+
+  #mobile-menu {
+  transition: all 0.35s ease-in-out;
+  transform: translateY(-10px);
+  opacity: 0;
+}
+#mobile-menu.show {
+  transform: translateY(0);
+  opacity: 1;
+}
 </style>
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-item').forEach(link => {
+      const href = link.getAttribute('href').split('/').pop();
+      if (href === currentPath) {
+        link.classList.add('text-white', 'font-semibold');
+        link.classList.remove('text-gray-300');
+      }
+    });
+  });
+</script>
+
+
+
+
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
@@ -222,20 +260,67 @@
    <div class="tech-pattern"></div>
    <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="animation: float 15s ease-in-out infinite;"></div>
    <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
-   <div class="content-wrapper"><!-- Navbar -->
-    <nav class="relative fade-in">
-     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20"><a href="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
-         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-         </svg>
-        </div><span class="text-white font-bold text-xl tracking-tight">CCAI</span> </a>
-       <div class="hidden md:flex items-center gap-4"><a href="/" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">← Back to Home</a>
-       </div>
+   <div class="content-wrapper">
+    
+    
+    
+    <!-- Navbar -->
+    <!-- Navbar -->
+<nav class="relative fade-in">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-8 rounded-xl  flex items-center justify-center shadow-lg">
+<img src="image/logo.png" alt="CCAI Logo" >
+        </div>
+        <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
       </div>
-     </div>
-    </nav><!-- Hero Section -->
+
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="./index.html"      class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
+        <a href="./services.html"  class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
+        <a href="./aboutus.html"    class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
+        <a href="./research.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
+      </div>
+
+      <!-- Contact Button (Desktop) -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="./contact.html">
+          <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
+            Contact Us
+          </button>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
+      <div class="flex flex-col gap-3">
+        <a href="./index.html"     class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
+        <a href="./aboutus.html"   class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
+        <a href="./services.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Solutions</a>
+        <a href="./research.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
+        <a href="./contact.html"   class="mt-3 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 text-center shadow-md">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+    
+    
+    <!-- Hero Section -->
     <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
      <div class="text-center max-w-4xl mx-auto">
       <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8"><span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> <span class="text-gray-300 text-sm">About Our Company</span>
