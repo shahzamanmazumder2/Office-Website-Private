@@ -627,43 +627,6 @@ document.addEventListener('DOMContentLoaded', loadRoleSection);
 
 
 
- <div id="frontend-section">
-  <p style="color:#888; text-align:center; padding:60px;">Loading front-end technologies section...</p>
-</div>
-
-<script>
-async function loadFrontendSection() {
-  try {
-    const res = await fetch('front_end.html');
-    let html = await res.text();
-    document.getElementById('frontend-section').innerHTML = html;
-
-    // Trigger one-by-one animations
-    setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          document.querySelector('.vendor-text').classList.add('in-view');
-          document.querySelector('.vendor-grid').classList.add('in-view');
-
-          document.querySelectorAll('.vendor-card').forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('in-view');
-            }, 100 + (index * 80));
-          });
-        }
-      }, { threshold: 0.2 });
-
-      const section = document.querySelector('.section-vendors');
-      if (section) observer.observe(section);
-    }, 100);
-  } catch(e) {
-    console.error('Load error', e);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', loadFrontendSection);
-</script>
-
 
 
 
