@@ -290,7 +290,54 @@
        <p id="value3-desc" class="text-gray-400">We pursue excellence in every project, every interaction, and every decision. Quality is not an option—it's our commitment to every client we serve.</p>
       </div>
      </div>
-    </section><!-- Stats Section -->
+    </section>
+    
+
+
+    <!-- Front-End Technologies Section -->
+<div id="front-end-tech-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading front-end technologies section...</p>
+</div>
+
+
+<script>
+async function loadFrontEndTech() {
+  try {
+    const res = await fetch('front_end_tech.html');
+    const html = await res.text();
+    document.getElementById('front-end-tech-section').innerHTML = html;
+
+    // Trigger animations
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.front-end-text').classList.add('in-view');
+          document.querySelector('.front-end-grid').classList.add('in-view');
+
+          document.querySelectorAll('.front-end-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-front-end');
+      if (section) observer.observe(section);
+    }, 100);
+
+  } catch (e) {
+    console.error('Failed to load front-end tech section', e);
+  }
+}
+
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadFrontEndTech);
+</script>
+    
+    
+    
+    <!-- Stats Section -->
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="scroll-animate glass rounded-2xl p-12 stat-card">
@@ -315,7 +362,137 @@
        <p class="text-gray-400 text-sm mt-2">Expert professionals dedicated to excellence</p>
       </div>
      </div>
-    </section><!-- Why Choose Us Section -->
+    </section>
+    
+    
+    
+    
+    <!-- Back-End Technologies Section -->
+<div id="back-end-tech-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading back-end technologies section...</p>
+</div>
+
+
+<script>
+async function loadBackEndTech() {
+  try {
+    const res = await fetch('back_end_tech.html');
+    const html = await res.text();
+    document.getElementById('back-end-tech-section').innerHTML = html;
+
+    // Trigger animations
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.back-end-text').classList.add('in-view');
+          document.querySelector('.back-end-grid').classList.add('in-view');
+
+          document.querySelectorAll('.back-end-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-back-end');
+      if (section) observer.observe(section);
+    }, 100);
+
+  } catch (e) {
+    console.error('Failed to load back-end tech section', e);
+  }
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', loadBackEndTech);
+</script>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+<!-- Database Technologies Section -->
+<div id="database-tech-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading database technologies section...</p>
+</div>
+
+
+
+
+
+
+
+
+<script>
+async function loadDatabaseTech() {
+  try {
+    const response = await fetch('database_tech.html');
+    const html = await response.text();
+    
+    // Inject the section
+    document.getElementById('database-tech-section').innerHTML = html;
+
+    // Trigger smooth animations after loading
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          
+          // Animate text and grid
+          const text = document.querySelector('.database-text');
+          const grid = document.querySelector('.database-grid');
+          
+          if (text) text.classList.add('in-view');
+          if (grid) grid.classList.add('in-view');
+
+          // Animate cards one by one
+          document.querySelectorAll('.database-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { 
+        threshold: 0.2 
+      });
+
+      // Observe the section
+      const section = document.querySelector('.section-database');
+      if (section) {
+        observer.observe(section);
+      }
+
+    }, 150); // Small delay to ensure DOM is ready
+
+  } catch (error) {
+    console.error('Failed to load database technologies section:', error);
+    document.getElementById('database-tech-section').innerHTML = 
+      `<p style="color:red; text-align:center; padding:60px;">Failed to load database section.</p>`;
+  }
+}
+
+// Load the section when the page is ready
+document.addEventListener('DOMContentLoaded', loadDatabaseTech);
+</script>
+
+    
+    
+    
+    
+    
+    
+    <!-- Why Choose Us Section -->
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
      <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Why Choose Cloud Connect AI</h2>
