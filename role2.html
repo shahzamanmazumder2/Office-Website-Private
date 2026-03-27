@@ -306,3 +306,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Technologies Section 
+      <div id="role-section" class="my-16">
+        <p style="color: #888; text-align: center; padding: 40px;">Loading Technologies We Work On...</p>
+      </div>
+
+-->
+
+  <!-- <script>
+    // Modern & Clean Loader for role2.html with animations
+    async function loadRoleSection() {
+      try {
+        const response = await fetch('role2.html');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to load role2.html – status ${response.status}`);
+        }
+
+        let htmlContent = await response.text();
+        htmlContent = htmlContent.replace(/<\/?(html|head|body|title|meta)[^>]*>/gi, '');
+
+        document.getElementById('role-section').innerHTML = htmlContent;
+
+        setTimeout(() => {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const section = entry.target;
+                
+                const leftText = section.querySelector('.tech-text');
+                if (leftText) leftText.classList.add('in-view');
+
+                const rightGrid = section.querySelector('.tech-grid');
+                if (rightGrid) rightGrid.classList.add('in-view');
+
+                const cards = section.querySelectorAll('.tech-card');
+                cards.forEach((card, index) => {
+                  setTimeout(() => {
+                    card.classList.add('in-view');
+                  }, 80 * index);
+                });
+
+                observer.unobserve(section);
+              }
+            });
+          }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+          });
+
+          const techSection = document.querySelector('.section-technologies');
+          if (techSection) observer.observe(techSection);
+        }, 200);
+
+      } catch (error) {
+        console.error('Error loading Technologies section:', error);
+        document.getElementById('role-section').innerHTML = 
+          `<p style="color: red; font-weight: bold; text-align: center; padding: 60px;">
+            Could not load Technologies section. Please try again later.
+           </p>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRoleSection);
+  </script> -->

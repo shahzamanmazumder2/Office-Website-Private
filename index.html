@@ -131,6 +131,8 @@
     .nav-link {
       position: relative;
     }
+
+    
     
     .nav-link::after {
       content: '';
@@ -297,7 +299,11 @@
   <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
    <!-- Dynamic gradient background -->
    <div class="hero-gradient"></div><!-- Tech grid pattern -->
-   <div class="tech-pattern"></div><!-- Floating Orbs - Dynamic Background -->
+   <div class="tech-pattern"></div>
+   
+   
+   
+   <!-- Floating Orbs - Dynamic Background -->
    <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
    <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
    <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
@@ -307,9 +313,25 @@
    <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
    <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
    <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
-   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div><!-- Mobile orbs - subtle -->
-   <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.3;"></div>
-   <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.2;"></div><!-- Content Wrapper -->
+   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
+   
+   
+   <!-- Mobile orbs - subtle -->
+   <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
+   <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
+   
+   <!-- NEW: Extra Orb 1 for Mobile -->
+   <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
+        style="position: fixed; animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
+   
+   <!-- NEW: Extra Orb 2 for Mobile -->
+   <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
+        style="position: fixed; animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
+   
+   
+   
+   
+   <!-- Content Wrapper -->
    <div class="content-wrapper">
 
 
@@ -386,7 +408,7 @@
   <div class="grid lg:grid-cols-2 items-center gap-12">
 
     <!-- LEFT: TEXT -->
-    <div class="text-center lg:text-left max-w-4xl mx-auto lg:mx-0">
+    <div class="text-left lg:text-left max-w-4xl mx-auto lg:mx-0">
 
       <div class="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
         <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
@@ -406,10 +428,10 @@
 
       <div class="flex flex-col sm:flex-row gap-4 mb-20">
         <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl">
-          Get Started Free
+          Get Started
         </button>
         <button class="px-8 py-4 glass text-white font-bold rounded-xl">
-          Watch Demo
+          Contact Us
         </button>
       </div>
 
@@ -571,46 +593,58 @@ window.onload = function () {
     
     
 
+<section>
 
 
-<div id="role-section">
-  <p style="color:#888; text-align:center; padding:60px;">Loading vendor section...</p>
+
+  <!-- Technologies We Work On Section -->
+<div id="tech-we-work-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading technologies section...</p>
 </div>
 
 <script>
-async function loadRoleSection() {
+async function loadTechWeWork() {
   try {
-    const res = await fetch('role.html');
-    let html = await res.text();
-    document.getElementById('role-section').innerHTML = html;
+    const res = await fetch('tech_we_work.html');
+    const html = await res.text();
+    document.getElementById('tech-we-work-section').innerHTML = html;
 
-    // Trigger one-by-one animations
+    // Trigger animations after loading
     setTimeout(() => {
       const observer = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
-          // Left text + Grid
-          document.querySelector('.vendor-text').classList.add('in-view');
-          document.querySelector('.vendor-grid').classList.add('in-view');
+          document.querySelector('.tech-text').classList.add('in-view');
+          document.querySelector('.tech-grid').classList.add('in-view');
 
-          // Cards one by one
-          document.querySelectorAll('.vendor-card').forEach((card, index) => {
+          document.querySelectorAll('.tech-card').forEach((card, index) => {
             setTimeout(() => {
               card.classList.add('in-view');
-            }, 100 + (index * 80));   // one by one with nice delay
+            }, 100 + (index * 80));
           });
         }
       }, { threshold: 0.2 });
 
-      const section = document.querySelector('.section-vendors');
+      const section = document.querySelector('.section-technologies');
       if (section) observer.observe(section);
-    }, 100);
-  } catch(e) {
-    console.error('Load error', e);
+    }, 150);
+
+  } catch (e) {
+    console.error('Failed to load Technologies We Work section', e);
+    document.getElementById('tech-we-work-section').innerHTML = 
+      `<p style="color:red; text-align:center; padding:60px;">Failed to load technologies section.</p>`;
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadRoleSection);
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadTechWeWork);
 </script>
+
+
+
+
+
+</section>
+
 
 
 
@@ -1232,7 +1266,51 @@ document.addEventListener('DOMContentLoaded', loadRoleSection);
 
 
 
+<section>
 
+
+  <div id="role-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading vendor section...</p>
+</div>
+
+<script>
+async function loadRoleSection() {
+  try {
+    const res = await fetch('role.html');
+    let html = await res.text();
+    document.getElementById('role-section').innerHTML = html;
+
+    // Trigger one-by-one animations
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          // Left text + Grid
+          document.querySelector('.vendor-text').classList.add('in-view');
+          document.querySelector('.vendor-grid').classList.add('in-view');
+
+          // Cards one by one
+          document.querySelectorAll('.vendor-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));   // one by one with nice delay
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-vendors');
+      if (section) observer.observe(section);
+    }, 100);
+  } catch(e) {
+    console.error('Load error', e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadRoleSection);
+</script>
+
+
+
+</section>
 
 
 

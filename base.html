@@ -112,60 +112,61 @@
     <div class="content-wrapper">
 
       <!-- ==================== NAVBAR ==================== -->
-      <nav class="relative fade-in">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-20">
+<!-- ==================== NAVBAR (Reusable & Fixed Active State) ==================== -->
+<nav class="relative border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
 
-            <!-- Logo -->
-            <div class="flex items-center gap-2">
-              <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg bg-white/10">
-                <img src="image/logo.png" alt="CCAI Logo" class="h-8 w-auto">
-              </div>
-              <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
-            </div>
-
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center gap-8">
-              <a href="./index.html"      class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
-              <a href="./services.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
-              <a href="./aboutus.html"    class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
-              <a href="./research.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
-            </div>
-
-            <!-- Contact Button -->
-            <div class="hidden md:flex items-center gap-4">
-              <a href="./contact.html">
-                <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
-                  Contact Us
-                </button>
-              </a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
-              <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-              </svg>
-            </button>
-          </div>
-
-          <!-- Mobile Menu -->
-          <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-6 border border-white/10">
-            <div class="flex flex-col gap-2">
-              <a href="./index.html"     class="mobile-link block py-4 px-5 text-gray-200 hover:text-white hover:bg-white/10 rounded-xl text-base font-medium">Home</a>
-              <a href="./aboutus.html"   class="mobile-link block py-4 px-5 text-gray-200 hover:text-white hover:bg-white/10 rounded-xl text-base font-medium">About</a>
-              <a href="./services.html"  class="mobile-link block py-4 px-5 text-gray-200 hover:text-white hover:bg-white/10 rounded-xl text-base font-medium">Solutions</a>
-              <a href="./research.html"  class="mobile-link block py-4 px-5 text-gray-200 hover:text-white hover:bg-white/10 rounded-xl text-base font-medium">Research</a>
-              
-              <div class="h-px bg-white/10 my-4"></div>
-              
-              <a href="./contact.html" class="mobile-link block py-4 px-5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-2xl text-center hover:from-blue-500 hover:to-indigo-500">
-                Contact Us
-              </a>
-            </div>
-          </div>
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+          <img src="image/logo.png" alt="CCAI Logo" class="h-8 w-auto">
         </div>
-      </nav>
+        <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="./index.html"      class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
+        <a href="./services.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
+        <a href="./aboutus.html"    class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
+        <a href="./research.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
+        <!-- Add this if you have a news page -->
+        <a href="./news.html"       class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="news">News</a>
+      </div>
+
+      <!-- Contact Button -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="./contact.html">
+          <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg">
+            Contact Us
+          </button>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
+      <div class="flex flex-col gap-3">
+        <a href="./index.html"     class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
+        <a href="./aboutus.html"   class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
+        <a href="./services.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Solutions</a>
+        <a href="./research.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
+        <a href="./news.html"      class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">News</a>
+        <a href="./contact.html"   class="mt-4 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl text-center">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
       <!-- ==================== NAVBAR END ==================== -->
 
       <!-- ==================== RESEARCH CONTENT ==================== -->
@@ -259,56 +260,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       
-      // Mobile Menu Toggle
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuIcon = document.getElementById('menu-icon');
-      let isOpen = false;
-
-      if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-          isOpen = !isOpen;
-          mobileMenu.classList.toggle('hidden');
-          
-          if (menuIcon) {
-            menuIcon.setAttribute('d', isOpen 
-              ? 'M6 18L18 6M6 6l12 12' 
-              : 'M4 6h16M4 12h16M4 18h16'
-            );
-          }
-        });
-      }
-
-      // Close mobile menu on link click
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-          isOpen = false;
-          if (menuIcon) menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-        });
-      });
-
-      // Active Page Highlight
-      function highlightActivePage() {
-        const path = window.location.pathname.toLowerCase();
-        document.querySelectorAll('.nav-item').forEach(item => {
-          const page = item.getAttribute('data-page');
-          
-          if (
-            (page === 'home' && (path.includes('index') || path === '/' || path.endsWith('/'))) ||
-            (page === 'solutions' && path.includes('services')) ||
-            (page === 'about' && path.includes('aboutus')) ||
-            (page === 'research' && path.includes('research'))
-          ) {
-            item.classList.add('active', 'text-white');
-          } else {
-            item.classList.remove('active', 'text-white');
-          }
-        });
-      }
-
-      highlightActivePage();
-
       // Trigger scroll animations
       const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -324,5 +275,62 @@
       });
     });
   </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let isOpen = false;
+
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.classList.toggle('hidden');
+        
+        if (menuIcon) {
+          menuIcon.setAttribute('d', isOpen 
+            ? 'M6 18L18 6M6 6l12 12' 
+            : 'M4 6h16M4 12h16M4 18h16'
+          );
+        }
+      });
+    }
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        isOpen = false;
+        if (menuIcon) menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      });
+    });
+
+    // ==================== ACTIVE PAGE HIGHLIGHT ====================
+    function highlightActivePage() {
+      const currentPath = window.location.pathname.toLowerCase();
+      const navItems = document.querySelectorAll('.nav-item');
+
+      navItems.forEach(item => {
+        const page = item.getAttribute('data-page');
+        item.classList.remove('active', 'text-white');
+
+        if (
+          (page === 'home'     && (currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/'))) ||
+          (page === 'solutions' && currentPath.includes('services.html')) ||
+          (page === 'about'     && currentPath.includes('aboutus.html')) ||
+          (page === 'research'  && currentPath.includes('research.html')) ||
+          (page === 'news'      && currentPath.includes('news.html'))
+        ) {
+          item.classList.add('active', 'text-white');
+        }
+      });
+    }
+
+    highlightActivePage();
+  });
+</script>
 </body>
 </html>
