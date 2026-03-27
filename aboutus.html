@@ -619,7 +619,47 @@ document.addEventListener('DOMContentLoaded', loadRoleSection);
 
 
 
+<!-- Technologies We Work On Section -->
+<div id="tech-we-work-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading technologies section...</p>
+</div>
 
+<script>
+async function loadTechWeWork() {
+  try {
+    const res = await fetch('tech_we_work.html');
+    const html = await res.text();
+    document.getElementById('tech-we-work-section').innerHTML = html;
+
+    // Trigger animations after loading
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.tech-text').classList.add('in-view');
+          document.querySelector('.tech-grid').classList.add('in-view');
+
+          document.querySelectorAll('.tech-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-technologies');
+      if (section) observer.observe(section);
+    }, 150);
+
+  } catch (e) {
+    console.error('Failed to load Technologies We Work section', e);
+    document.getElementById('tech-we-work-section').innerHTML = 
+      `<p style="color:red; text-align:center; padding:60px;">Failed to load technologies section.</p>`;
+  }
+}
+
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadTechWeWork);
+</script>
 
 
 

@@ -382,131 +382,130 @@
 <!-- Hero Section -->
 <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-10 pb-20">
 
-  <!-- TOP PART (TEXT + IMAGE) -->
-  <div class="grid lg:grid-cols-2 items-center justify-around">
+  <!-- TOP PART -->
+  <div class="grid lg:grid-cols-2 items-center gap-12">
 
-    <!-- LEFT: YOUR ORIGINAL TEXT -->
+    <!-- LEFT: TEXT -->
     <div class="text-center lg:text-left max-w-4xl mx-auto lg:mx-0">
 
-      <!-- Badge -->
-      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
+      <div class="inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
         <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
         <span class="text-gray-300 text-sm">Connecting enterprises globally</span>
       </div>
 
-      <!-- Heading -->
-      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
         Born to<br>
         <span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
           Connect
         </span>
       </h1>
 
-      <!-- Subtitle -->
-      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-        Cloud Connect AI integrates your enterprise infrastructure with intelligent connectivity solutions. Unified, secure, and infinitely scalable.
+      <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 mb-10">
+        Cloud Connect AI delivers intelligent cloud infrastructure, AI-driven automation, and secure enterprise systems — all in one unified platform.
       </p>
 
-      <!-- CTA -->
-      <div class="slide-up delay-400 flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-20">
-
-        <button id="cta-primary-btn" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-dark-400 text-white font-bold rounded-xl hover:from-blue-500 hover:to-dark-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg">
-          <span>Get Started Free</span>
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+      <div class="flex flex-col sm:flex-row gap-4 mb-20">
+        <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl">
+          Get Started Free
         </button>
-
-        <button id="cta-secondary-btn" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-          </svg>
-          <span>Watch Demo</span>
+        <button class="px-8 py-4 glass text-white font-bold rounded-xl">
+          Watch Demo
         </button>
-
       </div>
 
     </div>
 
     <!-- RIGHT: IMAGE -->
-<!-- RIGHT: IMAGE -->
-<div class="relative flex lg:justify-end items-center">
+    <div class="relative flex justify-center lg:justify-end">
 
-  <div class="relative w-full max-w-md h-[320px] sm:h-[320px] overflow-hidden">
+      <div class="relative w-full max-w-md h-[340px] rounded-3xl overflow-hidden shadow-2xl">
 
-    <!-- Image 1 -->
-    <img id="img1"
-         src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b"
-         class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl transition-opacity duration-[2500ms] ease-in-out opacity-100"
-    />
+        <!-- IMAGE 1 -->
+        <div id="img1"
+             class="absolute inset-0 bg-cover bg-center rounded-3xl transition-opacity duration-[3000ms] ease-in-out opacity-100 lg: animate-[float_6s_ease-in-out_infinite]"
+             style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
 
-    <!-- Image 2 -->
-    <img id="img2"
-         src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-         class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl transition-opacity duration-[2500ms] ease-in-out opacity-0"
-    />
+          <!-- DARK OVERLAY -->
+          <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
 
-    <!-- Glow -->
-    <div class="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full -z-10"></div>
+          <!-- Center Title -->
+          <div class="absolute inset-0 flex items-center justify-center text-center text-white px-6 z-10">
+            <h3 class="text-3xl font-bold">Cloud Infrastructure</h3>
+          </div>
+
+          <!-- Bottom Glass Card -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
+            <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
+          </div>
+
+        </div>
+
+        <!-- IMAGE 2 -->
+        <div id="img2"
+             class="absolute inset-0 bg-cover bg-center rounded-3xl transition-opacity duration-[3000ms] ease-in-out opacity-0 lg: animate-[float_6s_ease-in-out_infinite]"
+             style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475')">
+
+          <!-- DARK OVERLAY -->
+          <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
+
+          <!-- Center Title -->
+          <div class="absolute inset-0 flex items-center justify-center text-center text-white px-6 z-10">
+            <h3 class="text-3xl font-bold">AI Automation</h3>
+          </div>
+
+          <!-- Bottom Glass Card -->
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
+            <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
-</div>
-
-  </div>
-
-  <!-- REST OF YOUR ORIGINAL CONTENT (UNCHANGED) -->
-
-  <!-- Stats -->
-  <div class="slide-up delay-500 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-10">
+  <!-- STATS -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-10">
     <div class="glass rounded-2xl p-6 text-center">
       <div class="text-3xl font-bold text-blue-400 mb-1">500+</div>
       <div class="text-gray-400 text-sm">Enterprise Clients</div>
     </div>
-
     <div class="glass rounded-2xl p-6 text-center">
       <div class="text-3xl font-bold text-purple-400 mb-1">99.99%</div>
       <div class="text-gray-400 text-sm">Uptime SLA</div>
     </div>
-
     <div class="glass rounded-2xl p-6 text-center">
       <div class="text-3xl font-bold text-cyan-400 mb-1">150+</div>
       <div class="text-gray-400 text-sm">Countries</div>
     </div>
-
     <div class="glass rounded-2xl p-6 text-center">
       <div class="text-3xl font-bold text-blue-300 mb-1">24/7</div>
       <div class="text-gray-400 text-sm">Global Support</div>
     </div>
   </div>
 
-  <!-- Trust Logos -->
-  <div class="mt-20 slide-up delay-500 text-center">
-    <p class="text-gray-500 text-sm mb-8">Trusted by leading innovators</p>
-    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-50">
-      <div class="text-gray-400 font-bold text-lg tracking-wider">TECHCORP</div>
-      <div class="text-gray-400 font-bold text-lg tracking-wider">INNOVATE</div>
-      <div class="text-gray-400 font-bold text-lg tracking-wider">CLOUDSYS</div>
-      <div class="text-gray-400 font-bold text-lg tracking-wider">NEXTGEN</div>
-      <div class="text-gray-400 font-bold text-lg tracking-wider">QUANTUM</div>
-    </div>
-  </div>
+</main>
 
-
-
-
+<style>
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+</style>
 
 <script>
 window.onload = function () {
 
-  const images = [
-    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b",
-    "https://images.unsplash.com/photo-1518770660439-4636190af475",
-    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    "https://images.unsplash.com/photo-1504639725590-34d0984388bd",
-    "https://images.unsplash.com/photo-1537432376769-00a91d0c4c1d"
+  const slides = [
+    { img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", title: "Cloud Infrastructure" },
+    { img: "https://images.unsplash.com/photo-1518770660439-4636190af475", title: "AI Automation" },
+    { img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085", title: "Modern Development" },
+    { img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6", title: "Enterprise Security" },
+    { img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd", title: "Global Connectivity" },
+    { img: "https://images.unsplash.com/photo-1537432376769-00a91d0c4c1d", title: "Data Intelligence" },
+    { img: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72", title: "Scalable Architecture" }
   ];
 
   let index = 0;
@@ -516,35 +515,39 @@ window.onload = function () {
   const img2 = document.getElementById("img2");
 
   setInterval(() => {
-    index = (index + 1) % images.length;
+    index = (index + 1) % slides.length;
+    const slide = slides[index];
+
+    const content = `
+      <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
+
+      <div class="absolute inset-0 flex items-center justify-center text-white px-6 z-10">
+        <h3 class="text-3xl font-bold">${slide.title}</h3>
+      </div>
+
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
+        <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
+      </div>
+    `;
 
     if (showingFirst) {
-      img2.src = images[index];
+      img2.style.backgroundImage = `url(${slide.img})`;
+      img2.innerHTML = content;
       img2.style.opacity = "1";
       img1.style.opacity = "0";
     } else {
-      img1.src = images[index];
+      img1.style.backgroundImage = `url(${slide.img})`;
+      img1.innerHTML = content;
       img1.style.opacity = "1";
       img2.style.opacity = "0";
     }
 
     showingFirst = !showingFirst;
 
-  }, 5000);
+  }, 6000);
 
 };
 </script>
-
-
-
-
-
-
-
-
-
-
-</main>
 
 
 

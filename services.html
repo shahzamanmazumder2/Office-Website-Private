@@ -301,7 +301,128 @@
     
     
     
-    
+       <!-- Transparent Image Carousel -->
+<section class="relative py-5 px-4 overflow-hidden">
+
+  <!-- Carousel Wrapper -->
+  <div class="max-w-6xl mx-auto relative">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Core Features</h2>
+      <p class="text-xl text-gray-400">Comprehensive technology solutions for modern enterprises</p>
+    </div>
+
+    <div id="autoCarousel" class="relative w-full h-[400px] rounded-3xl overflow-hidden">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">Next-Gen Cloud Infrastructure</h2>
+            <p class="text-lg opacity-90">Powerful. Secure. Scalable.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">AI Powered Automation</h2>
+            <p class="text-lg opacity-90">Smarter Decisions. Faster Results.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
+           style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
+          <div>
+            <h2 class="text-4xl font-heading font-bold mb-4">Enterprise Security</h2>
+            <p class="text-lg opacity-90">Protection You Can Trust</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slides = document.querySelectorAll(".carousel-slide");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.opacity = i === index ? "1" : "0";
+    });
+  }
+
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  setInterval(nextSlide, 4000); // change every 4 seconds
+
+});
+</script>
+
+
+</section>
+
+
+
+<!-- Technologies We Work On Section -->
+<div id="tech-we-work-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading technologies section...</p>
+</div>
+
+<script>
+async function loadTechWeWork() {
+  try {
+    const res = await fetch('tech_we_work.html');
+    const html = await res.text();
+    document.getElementById('tech-we-work-section').innerHTML = html;
+
+    // Trigger animations after loading
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.tech-text').classList.add('in-view');
+          document.querySelector('.tech-grid').classList.add('in-view');
+
+          document.querySelectorAll('.tech-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-technologies');
+      if (section) observer.observe(section);
+    }, 150);
+
+  } catch (e) {
+    console.error('Failed to load Technologies We Work section', e);
+    document.getElementById('tech-we-work-section').innerHTML = 
+      `<p style="color:red; text-align:center; padding:60px;">Failed to load technologies section.</p>`;
+  }
+}
+
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadTechWeWork);
+</script>
+
+
+
     
     
     
@@ -310,7 +431,7 @@
     <!-- 2. Services Overview -->
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
      <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Core Services</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Services</h2>
       <p class="text-xl text-gray-400">Comprehensive technology solutions for modern enterprises</p>
      </div>
      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
