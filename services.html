@@ -260,36 +260,58 @@
         </nav>
 
         <!-- Hero Content -->
+        <!-- NEW HERO CONTENT: Left Text + Floating Orb Visual -->
         <main class="relative z-20 flex-1 flex items-center pt-12 pb-20">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="text-center max-w-4xl mx-auto">
-              <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
-                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-                <span class="text-gray-300 text-sm">Enterprise Technology Services</span>
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+              
+              <!-- Left Text Column -->
+              <div class="lg:col-span-7">
+                <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
+                  <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                  <span class="text-gray-300 text-sm">Enterprise Technology Services</span>
+                </div>
+
+                <h1 id="hero-title" class="slide-up delay-200 text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.05] glow-text mb-8">
+                  Connecting<br>Intelligence<br>to Infinity
+                </h1>
+
+                <p id="hero-subtitle" class="slide-up delay-300 text-xl text-gray-400 max-w-lg mb-12 leading-relaxed">
+                  A forward-thinking technology company specializing in AI-powered cloud infrastructure and intelligent enterprise solutions.
+                </p>
+
+                <div class="slide-up delay-400 flex flex-col sm:flex-row items-center gap-4">
+                  <button id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg">
+                    <span>Explore Services</span>
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+
+                  <button id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span>Contact Our Team</span>
+                  </button>
+                </div>
               </div>
 
-              <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">
-                Advanced Digital &amp; Intelligence Solutions
-              </h1>
-
-              <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.
-              </p>
-
-              <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg">
-                  <span>Explore Services</span>
-                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </button>
-
-                <button id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span>Contact Our Team</span>
-                </button>
+              <!-- Right Floating Orb Visual -->
+              <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                <div class="hero-orb-container">
+                  <!-- Main glowing orb -->
+                  <div class="hero-orb"></div>
+                  
+                  <!-- Inner orb with subtle rotation and cloud icon -->
+                  <div class="hero-orb-inner">
+                    <!-- <span class="text-8xl drop-shadow-2xl opacity-90">☁️</span> -->
+                  </div>
+                  
+                  <!-- Extra subtle glow rings -->
+                  <div class="absolute inset-0 border border-cyan-400/20 rounded-full animate-[ping_8s_ease-out_infinite]"></div>
+                  <div class="absolute inset-12 border border-blue-400/30 rounded-full animate-[ping_12s_ease-out_infinite_2s]"></div>
+                </div>
               </div>
             </div>
           </div>
