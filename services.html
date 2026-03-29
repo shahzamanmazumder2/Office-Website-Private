@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" class="h-full">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services - Cloud Connect AI</title>
@@ -8,7 +8,8 @@
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     * { font-family: 'Space Grotesk', sans-serif; }
     
@@ -61,28 +62,6 @@
       75% { transform: translate(-40px, 35px); }
     }
     
-.orb {
-      position: fixed;
-      border-radius: 5%;
-      filter: blur(2px);
-      opacity: 0.05;
-      z-index: 3;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(30px, -40px); }
-      50% { transform: translate(-20px, -60px); }
-      75% { transform: translate(40px, -30px); }
-    }
-    
-    @keyframes floatReverse {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(-35px, 45px); }
-      50% { transform: translate(25px, 55px); }
-      75% { transform: translate(-40px, 35px); }
-    }
-    
     @keyframes floatSlow {
       0%, 100% { transform: translate(0, 0); }
       33% { transform: translate(50px, -50px); }
@@ -116,17 +95,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    .delay-500 { animation-delay: 0.5s; }
-    
-    .content-wrapper {
-      position: relative;
-      z-index: 10;
-    }
-
     .scroll-animate {
       opacity: 0;
       transform: translateY(40px);
@@ -136,28 +104,6 @@
     .scroll-animate.in-view {
       opacity: 1;
       transform: translateY(0);
-    }
-
-    .scroll-animate-left {
-      opacity: 0;
-      transform: translateX(-60px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scroll-animate-left.in-view {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .scroll-animate-right {
-      opacity: 0;
-      transform: translateX(60px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .scroll-animate-right.in-view {
-      opacity: 1;
-      transform: translateX(0);
     }
 
     .service-card {
@@ -170,41 +116,9 @@
       border-color: #3b82f6;
       box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
     }
-
-    .cta-section {
-      background: linear-gradient(135deg, rgba(10, 14, 39, 0.8), rgba(30, 20, 60, 0.8));
-      border: 1px solid rgba(59, 130, 246, 0.3);
-    }
-    
-    .capability-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .capability-check {
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-    }
-    
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
   </style>
 
-
-
-  <!-- ==================== NAVBAR SPECIFIC CSS ==================== -->
+  <!-- ==================== NAVBAR & HERO CSS ==================== -->
   <style>
     .nav-link {
       position: relative;
@@ -223,138 +137,165 @@
     .nav-link:hover::after {
       width: 100%;
     }
+
+    .hero-bg {
+      background-image: url('image/services_hero.png');
+      background-size: cover;
+      background-position: center;
+      /* Removed background-attachment: fixed so it scrolls normally */
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Your original orb style - orbs visible across whole page */
+    .orb {
+      position: fixed;
+      border-radius: 5%;
+      filter: blur(2px);
+      opacity: 0.05;
+      z-index: 3;
+    }
+
+    /* Strong dark overlay for hero section */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #0a0e27;
+      opacity: 0.78;        /* Strong overlay for readability */
+      z-index: 1;
+    }
+
+    /* Transparent navbar */
     nav {
       z-index: 50;
+      background: transparent !important;
     }
   </style>
 
-
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full">
+</head>
+<body class="h-full">
   <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
-   <div class="tech-pattern"></div>
-   
-  
-   <!-- Floating Orbs - Dynamic Background -->
-   <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
-   <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
-   <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
-   <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4 hidden md:block" style="position: fixed; animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
-   <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0 hidden md:block" style="position: fixed; animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
-   <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2 hidden md:block" style="position: fixed; animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
-   <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
-   <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
-   <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
-   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
-   
-   
-   <!-- Mobile orbs - subtle -->
-   <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
-   <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
-   
-   <!-- NEW: Extra Orb 1 for Mobile -->
-   <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
-        style="position: fixed; animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
-   
-   <!-- NEW: Extra Orb 2 for Mobile -->
-   <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
-        style="position: fixed; animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div> 
+    <div class="tech-pattern"></div>
 
+    <!-- Floating Orbs - Whole Page (Your original style) -->
+    <!-- Desktop Orbs -->
+    <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="animation: float 15s ease-in-out infinite;"></div>
+    <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
+    <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
+    <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4 hidden md:block" style="animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
+    <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0 hidden md:block" style="animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
+    <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2 hidden md:block" style="animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
+    <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
+    <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
+    <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
+    <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
 
+    <!-- Mobile Orbs -->
+    <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
+    <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
+    <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
+         style="animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
+    <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
+         style="animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
 
+    <div class="content-wrapper">
 
-   <div class="content-wrapper">
-    
-    
-    <!-- Navbar -->
-    <!-- Navbar -->
-      <!-- ==================== NAVBAR (FIXED & WORKING) ==================== -->
-    <!-- Navbar -->
-<nav class="relative fade-in">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+      <!-- ==================== HERO SECTION WITH TRANSPARENT NAVBAR ==================== -->
+      <div class="relative hero-bg overflow-hidden min-h-screen flex flex-col">
 
-      <!-- Logo -->
-      <div class="flex items-center gap-2">
-        <div class="w-10 h-8 rounded-xl  flex items-center justify-center shadow-lg">
-<img src="image/logo.png" alt="CCAI Logo" >
-        </div>
-        <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+        <!-- Transparent Navbar -->
+        <nav class="relative fade-in z-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+              <!-- Logo -->
+              <div class="flex items-center gap-2">
+                <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
+                  <img src="image/logo.png" alt="CCAI Logo">
+                </div>
+                <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+              </div>
+
+              <!-- Desktop Navigation -->
+              <div class="hidden md:flex items-center gap-8">
+                <a href="./index.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
+                <a href="./services.html" class="nav-link nav-item text-white font-medium" data-page="solutions">Solutions</a>
+                <a href="./aboutus.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
+                <a href="./research.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
+              </div>
+
+              <!-- Contact Button -->
+              <div class="hidden md:flex items-center gap-4">
+                <a href="./contact.html">
+                  <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
+                    Contact Us
+                  </button>
+                </a>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
+              <div class="flex flex-col gap-3">
+                <a href="./index.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
+                <a href="./aboutus.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
+                <a href="./services.html" class="text-white font-medium py-2.5 px-4 rounded-lg">Solutions</a>
+                <a href="./research.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
+                <a href="./contact.html" class="mt-3 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 text-center shadow-md">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Hero Content -->
+        <main class="relative z-20 flex-1 flex items-center pt-12 pb-20">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="text-center max-w-4xl mx-auto">
+              <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
+                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                <span class="text-gray-300 text-sm">Enterprise Technology Services</span>
+              </div>
+
+              <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">
+                Advanced Digital &amp; Intelligence Solutions
+              </h1>
+
+              <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.
+              </p>
+
+              <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg">
+                  <span>Explore Services</span>
+                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </button>
+
+                <button id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>Contact Our Team</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-
-
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8">
-        <a href="./index.html"      class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
-        <a href="./services.html"  class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
-        <a href="./aboutus.html"    class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
-        <a href="./research.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
-      </div>
-
-      <!-- Contact Button (Desktop) -->
-      <div class="hidden md:flex items-center gap-4">
-        <a href="./contact.html">
-          <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
-            Contact Us
-          </button>
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
-        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-          <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
-      <div class="flex flex-col gap-3">
-        <a href="./index.html"     class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
-        <a href="./aboutus.html"   class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
-        <a href="./services.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Solutions</a>
-        <a href="./research.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
-        <a href="./contact.html"   class="mt-3 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 text-center shadow-md">
-          Contact Us
-        </a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-
-    
-    
-    
-
-
-
-
-
-
-    <!-- 1. Hero Section -->
-    <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
-     <div class="text-center max-w-4xl mx-auto">
-      <div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8"><span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span> <span class="text-gray-300 text-sm">Enterprise Technology Services</span>
-      </div>
-      <h1 id="hero-title" class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight glow-text mb-6">Advanced Digital &amp; Intelligence Solutions</h1>
-      <p id="hero-subtitle" class="slide-up delay-300 text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.</p>
-      <div class="slide-up delay-400 flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"><button id="hero-cta-primary" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group text-lg"> <span>Explore Services</span>
-        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg></button> <button id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 text-lg">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg><span>Contact Our Team</span> </button>
-      </div>
-     </div>
-    </main>
-    
-    
-    
-    
-    
+      <!-- ==================== HERO SECTION END ==================== -->
     
     
        <!-- Transparent Image Carousel -->
@@ -1096,128 +1037,144 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
 
 
 
+<script>
+  const defaultConfig = {
+    hero_title: 'Advanced Digital & Intelligence Solutions',
+    hero_subtitle: 'We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.',
+    hero_cta_primary: 'Explore Services',
+    hero_cta_secondary: 'Contact Our Team',
+    service_dt_title: 'Empowering the Future of Enterprise',
+    service_cs_title: 'Defending Your Digital Frontier',
+    service_bd_title: 'Actionable Insights from Complex Data',
+    service_ai_title: 'Next-Generation AI & Cognitive Solutions',
+    service_sd_title: 'Intelligence-Driven Software Engineering',
+    service_hr_title: 'Upskilling the Workforce for the Digital Era',
+    tech_description: 'Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.',
+    cta_final_title: 'Ready to build intelligent digital solutions for your organization?',
+    cta_final_primary: 'Start a Project',
+    cta_final_secondary: 'Contact Us',
+    footer_text: '© 2026 Cloud Connect AI. All rights reserved.',   // Updated year
+    font_family: 'Space Grotesk',
+    font_size: 16
+  };
 
+  async function onConfigChange(config) {
+    // Hero Section
+    const heroTitle = document.getElementById('hero-title');
+    const heroSubtitle = document.getElementById('hero-subtitle');
+    const ctaPrimary = document.getElementById('hero-cta-primary');
+    const ctaSecondary = document.getElementById('hero-cta-secondary');
 
+    if (heroTitle) heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
+    if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
 
-
-
-
-
-
-  <script>
-    const defaultConfig = {
-      hero_title: 'Advanced Digital & Intelligence Solutions',
-      hero_subtitle: 'We deliver enterprise technology solutions across artificial intelligence, cybersecurity, data analytics, and software engineering to help organizations innovate, secure, and scale their digital operations.',
-      hero_cta_primary: 'Explore Services',
-      hero_cta_secondary: 'Contact Our Team',
-      service_dt_title: 'Empowering the Future of Enterprise',
-      service_cs_title: 'Defending Your Digital Frontier',
-      service_bd_title: 'Actionable Insights from Complex Data',
-      service_ai_title: 'Next-Generation AI & Cognitive Solutions',
-      service_sd_title: 'Intelligence-Driven Software Engineering',
-      service_hr_title: 'Upskilling the Workforce for the Digital Era',
-      tech_description: 'Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.',
-      cta_final_title: 'Ready to build intelligent digital solutions for your organization?',
-      cta_final_primary: 'Start a Project',
-      cta_final_secondary: 'Contact Us',
-      footer_text: '© 2024 Cloud Connect AI. All rights reserved.',
-      font_family: 'Space Grotesk',
-      font_size: 16
-    };
-
-    async function onConfigChange(config) {
-      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
-      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      document.getElementById('hero-cta-primary').querySelector('span').textContent = config.hero_cta_primary || defaultConfig.hero_cta_primary;
-      document.getElementById('hero-cta-secondary').querySelector('span').textContent = config.hero_cta_secondary || defaultConfig.hero_cta_secondary;
-      
-      document.getElementById('service_dt_title').textContent = config.service_dt_title || defaultConfig.service_dt_title;
-      document.getElementById('service_cs_title').textContent = config.service_cs_title || defaultConfig.service_cs_title;
-      document.getElementById('service_bd_title').textContent = config.service_bd_title || defaultConfig.service_bd_title;
-      document.getElementById('service_ai_title').textContent = config.service_ai_title || defaultConfig.service_ai_title;
-      document.getElementById('service_sd_title').textContent = config.service_sd_title || defaultConfig.service_sd_title;
-      document.getElementById('service_hr_title').textContent = config.service_hr_title || defaultConfig.service_hr_title;
-      
-      document.getElementById('tech_description').textContent = config.tech_description || defaultConfig.tech_description;
-      
-      document.getElementById('cta_final_title').textContent = config.cta_final_title || defaultConfig.cta_final_title;
-      document.getElementById('cta_final_primary').textContent = config.cta_final_primary || defaultConfig.cta_final_primary;
-      document.getElementById('cta_final_secondary').textContent = config.cta_final_secondary || defaultConfig.cta_final_secondary;
-      
-      document.getElementById('footer_text').textContent = config.footer_text || defaultConfig.footer_text;
-
-      document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
-      const baseSize = config.font_size || defaultConfig.font_size;
-      document.getElementById('hero-subtitle').style.fontSize = `${baseSize * 1.25}px`;
+    // Primary CTA (has <span> inside)
+    if (ctaPrimary) {
+      const primarySpan = ctaPrimary.querySelector('span');
+      if (primarySpan) primarySpan.textContent = config.hero_cta_primary || defaultConfig.hero_cta_primary;
     }
 
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => {
-            config.font_family = value;
-            window.elementSdk.setConfig({ font_family: value });
-          }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => {
-            config.font_size = value;
-            window.elementSdk.setConfig({ font_size: value });
-          }
-        }
-      };
+    // Secondary CTA (has <span> inside)
+    if (ctaSecondary) {
+      const secondarySpan = ctaSecondary.querySelector('span');
+      if (secondarySpan) secondarySpan.textContent = config.hero_cta_secondary || defaultConfig.hero_cta_secondary;
     }
 
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ['hero_title', config.hero_title || defaultConfig.hero_title],
-        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-        ['hero_cta_primary', config.hero_cta_primary || defaultConfig.hero_cta_primary],
-        ['hero_cta_secondary', config.hero_cta_secondary || defaultConfig.hero_cta_secondary],
-        ['service_dt_title', config.service_dt_title || defaultConfig.service_dt_title],
-        ['service_cs_title', config.service_cs_title || defaultConfig.service_cs_title],
-        ['service_bd_title', config.service_bd_title || defaultConfig.service_bd_title],
-        ['service_ai_title', config.service_ai_title || defaultConfig.service_ai_title],
-        ['service_sd_title', config.service_sd_title || defaultConfig.service_sd_title],
-        ['service_hr_title', config.service_hr_title || defaultConfig.service_hr_title],
-        ['tech_description', config.tech_description || defaultConfig.tech_description],
-        ['cta_final_title', config.cta_final_title || defaultConfig.cta_final_title],
-        ['cta_final_primary', config.cta_final_primary || defaultConfig.cta_final_primary],
-        ['cta_final_secondary', config.cta_final_secondary || defaultConfig.cta_final_secondary],
-        ['footer_text', config.footer_text || defaultConfig.footer_text]
-      ]);
-    }
+    // Other sections (keep as they are)
+    const ids = [
+      'service_dt_title', 'service_cs_title', 'service_bd_title',
+      'service_ai_title', 'service_sd_title', 'service_hr_title',
+      'tech_description', 'cta_final_title', 'cta_final_primary',
+      'cta_final_secondary'
+    ];
 
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const scrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          scrollObserver.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
-      scrollObserver.observe(el);
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && config[id] !== undefined) {
+        el.textContent = config[id];
+      }
     });
 
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
+    if (document.getElementById('footer_text')) {
+      document.getElementById('footer_text').textContent = config.footer_text || defaultConfig.footer_text;
     }
-  </script>
 
+    // Font changes
+    document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+    
+    const baseSize = config.font_size || defaultConfig.font_size;
+    if (heroSubtitle) heroSubtitle.style.fontSize = `${baseSize * 1.25}px`;
+  }
 
-<!-- ==================== FIXED NAVBAR JAVASCRIPT - ACTIVE PAGE HIGHLIGHT FIXED ==================== -->
+  function mapToCapabilities(config) {
+    return {
+      recolorables: [],
+      borderables: [],
+      fontEditable: {
+        get: () => config.font_family || defaultConfig.font_family,
+        set: (value) => {
+          config.font_family = value;
+          window.elementSdk.setConfig({ font_family: value });
+        }
+      },
+      fontSizeable: {
+        get: () => config.font_size || defaultConfig.font_size,
+        set: (value) => {
+          config.font_size = value;
+          window.elementSdk.setConfig({ font_size: value });
+        }
+      }
+    };
+  }
+
+  function mapToEditPanelValues(config) {
+    return new Map([
+      ['hero_title', config.hero_title || defaultConfig.hero_title],
+      ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+      ['hero_cta_primary', config.hero_cta_primary || defaultConfig.hero_cta_primary],
+      ['hero_cta_secondary', config.hero_cta_secondary || defaultConfig.hero_cta_secondary],
+      ['service_dt_title', config.service_dt_title || defaultConfig.service_dt_title],
+      ['service_cs_title', config.service_cs_title || defaultConfig.service_cs_title],
+      ['service_bd_title', config.service_bd_title || defaultConfig.service_bd_title],
+      ['service_ai_title', config.service_ai_title || defaultConfig.service_ai_title],
+      ['service_sd_title', config.service_sd_title || defaultConfig.service_sd_title],
+      ['service_hr_title', config.service_hr_title || defaultConfig.service_hr_title],
+      ['tech_description', config.tech_description || defaultConfig.tech_description],
+      ['cta_final_title', config.cta_final_title || defaultConfig.cta_final_title],
+      ['cta_final_primary', config.cta_final_primary || defaultConfig.cta_final_primary],
+      ['cta_final_secondary', config.cta_final_secondary || defaultConfig.cta_final_secondary],
+      ['footer_text', config.footer_text || defaultConfig.footer_text]
+    ]);
+  }
+
+  // Intersection Observer for scroll animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all scroll-animate elements
+  document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right').forEach(el => {
+    scrollObserver.observe(el);
+  });
+
+  // Initialize Element SDK
+  if (window.elementSdk) {
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange,
+      mapToCapabilities,
+      mapToEditPanelValues
+    });
+  }
+</script>
+
+<!-- ==================== NAVBAR + MOBILE MENU JAVASCRIPT ==================== -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     
@@ -1227,7 +1184,7 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     const menuIcon = document.getElementById('menu-icon');
     let isOpen = false;
 
-    if (mobileBtn) {
+    if (mobileBtn && mobileMenu) {
       mobileBtn.addEventListener('click', () => {
         isOpen = !isOpen;
         mobileMenu.classList.toggle('hidden');
@@ -1241,27 +1198,26 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
       });
     }
 
-    // Close mobile menu when clicking any link
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        isOpen = false;
-        if (menuIcon) menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    // Close mobile menu when clicking any link inside it
+    if (mobileMenu) {
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          isOpen = false;
+          if (menuIcon) menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        });
       });
-    });
+    }
 
-    // ==================== FIXED ACTIVE PAGE HIGHLIGHT ====================
+    // Active Page Highlight
     function highlightActivePage() {
       const currentPath = window.location.pathname.toLowerCase();
       const navItems = document.querySelectorAll('.nav-item');
 
       navItems.forEach(item => {
         const page = item.getAttribute('data-page');
-        
-        // Remove active from all first
         item.classList.remove('active', 'text-white');
 
-        // Set active based on current page
         if (
           (page === 'home' && (currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/'))) ||
           (page === 'solutions' && currentPath.includes('services.html')) ||
