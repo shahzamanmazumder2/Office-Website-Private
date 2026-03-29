@@ -40,13 +40,12 @@
     }
 
     .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.5;
+      position: absolute;
+      border-radius: 5%;
+      filter: blur(0px);
+      opacity: 0.05;
       z-index: 3;
     }
-
     /* Scroll Animations */
     .scroll-animate {
       opacity: 0;
@@ -94,21 +93,31 @@
     <div class="tech-pattern"></div>
 
     <!-- Floating Orbs - Same as index.html -->
-    <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
-    <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
-    <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
-    <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4 hidden md:block" style="position: fixed; animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
-    <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0 hidden md:block" style="position: fixed; animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
-    <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2 hidden md:block" style="position: fixed; animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
-    <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
-    <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
-    <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
-    <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
-    
-    <!-- Mobile orbs -->
-    <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.3;"></div>
-    <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.2;"></div>
 
+   <!-- Floating Orbs - Dynamic Background -->
+   <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
+   <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
+   <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
+   <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4 hidden md:block" style="position: fixed; animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
+   <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0 hidden md:block" style="position: fixed; animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
+   <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2 hidden md:block" style="position: fixed; animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
+   <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
+   <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
+   <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
+   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
+   
+   
+   <!-- Mobile orbs - subtle -->
+   <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
+   <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
+   
+   <!-- NEW: Extra Orb 1 for Mobile -->
+   <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
+        style="position: fixed; animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
+   
+   <!-- NEW: Extra Orb 2 for Mobile -->
+   <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
+        style="position: fixed; animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
     <div class="content-wrapper">
 
       <!-- ==================== NAVBAR ==================== -->
