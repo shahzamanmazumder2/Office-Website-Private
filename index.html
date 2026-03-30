@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloud Connect AI</title>
+
+
+  <!-- 2. Tailwind CDN as fallback (only loads if needed) -->
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -402,6 +407,7 @@
 
 <!-- Hero Section -->
 <!-- Hero Section -->
+<!-- HERO SECTION -->
 <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-10 pb-20">
 
   <!-- TOP PART -->
@@ -427,59 +433,59 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 mb-20">
-        <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl">
-          Get Started
+        <button onclick="window.location.href='#get-started'" 
+                class="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/30">
+          Get Started Free
         </button>
-        <button class="px-8 py-4 glass text-white font-bold rounded-xl">
-          Contact Us
+        <button onclick="window.location.href='#contact'" 
+                class="px-8 py-4 glass hover:bg-white/10 text-white font-bold rounded-xl transition-all duration-300">
+          Watch Demo
         </button>
       </div>
 
     </div>
 
-    <!-- RIGHT: IMAGE -->
+    <!-- RIGHT: IMAGE SLIDER -->
     <div class="relative flex justify-center lg:justify-end">
 
-      <div class="relative w-full max-w-md h-[340px] rounded-3xl overflow-hidden shadow-2xl">
+      <div class="relative w-full max-w-md h-[320px] rounded-3xl overflow-hidden shadow-2xl border border-white/10">
 
         <!-- IMAGE 1 -->
         <div id="img1"
-             class="absolute inset-0 bg-cover bg-center rounded-3xl transition-opacity duration-[3000ms] ease-in-out opacity-100 lg: animate-[float_6s_ease-in-out_infinite]"
-             style="background-image:url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b')">
+             class="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-3xl transition-opacity duration-1000 ease-in-out opacity-100"
+             style="background-image: url('image/car_01.png')">
 
-          <!-- DARK OVERLAY -->
-          <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
+          <!-- Dark Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 rounded-3xl"></div>
 
           <!-- Center Title -->
           <div class="absolute inset-0 flex items-center justify-center text-center text-white px-6 z-10">
-            <h3 class="text-3xl font-bold">Cloud Infrastructure</h3>
+            <h3 id="title1" class="text-3xl font-bold tracking-tight">Cloud Infrastructure</h3>
           </div>
 
           <!-- Bottom Glass Card -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
-            <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white text-center w-[88%] z-10">
+            <p id="desc1" class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
           </div>
-
         </div>
 
         <!-- IMAGE 2 -->
         <div id="img2"
-             class="absolute inset-0 bg-cover bg-center rounded-3xl transition-opacity duration-[3000ms] ease-in-out opacity-0 lg: animate-[float_6s_ease-in-out_infinite]"
-             style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475')">
+             class="absolute inset-0 bg-cover bg-center bg-no-repeat rounded-3xl transition-opacity duration-1000 ease-in-out opacity-0"
+             style="background-image: url('image/car_02.png')">
 
-          <!-- DARK OVERLAY -->
-          <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
+          <!-- Dark Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70 rounded-3xl"></div>
 
           <!-- Center Title -->
           <div class="absolute inset-0 flex items-center justify-center text-center text-white px-6 z-10">
-            <h3 class="text-3xl font-bold">AI Automation</h3>
+            <h3 id="title2" class="text-3xl font-bold tracking-tight">AI Automation</h3>
           </div>
 
           <!-- Bottom Glass Card -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
-            <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-white text-center w-[88%] z-10">
+            <p id="desc2" class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
           </div>
-
         </div>
 
       </div>
@@ -489,32 +495,35 @@
   </div>
 
   <!-- STATS -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-10">
-    <div class="glass rounded-2xl p-6 text-center">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mt-16">
+    <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
       <div class="text-3xl font-bold text-blue-400 mb-1">50+</div>
       <div class="text-gray-400 text-sm">Enterprise Clients</div>
     </div>
-    <div class="glass rounded-2xl p-6 text-center">
+    <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
       <div class="text-3xl font-bold text-purple-400 mb-1">99.99%</div>
       <div class="text-gray-400 text-sm">Uptime SLA</div>
     </div>
-    <div class="glass rounded-2xl p-6 text-center">
+    <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
       <div class="text-3xl font-bold text-cyan-400 mb-1">25+</div>
       <div class="text-gray-400 text-sm">Countries</div>
     </div>
-    <div class="glass rounded-2xl p-6 text-center">
+    <div class="glass rounded-2xl p-6 text-center hover:scale-105 transition-transform duration-300">
       <div class="text-3xl font-bold text-blue-300 mb-1">24/7</div>
       <div class="text-gray-400 text-sm">Global Support</div>
     </div>
   </div>
 
-
-
+</main>
 
 <style>
 @keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+#img1, #img2 {
+  animation: float 7s ease-in-out infinite;
 }
 </style>
 
@@ -522,13 +531,41 @@
 window.onload = function () {
 
   const slides = [
-    { img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", title: "Cloud Infrastructure" },
-    { img: "https://images.unsplash.com/photo-1518770660439-4636190af475", title: "AI Automation" },
-    { img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085", title: "Modern Development" },
-    { img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6", title: "Enterprise Security" },
-    { img: "https://images.unsplash.com/photo-1504639725590-34d0984388bd", title: "Global Connectivity" },
-    { img: "https://images.unsplash.com/photo-1537432376769-00a91d0c4c1d", title: "Data Intelligence" },
-    { img: "https://images.unsplash.com/photo-1526378722484-bd91ca387e72", title: "Scalable Architecture" }
+    { 
+      img: "image/car_01.png", 
+      title: "Cloud Infrastructure",
+      desc: "Enterprise-grade cloud solutions with unmatched reliability"
+    },
+    { 
+      img: "image/car_02.png", 
+      title: "AI Automation",
+      desc: "Intelligent workflows that scale with your business"
+    },
+    { 
+      img: "image/car_03.png", 
+      title: "Modern Development",
+      desc: "Lightning-fast deployment and DevOps excellence"
+    },
+    { 
+      img: "image/car_04.png", 
+      title: "Enterprise Security",
+      desc: "Zero-trust architecture protecting your most valuable assets"
+    },
+    { 
+      img: "image/car_05.png", 
+      title: "Global Connectivity",
+      desc: "Seamless connection across continents and time zones"
+    },
+    { 
+      img: "image/car_06.png", 
+      title: "Data Intelligence",
+      desc: "Real-time insights powered by advanced analytics"
+    },
+    { 
+      img: "image/car_07.png", 
+      title: "Scalable Architecture",
+      desc: "Built to grow from startup to global enterprise"
+    }
   ];
 
   let index = 0;
@@ -537,37 +574,37 @@ window.onload = function () {
   const img1 = document.getElementById("img1");
   const img2 = document.getElementById("img2");
 
+  const title1 = document.getElementById("title1");
+  const title2 = document.getElementById("title2");
+  const desc1 = document.getElementById("desc1");
+  const desc2 = document.getElementById("desc2");
+
+  // Change slide every 5.5 seconds
   setInterval(() => {
     index = (index + 1) % slides.length;
     const slide = slides[index];
 
-    const content = `
-      <div class="absolute inset-0 bg-black/50 rounded-3xl"></div>
-
-      <div class="absolute inset-0 flex items-center justify-center text-white px-6 z-10">
-        <h3 class="text-3xl font-bold">${slide.title}</h3>
-      </div>
-
-      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 backdrop-blur-lg bg-white/10 border border-white/10 rounded-xl px-6 py-3 text-white text-center w-[85%] z-10">
-        <p class="text-sm opacity-90">Unified, secure, and infinitely scalable enterprise systems.</p>
-      </div>
-    `;
-
     if (showingFirst) {
-      img2.style.backgroundImage = `url(${slide.img})`;
-      img2.innerHTML = content;
+      // Update img2 and show it
+      img2.style.backgroundImage = `url('${slide.img}')`;
+      title2.textContent = slide.title;
+      desc2.textContent = slide.desc;
+      
       img2.style.opacity = "1";
       img1.style.opacity = "0";
     } else {
-      img1.style.backgroundImage = `url(${slide.img})`;
-      img1.innerHTML = content;
+      // Update img1 and show it
+      img1.style.backgroundImage = `url('${slide.img}')`;
+      title1.textContent = slide.title;
+      desc1.textContent = slide.desc;
+      
       img1.style.opacity = "1";
       img2.style.opacity = "0";
     }
 
     showingFirst = !showingFirst;
 
-  }, 6000);
+  }, 5500);
 
 };
 </script>
@@ -579,15 +616,6 @@ window.onload = function () {
 
 
 
-</main>
-
-
-
-
-
-
-
-
 
 
 
@@ -604,60 +632,6 @@ window.onload = function () {
 
     
     
-
-<section>
-
-
-
-  <!-- Technologies We Work On Section -->
-<div id="tech-we-work-section">
-  <p style="color:#888; text-align:center; padding:60px;">Loading technologies section...</p>
-</div>
-
-<script>
-async function loadTechWeWork() {
-  try {
-    const res = await fetch('tech_we_work.html');
-    const html = await res.text();
-    document.getElementById('tech-we-work-section').innerHTML = html;
-
-    // Trigger animations after loading
-    setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          document.querySelector('.tech-text').classList.add('in-view');
-          document.querySelector('.tech-grid').classList.add('in-view');
-
-          document.querySelectorAll('.tech-card').forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('in-view');
-            }, 100 + (index * 80));
-          });
-        }
-      }, { threshold: 0.2 });
-
-      const section = document.querySelector('.section-technologies');
-      if (section) observer.observe(section);
-    }, 150);
-
-  } catch (e) {
-    console.error('Failed to load Technologies We Work section', e);
-    document.getElementById('tech-we-work-section').innerHTML = 
-      `<p style="color:red; text-align:center; padding:60px;">Failed to load technologies section.</p>`;
-  }
-}
-
-// Load when page is ready
-document.addEventListener('DOMContentLoaded', loadTechWeWork);
-</script>
-
-
-
-
-
-</section>
-
-
 
 
     
@@ -789,6 +763,60 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
 
 
 
+<section>
+
+
+
+<!-- Technologies We Work On Section -->
+<div id="tech-we-work-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading technologies section...</p>
+</div>
+
+<script>
+async function loadTechWeWork() {
+  try {
+    const res = await fetch('tech_we_work.html');
+    const html = await res.text();
+    document.getElementById('tech-we-work-section').innerHTML = html;
+
+    // Trigger animations after loading
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.tech-text').classList.add('in-view');
+          document.querySelector('.tech-grid').classList.add('in-view');
+
+          document.querySelectorAll('.tech-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-technologies');
+      if (section) observer.observe(section);
+    }, 150);
+
+  } catch (e) {
+    console.error('Failed to load Technologies We Work section', e);
+    document.getElementById('tech-we-work-section').innerHTML = 
+      `<p style="color:red; text-align:center; padding:60px;">Failed to load technologies section.</p>`;
+  }
+}
+
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadTechWeWork);
+</script>
+
+
+
+
+
+</section>
+
+
+
 
 
 
@@ -826,51 +854,196 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
 
     
     <!-- Featured Case Studies -->
-    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-     <div class="text-center mb-16 scroll-animate">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Featured Case Studies</h2>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Real-world impact from our security interventions</p>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Case Study 1 -->
-      <div class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate-left">
-       <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 opacity-80"></div>
-       <div class="case-study-overlay"></div>
-       <div class="relative h-full p-8 flex flex-col justify-end text-white">
+<!-- Featured Case Studies with Improved Modal -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="text-center mb-16 scroll-animate">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Featured Case Studies</h2>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto">Real-world impact from our security interventions</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    
+    <!-- Case Study 1 -->
+    <div onclick="showCaseModal(1)" class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate-left cursor-pointer hover:scale-[1.02] transition-all duration-300">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 opacity-80"></div>
+      <div class="case-study-overlay"></div>
+      <div class="relative h-full p-8 flex flex-col justify-end text-white">
         <div class="inline-block bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 w-fit">
-         Financial Services
+          Financial Services
         </div>
         <h3 class="text-2xl font-bold mb-3">Paramilitary VAPT Deployment</h3>
-        <p class="text-gray-200 mb-6">Neutralized 47 critical vulnerabilities before they could be exploited.</p><a href="#case1" class="text-blue-300 hover:text-blue-200 font-semibold transition-colors">Read Story →</a>
-       </div>
-      </div><!-- Case Study 2 -->
-      <div class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate">
-       <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-cyan-600 opacity-80"></div>
-       <div class="case-study-overlay"></div>
-       <div class="relative h-full p-8 flex flex-col justify-end text-white">
+        <p class="text-gray-200 mb-6">Neutralized 47 critical vulnerabilities before they could be exploited.</p>
+        <span class="text-blue-300 hover:text-blue-200 font-semibold transition-colors inline-flex items-center">
+          Read Full Story →
+        </span>
+      </div>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div onclick="showCaseModal(2)" class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate cursor-pointer hover:scale-[1.02] transition-all duration-300">
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 to-cyan-600 opacity-80"></div>
+      <div class="case-study-overlay"></div>
+      <div class="relative h-full p-8 flex flex-col justify-end text-white">
         <div class="inline-block bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 w-fit">
-         Healthcare
+          Healthcare
         </div>
         <h3 class="text-2xl font-bold mb-3">Enterprise Threat Neutralization</h3>
-        <p class="text-gray-200 mb-6">Prevented 12 advanced persistent threat campaigns in 6 months.</p><a href="#case2" class="text-blue-300 hover:text-blue-200 font-semibold transition-colors">Read Story →</a>
-       </div>
-      </div><!-- Case Study 3 -->
-      <div class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate-right">
-       <div class="absolute inset-0 bg-gradient-to-br from-cyan-600 to-blue-600 opacity-80"></div>
-       <div class="case-study-overlay"></div>
-       <div class="relative h-full p-8 flex flex-col justify-end text-white">
+        <p class="text-gray-200 mb-6">Prevented 12 advanced persistent threat campaigns in 6 months.</p>
+        <span class="text-blue-300 hover:text-blue-200 font-semibold transition-colors inline-flex items-center">
+          Read Full Story →
+        </span>
+      </div>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div onclick="showCaseModal(3)" class="case-study-card glass rounded-2xl overflow-hidden h-96 scroll-animate-right cursor-pointer hover:scale-[1.02] transition-all duration-300">
+      <div class="absolute inset-0 bg-gradient-to-br from-cyan-600 to-blue-600 opacity-80"></div>
+      <div class="case-study-overlay"></div>
+      <div class="relative h-full p-8 flex flex-col justify-end text-white">
         <div class="inline-block bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4 w-fit">
-         Technology
+          Technology
         </div>
         <h3 class="text-2xl font-bold mb-3">Digital Resilience Transformation</h3>
-        <p class="text-gray-200 mb-6">Improved security posture by 340%, achieving industry-leading compliance.</p><a href="#case3" class="text-blue-300 hover:text-blue-200 font-semibold transition-colors">Read Story →</a>
-       </div>
+        <p class="text-gray-200 mb-6">Improved security posture by 340%, achieving industry-leading compliance.</p>
+        <span class="text-blue-300 hover:text-blue-200 font-semibold transition-colors inline-flex items-center">
+          Read Full Story →
+        </span>
       </div>
-     </div>
-    </section>
-    
-    
-    
+    </div>
+
+  </div>
+</section>
+
+<!-- Improved Case Study Modal -->
+<div id="caseModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-[1000] p-4">
+  <div class="bg-[#0f172a] rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-hidden shadow-2xl border border-white/10">
+
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b border-white/10 px-8 py-6">
+      <h2 id="modalTitle" class="text-2xl font-bold text-white">Case Study</h2>
+      <button onclick="closeCaseModal()" 
+              class="text-4xl leading-none text-gray-400 hover:text-white transition-colors w-10 h-10 flex items-center justify-center">
+        ×
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div id="modalContent" class="p-8 md:p-10 overflow-y-auto max-h-[calc(92vh-180px)] text-gray-300 leading-relaxed custom-scroll">
+      <!-- Dynamic content injected here -->
+    </div>
+
+    <!-- Modal Footer - Fixed & Clear -->
+    <div class="border-t border-white/10 px-8 py-8 bg-[#0a0e1f]">
+      <div class="flex flex-col sm:flex-row gap-4 justify-end">
+        <button onclick="closeCaseModal()" 
+                class="px-8 py-3.5 text-gray-300 hover:text-white transition-colors font-medium">
+          Close
+        </button>
+        <a href="contact.html" 
+           class="px-10 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold rounded-2xl transition-all duration-300 text-center shadow-lg shadow-blue-500/30">
+          Get Similar Solution for Your Business
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Case Studies Data
+const caseStudies = {
+  1: {
+    title: "Paramilitary VAPT Deployment",
+    content: `
+      <div class="prose prose-invert max-w-none text-base">
+        <p class="text-lg leading-relaxed">We were engaged by a leading financial institution to conduct comprehensive Vulnerability Assessment and Penetration Testing across their critical infrastructure.</p>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">The Challenge</h4>
+        <p>The client was facing increasing sophisticated threats targeting their core banking systems and customer data.</p>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">Our Approach</h4>
+        <ul class="list-disc pl-6 space-y-3">
+          <li>Multi-phase network and application penetration testing</li>
+          <li>API security evaluation</li>
+          <li>Social engineering simulation</li>
+          <li>Zero-trust architecture review</li>
+        </ul>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">Results</h4>
+        <p class="text-green-400 font-medium text-lg">• 47 critical & high vulnerabilities neutralized<br>
+           • Security posture improved by 280%<br>
+           • Zero successful exploits post-deployment</p>
+      </div>
+    `
+  },
+  2: {
+    title: "Enterprise Threat Neutralization",
+    content: `
+      <div class="prose prose-invert max-w-none text-base">
+        <p class="text-lg leading-relaxed">A major healthcare provider was under sustained attack from multiple Advanced Persistent Threats (APTs).</p>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">Challenge</h4>
+        <p>12 different APT campaigns attempting to exfiltrate sensitive patient and research data.</p>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">Outcome</h4>
+        <p class="text-green-400 font-medium text-lg">All threats neutralized within 6 months<br>
+           No patient data compromised<br>
+           Full recovery achieved with zero downtime</p>
+      </div>
+    `
+  },
+  3: {
+    title: "Digital Resilience Transformation",
+    content: `
+      <div class="prose prose-invert max-w-none text-base">
+        <p class="text-lg leading-relaxed">A large technology company wanted to move from reactive to proactive security posture.</p>
+        
+        <h4 class="text-white text-xl font-semibold mt-10 mb-4">Key Achievements</h4>
+        <ul class="list-disc pl-6 space-y-3">
+          <li>Security posture improved by 340%</li>
+          <li>Achieved industry-leading compliance</li>
+          <li>Implemented full Zero Trust Architecture</li>
+          <li>Reduced threat detection time by 87%</li>
+        </ul>
+      </div>
+    `
+  }
+};
+
+function showCaseModal(id) {
+  const modal = document.getElementById('caseModal');
+  const titleEl = document.getElementById('modalTitle');
+  const contentEl = document.getElementById('modalContent');
+
+  const study = caseStudies[id];
+  titleEl.textContent = study.title;
+  contentEl.innerHTML = study.content;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCaseModal() {
+  const modal = document.getElementById('caseModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  document.body.style.overflow = 'visible';
+}
+
+// Close modal when clicking outside content
+document.getElementById('caseModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCaseModal();
+});
+
+// Close with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === "Escape") {
+    const modal = document.getElementById('caseModal');
+    if (!modal.classList.contains('hidden')) closeCaseModal();
+  }
+});
+</script>
     
     
     
@@ -944,34 +1117,36 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     
     
     <!-- Impact Metrics Bar -->
-    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="glass rounded-2xl p-8 text-center scroll-animate-left">
-       <div class="counter" id="projects-counter">
-        500+
-       </div>
-       <p class="text-gray-400 mt-3 text-lg">Security Projects</p>
-      </div>
-      <div class="glass rounded-2xl p-8 text-center scroll-animate">
-       <div class="counter" id="accuracy-counter">
-        98%
-       </div>
-       <p class="text-gray-400 mt-3 text-lg">Threat Detection Accuracy</p>
-      </div>
-      <div class="glass rounded-2xl p-8 text-center scroll-animate">
-       <div class="counter" id="enterprises-counter">
-        150+
-       </div>
-       <p class="text-gray-400 mt-3 text-lg">Enterprises Transformed</p>
-      </div>
-      <div class="glass rounded-2xl p-8 text-center scroll-animate-right">
-       <div class="counter" id="threats-counter">
-        10K+
-       </div>
-       <p class="text-gray-400 mt-3 text-lg">Threats Neutralized</p>
-      </div>
-     </div>
-    </section>
+<!-- Impact Metrics Bar - Small Startup Version -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <!-- Projects -->
+    <div class="glass rounded-2xl p-8 text-center scroll-animate-left">
+      <div class="counter text-4xl md:text-5xl font-bold text-blue-400" id="projects-counter">28+</div>
+      <p class="text-gray-400 mt-3 text-lg">Security Projects</p>
+    </div>
+
+    <!-- Accuracy -->
+    <div class="glass rounded-2xl p-8 text-center scroll-animate">
+      <div class="counter text-4xl md:text-5xl font-bold text-purple-400" id="accuracy-counter">96%</div>
+      <p class="text-gray-400 mt-3 text-lg">Threat Detection Accuracy</p>
+    </div>
+
+    <!-- Enterprises -->
+    <div class="glass rounded-2xl p-8 text-center scroll-animate">
+      <div class="counter text-4xl md:text-5xl font-bold text-cyan-400" id="enterprises-counter">12+</div>
+      <p class="text-gray-400 mt-3 text-lg">Enterprises Transformed</p>
+    </div>
+
+    <!-- Threats Neutralized -->
+    <div class="glass rounded-2xl p-8 text-center scroll-animate-right">
+      <div class="counter text-4xl md:text-5xl font-bold text-blue-300" id="threats-counter">1.4K+</div>
+      <p class="text-gray-400 mt-3 text-lg">Threats Neutralized</p>
+    </div>
+
+  </div>
+</section>
     
     
     
@@ -1232,48 +1407,200 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     
     
     <!-- News & Feed Section -->
-    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mb-0">
-     <div class="text-center mb-16 scroll-animate">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">News &amp; Updates</h2>
-      <p class="text-xl text-gray-400 max-w-2xl mx-auto">Latest security trends, company news, and industry insights</p>
-     </div>
-     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- News Card 1 -->
-      <div class="news-card glass rounded-2xl overflow-hidden scroll-animate-left group hover:border-blue-500 border border-transparent transition-all">
-       <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800"><img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=500&amp;h=300&amp;fit=crop" alt="News" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f70d504c0?w=500&amp;h=300&amp;fit=crop'">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center gap-2 mb-3"><span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-semibold">Security</span> <span class="text-gray-500 text-xs">3 days ago</span>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">New AI Threats Require Advanced Defense Strategies</h3>
-        <p class="text-gray-400 text-sm mb-4">Emerging AI-based attack vectors demand sophisticated detection and response mechanisms to protect enterprises.</p><a href="#" class="text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">Read More →</a>
-       </div>
-      </div><!-- News Card 2 -->
-      <div class="news-card glass rounded-2xl overflow-hidden scroll-animate group hover:border-purple-500 border border-transparent transition-all">
-       <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-purple-600 to-purple-800"><img src="https://images.unsplash.com/photo-1526374965328-7f5ae4e8a83f?w=500&amp;h=300&amp;fit=crop" alt="News" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&amp;h=300&amp;fit=crop'">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center gap-2 mb-3"><span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-semibold">Company</span> <span class="text-gray-500 text-xs">1 week ago</span>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">Cloud Connect AI Expands to APAC Region</h3>
-        <p class="text-gray-400 text-sm mb-4">Establishing regional data centers to provide faster response times and localized compliance support across Asia-Pacific.</p><a href="#" class="text-purple-400 hover:text-purple-300 text-sm font-semibold transition-colors">Read More →</a>
-       </div>
-      </div><!-- News Card 3 -->
-      <div class="news-card glass rounded-2xl overflow-hidden scroll-animate-right group hover:border-cyan-500 border border-transparent transition-all">
-       <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-cyan-600 to-cyan-800"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&amp;h=300&amp;fit=crop" alt="News" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=500&amp;h=300&amp;fit=crop'">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-       </div>
-       <div class="p-6">
-        <div class="flex items-center gap-2 mb-3"><span class="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-xs font-semibold">Report</span> <span class="text-gray-500 text-xs">2 weeks ago</span>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-3">2024 Cybersecurity Threat Landscape Report Released</h3>
-        <p class="text-gray-400 text-sm mb-4">Comprehensive analysis of emerging threats and recommended security controls for enterprise protection.</p><a href="#" class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Read More →</a>
-       </div>
-      </div>
-     </div>
-    </section>
+<!-- News & Feed Section with Modal + Fallback Images -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 mb-0">
+  <div class="text-center mb-16 scroll-animate">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">News & Updates</h2>
+    <p class="text-xl text-gray-400 max-w-2xl mx-auto">Latest security trends, company news, and industry insights from Bangladesh</p>
+  </div>
 
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- News Card 1 -->
+    <div onclick="showNewsModal(1)" class="news-card glass rounded-2xl overflow-hidden scroll-animate-left group hover:border-blue-500 border border-transparent transition-all cursor-pointer">
+      <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
+        <img src="image/news_01.png" 
+             alt="Ransomware Attack" loading="lazy" 
+             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+             onerror="this.src='https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-semibold">Security</span> 
+          <span class="text-gray-500 text-xs">3 days ago</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3">Ransomware Attack Hits Major Bangladeshi Logistics Company</h3>
+        <p class="text-gray-400 text-sm mb-6 line-clamp-3">A major logistics firm in Chattogram was hit by a sophisticated ransomware attack last week. Our team shares key lessons for Bangladeshi businesses.</p>
+        <span class="text-blue-400 hover:text-blue-300 text-sm font-semibold transition-colors">Read Full Article →</span>
+      </div>
+    </div>
+
+    <!-- News Card 2 -->
+    <div onclick="showNewsModal(2)" class="news-card glass rounded-2xl overflow-hidden scroll-animate group hover:border-purple-500 border border-transparent transition-all cursor-pointer">
+      <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-purple-600 to-purple-800">
+        <img src="image/news_02.png" 
+             alt="Company Expansion" loading="lazy" 
+             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+             onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f5ae4e8a83f?w=600&h=400&fit=crop'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-semibold">Company</span> 
+          <span class="text-gray-500 text-xs">1 week ago</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3">Cloud Connect AI Opens New Office in Dhaka</h3>
+        <p class="text-gray-400 text-sm mb-6 line-clamp-3">We are excited to announce the opening of our new headquarters in Banani, Dhaka to better serve Bangladeshi enterprises.</p>
+        <span class="text-purple-400 hover:text-purple-300 text-sm font-semibold transition-colors">Read Full Article →</span>
+      </div>
+    </div>
+
+    <!-- News Card 3 -->
+    <div onclick="showNewsModal(3)" class="news-card glass rounded-2xl overflow-hidden scroll-animate-right group hover:border-cyan-500 border border-transparent transition-all cursor-pointer">
+      <div class="relative w-full h-48 overflow-hidden bg-gradient-to-br from-cyan-600 to-cyan-800">
+        <img src="image/news_03.png" 
+             alt="Cybersecurity Report" loading="lazy" 
+             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+             onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="px-3 py-1 bg-cyan-500/20 text-cyan-300 rounded-full text-xs font-semibold">Report</span> 
+          <span class="text-gray-500 text-xs">2 weeks ago</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3">Bangladesh Cybersecurity Threat Landscape 2025</h3>
+        <p class="text-gray-400 text-sm mb-6 line-clamp-3">Our latest report highlights rising ransomware attacks and recommends practical steps for Bangladeshi SMEs and banks.</p>
+        <span class="text-cyan-400 hover:text-cyan-300 text-sm font-semibold transition-colors">Read Full Article →</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- News Modal -->
+<div id="newsModal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-[1000] p-4">
+  <div class="bg-[#0f172a] rounded-3xl max-w-3xl w-full max-h-[92vh] overflow-hidden shadow-2xl border border-white/10">
+
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b border-white/10 px-8 py-6">
+      <div>
+        <span id="modalCategory" class="px-3 py-1 text-xs font-semibold rounded-full"></span>
+        <span id="modalDate" class="text-gray-500 text-sm ml-3"></span>
+      </div>
+      <button onclick="closeNewsModal()" 
+              class="text-4xl leading-none text-gray-400 hover:text-white transition-colors w-10 h-10 flex items-center justify-center">
+        ×
+      </button>
+    </div>
+
+    <!-- Modal Content -->
+    <div id="newsModalContent" class="p-8 md:p-10 overflow-y-auto max-h-[calc(92vh-140px)] text-gray-300 leading-relaxed">
+      <!-- Content injected by JS -->
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="border-t border-white/10 px-8 py-6 bg-[#0a0e1f] flex justify-end">
+      <button onclick="closeNewsModal()" 
+              class="px-8 py-3 text-gray-300 hover:text-white font-medium transition-colors">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// News Data
+const newsData = {
+  1: {
+    category: "Security",
+    date: "3 days ago",
+    title: "Ransomware Attack Hits Major Bangladeshi Logistics Company",
+    content: `
+      <h3 class="text-2xl font-bold text-white mb-6">Ransomware Attack on Chattogram Logistics Firm</h3>
+      <p class="mb-6">Last week, a prominent logistics company based in Chattogram suffered a severe ransomware attack that disrupted operations for over 48 hours.</p>
+      
+      <h4 class="text-white font-semibold mt-8 mb-4">What Happened:</h4>
+      <ul class="list-disc pl-6 space-y-3 mb-8">
+        <li>Attackers encrypted critical operational databases</li>
+        <li>Demanded significant ransom in cryptocurrency</li>
+        <li>Operations were partially restored after 48 hours</li>
+      </ul>
+      <p class="text-amber-400 font-medium">Key Lesson: Regular offline backups and incident response plans are essential for Bangladeshi businesses.</p>
+    `
+  },
+  2: {
+    category: "Company",
+    date: "1 week ago",
+    title: "Cloud Connect AI Opens New Office in Dhaka",
+    content: `
+      <h3 class="text-2xl font-bold text-white mb-6">Expanding Our Presence in Bangladesh</h3>
+      <p class="mb-6">We are proud to announce the opening of our new headquarters in Banani, Dhaka. This strategic move will allow us to serve our growing client base more effectively across the country.</p>
+      <p class="mb-6">The new facility includes a 24/7 Security Operations Center (SOC) and training rooms for local talent development.</p>
+    `
+  },
+  3: {
+    category: "Report",
+    date: "2 weeks ago",
+    title: "Bangladesh Cybersecurity Threat Landscape 2025",
+    content: `
+      <h3 class="text-2xl font-bold text-white mb-6">Key Insights from Our Latest Report</h3>
+      <p class="mb-6">Ransomware attacks in Bangladesh increased significantly in the past year. SMEs and logistics companies remain the most targeted sectors.</p>
+      
+      <h4 class="text-white font-semibold mt-8 mb-4">Our Recommendations:</h4>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>Implement strong multi-factor authentication</li>
+        <li>Maintain regular offline backups</li>
+        <li>Develop and test incident response plans</li>
+      </ul>
+    `
+  }
+};
+
+function showNewsModal(id) {
+  const modal = document.getElementById('newsModal');
+  const contentEl = document.getElementById('newsModalContent');
+  const categoryEl = document.getElementById('modalCategory');
+  const dateEl = document.getElementById('modalDate');
+
+  const news = newsData[id];
+
+  categoryEl.textContent = news.category;
+  categoryEl.className = `px-3 py-1 text-xs font-semibold rounded-full ${
+    news.category === 'Security' ? 'bg-blue-500/20 text-blue-300' : 
+    news.category === 'Company' ? 'bg-purple-500/20 text-purple-300' : 
+    'bg-cyan-500/20 text-cyan-300'
+  }`;
+  
+  dateEl.textContent = news.date;
+  contentEl.innerHTML = news.content;
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeNewsModal() {
+  const modal = document.getElementById('newsModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  document.body.style.overflow = 'visible';
+}
+
+// Close modal when clicking outside
+document.getElementById('newsModal').addEventListener('click', function(e) {
+  if (e.target === this) closeNewsModal();
+});
+
+// Close with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === "Escape") {
+    const modal = document.getElementById('newsModal');
+    if (!modal.classList.contains('hidden')) closeNewsModal();
+  }
+});
+</script>
 
 
 
@@ -1330,16 +1657,31 @@ document.addEventListener('DOMContentLoaded', loadRoleSection);
 
 
         <!-- Final CTA Block -->
-    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-     <div class="cta-section rounded-3xl p-12 md:p-16 text-center scroll-animate">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ready to Strengthen Your Digital Resilience?</h2>
-      <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let our security experts develop a customized defense strategy for your enterprise.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-       <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r  from-blue-600 to-dark-400 text-white font-bold rounded-xl hover:from-blue-500 hover:to-dark-500 transition-all duration-300 btn-glow text-lg">Schedule Security Consultation</button> <button class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 text-lg">Download Security Whitepaper</button>
-      </div>
-      <p class="text-gray-400 text-sm mt-8">Typically respond within 2 business hours • Free initial assessment</p>
-     </div>
-    </section>
+<!-- Final CTA Block -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div class="cta-section rounded-3xl p-12 md:p-16 text-center scroll-animate">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Ready to Strengthen Your Digital Resilience?</h2>
+    <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">Let our security experts develop a customized defense strategy for your enterprise.</p>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <!-- Primary Button: Schedule Consultation -->
+      <a href="contact.html">
+        <button class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 btn-glow text-lg shadow-lg shadow-blue-500/30">
+          Schedule Security Consultation
+        </button>
+      </a>
+      
+      <!-- Secondary Button: Explore More -->
+      <a href="services.html">
+        <button class="w-full sm:w-auto px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 text-lg">
+          Explore More Services
+        </button>
+      </a>
+    </div>
+
+    <p class="text-gray-400 text-sm mt-8">Typically respond within 2 business days • Free initial assessment</p>
+  </div>
+</section>
     
 
     
@@ -1695,10 +2037,10 @@ document.addEventListener('DOMContentLoaded', loadRoleSection);
     const metricsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateCounter('projects-counter', 500);
-          animateCounter('accuracy-counter', 98);
-          animateCounter('enterprises-counter', 150);
-          animateCounter('threats-counter', 10000);
+      animateCounter('projects-counter', 28);
+      animateCounter('accuracy-counter', 96);
+      animateCounter('enterprises-counter', 12);
+      animateCounter('threats-counter', 1.4);   // special handling for 1.4K
           metricsObserver.unobserve(entry.target);
         }
       });
