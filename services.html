@@ -319,21 +319,26 @@
       <!-- ==================== HERO SECTION END ==================== -->
     
     
-       <!-- Transparent Image Carousel -->
+
+
+
+<!-- Transparent Image Carousel -->
+
+
 <section class="relative py-5 px-4 overflow-hidden">
 
   <!-- Carousel Wrapper -->
   <div class="max-w-6xl mx-auto relative">
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Our Core Features</h2>
-      <p class="text-xl text-gray-400">Build for Tomorrow , Engineer Today</p>
+      <p class="text-xl text-gray-400">Build for Tomorrow, Engineer Today</p>
     </div>
 
     <div id="autoCarousel" class="relative w-full h-[400px] rounded-3xl overflow-hidden">
 
       <!-- Slide 1 -->
       <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-           style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+           style="background-image: url('image/caro_1.png');">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
           <div>
@@ -345,7 +350,7 @@
 
       <!-- Slide 2 -->
       <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
-           style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
+           style="background-image: url('image/caro_2.png');">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
           <div>
@@ -357,7 +362,7 @@
 
       <!-- Slide 3 -->
       <div class="carousel-slide absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"
-           style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');">
+           style="background-image: url('image/caro_3.png');">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="relative z-10 flex items-center justify-center h-full text-center text-white">
           <div>
@@ -387,11 +392,13 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlide(current);
   }
 
-  setInterval(nextSlide, 4000); // change every 4 seconds
+  // Start the carousel
+  setInterval(nextSlide, 4000); // Change every 4 seconds
 
+  // Show first slide immediately
+  showSlide(0);
 });
 </script>
-
 
 </section>
 
@@ -560,307 +567,333 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     
     
     
-<section>    
-    
- <!-- DETAILED SERVICE SECTIONS -->
+<!-- ==================== DETAILED SERVICE SECTIONS ==================== -->
+<section class="relative">
 
-<!-- 3. Digital Transformation Service -->
-<section id="dt-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 id="service_dt_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Digital Transformation</h2>
-      <p class="text-lg text-gray-400 mb-8">Digital Transformation is the cornerstone of our business philosophy. We help organizations leverage data, automation, and intelligent systems to boost efficiency, agility, and strategic decision-making while modernizing legacy systems into scalable, future-ready ecosystems.</p>
+  <!-- 3. Digital Transformation Service -->
+  <section id="dt-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <div class="space-y-5">
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Enterprise-scale operational modernization</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Cloud, AI, and advanced analytics integration</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Strategic consulting and digital roadmap development</h4>
-          </div>
-        </div>
+      <!-- Image First on Mobile -->
+      <div class="order-1 lg:order-2 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full text-blue-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
       </div>
 
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 btn-glow">
-        Consult with Our Experts
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-    
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
-      <svg class="w-full h-full text-blue-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    </div>
-  </div>
-</section>
+      <!-- Content -->
+      <div class="order-2 lg:order-1">
+        <h2 id="service_dt_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Digital Transformation</h2>
+        <p class="text-lg text-gray-400 mb-8">Digital Transformation is the cornerstone of our business philosophy. We help organizations leverage data, automation, and intelligent systems to boost efficiency, agility, and strategic decision-making while modernizing legacy systems into scalable, future-ready ecosystems.</p>
+        
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Enterprise-scale operational modernization</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Cloud, AI, and advanced analytics integration</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Strategic consulting and digital roadmap development</h4>
+            </div>
+          </div>
+        </div>
 
-<!-- 4. Cybersecurity Solutions -->
-<section id="cs-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
-      <svg class="w-full h-full text-purple-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-      </svg>
+        <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 btn-glow">
+          Consult with Our Experts
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </div>
-    <div class="order-1 lg:order-2">
-      <h2 id="service_cs_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Cybersecurity Solutions</h2>
-      <p class="text-lg text-gray-400 mb-8">We deliver comprehensive cybersecurity solutions to safeguard organizations against evolving threats. Our expertise includes Vulnerability Assessment & Penetration Testing (VAPT), social media intelligence, and proactive defense to protect critical assets and ensure resilient operations.</p>
+  </section>
+
+  <!-- 4. Cybersecurity Solutions -->
+  <section id="cs-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <div class="space-y-5">
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Vulnerability Assessment and Penetration Testing (VAPT)</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Social media threat monitoring and personnel investigation</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Proactive cybercrime prevention and asset defense</h4>
-          </div>
-        </div>
+      <!-- Image First on Mobile -->
+      <div class="order-1 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full text-purple-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
       </div>
 
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-purple-500 hover:to-violet-500 transition-all duration-300 btn-glow">
-        Secure Your Organization Today
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+      <!-- Content -->
+      <div class="order-2">
+        <h2 id="service_cs_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Cybersecurity Solutions</h2>
+        <p class="text-lg text-gray-400 mb-8">We deliver comprehensive cybersecurity solutions to safeguard organizations against evolving threats. Our expertise includes Vulnerability Assessment & Penetration Testing (VAPT), social media intelligence, and proactive defense to protect critical assets and ensure resilient operations.</p>
+        
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Vulnerability Assessment and Penetration Testing (VAPT)</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Social media threat monitoring and personnel investigation</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Proactive cybercrime prevention and asset defense</h4>
+            </div>
+          </div>
+        </div>
 
-<!-- 5. Big Data Analytics and Business Intelligence -->
-<section id="bd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 id="service_bd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Big Data Analytics</h2>
-      <p class="text-lg text-gray-400 mb-8">We transform complex data into actionable insights using OSINT and commercial sources. Our advanced analytics and Business Intelligence solutions help enterprises, financial institutions, and security organizations uncover patterns, predict trends, and make informed decisions.</p>
+        <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-purple-500 hover:to-violet-500 transition-all duration-300 btn-glow">
+          Secure Your Organization Today
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Big Data Analytics -->
+  <section id="bd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <div class="space-y-5">
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Advanced OSINT and commercial data aggregation</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Strategic Business Intelligence (BI) for financial sectors</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Investigative data support for security organizations</h4>
-          </div>
-        </div>
+      <!-- Image First on Mobile -->
+      <div class="order-1 lg:order-2 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full text-cyan-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
       </div>
 
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-cyan-500 hover:to-teal-500 transition-all duration-300 btn-glow">
-        Unlock Data-Driven Insights
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
-      <svg class="w-full h-full text-cyan-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    </div>
-  </div>
-</section>
+      <!-- Content -->
+      <div class="order-2 lg:order-1">
+        <h2 id="service_bd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Big Data Analytics</h2>
+        <p class="text-lg text-gray-400 mb-8">We transform complex data into actionable insights using OSINT and commercial sources. Our advanced analytics and Business Intelligence solutions help enterprises, financial institutions, and security organizations uncover patterns, predict trends, and make informed decisions.</p>
+        
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Advanced OSINT and commercial data aggregation</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Strategic Business Intelligence (BI) for financial sectors</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Investigative data support for security organizations</h4>
+            </div>
+          </div>
+        </div>
 
-<!-- 6. Artificial Intelligence -->
-<section id="ai-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
-      <svg class="w-full h-full text-indigo-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
+        <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-cyan-600 to-teal-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-cyan-500 hover:to-teal-500 transition-all duration-300 btn-glow">
+          Unlock Data-Driven Insights
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
     </div>
-    <div class="order-1 lg:order-2">
-      <h2 id="service_ai_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Artificial Intelligence</h2>
-      <p class="text-lg text-gray-400 mb-8">We develop AI solutions that turn complex data into intelligent real-time actions, including misinformation detection, conversational agents, and enhanced intelligence platforms using NLP and speech technologies.</p>
+  </section>
+
+  <!-- 6. Artificial Intelligence -->
+  <section id="ai-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <div class="space-y-5">
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Misinformation and disinformation detection systems</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Conversational AI agents (Speech-to-Text / Text-to-Speech)</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">AI-enhanced OSINT for strategic intelligence</h4>
-          </div>
-        </div>
+      <!-- Image First on Mobile -->
+      <div class="order-1 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full text-indigo-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
       </div>
 
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 btn-glow">
-        Explore AI Solutions
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-  </div>
-</section>
+      <!-- Content -->
+      <div class="order-2">
+        <h2 id="service_ai_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Artificial Intelligence</h2>
+        <p class="text-lg text-gray-400 mb-8">We develop AI solutions that turn complex data into intelligent real-time actions, including misinformation detection, conversational agents, and enhanced intelligence platforms using NLP and speech technologies.</p>
+        
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Misinformation and disinformation detection systems</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Conversational AI agents (Speech-to-Text / Text-to-Speech)</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">AI-enhanced OSINT for strategic intelligence</h4>
+            </div>
+          </div>
+        </div>
 
-<!-- 7. Software Development -->
-<section id="sd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div>
-      <h2 id="service_sd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Software Development</h2>
-      <p class="text-lg text-gray-400 mb-8">We deliver end-to-end software development services for enterprise and mission-critical needs, building scalable, secure, and AI-enabled platforms for defense, security, and financial organizations.</p>
+        <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 btn-glow">
+          Explore AI Solutions
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Software Development -->
+  <section id="sd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <div class="space-y-5">
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">Custom software for defense and security agencies</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">AI-integrated intelligence and financial platforms</h4>
-          </div>
-        </div>
-        
-        <div class="flex gap-4 items-start">
-          <div class="capability-check flex-shrink-0 mt-1">
-            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <div>
-            <h4 class="text-white font-semibold">End-to-end enterprise software architecture</h4>
-          </div>
-        </div>
+      <!-- Image First on Mobile -->
+      <div class="order-1 lg:order-2 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+        <svg class="w-full h-full text-pink-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
       </div>
 
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-pink-500 hover:to-rose-500 transition-all duration-300 btn-glow">
-        Start Your Project
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
-        </svg>
-      </a>
-    </div>
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden">
-      <svg class="w-full h-full text-pink-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    </div>
-  </div>
-</section>
+      <!-- Content -->
+      <div class="order-2 lg:order-1">
+        <h2 id="service_sd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Software Development</h2>
+        <p class="text-lg text-gray-400 mb-8">We deliver end-to-end software development services for enterprise and mission-critical needs, building scalable, secure, and AI-enabled platforms for defense, security, and financial organizations.</p>
+        
+        <div class="space-y-5">
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Custom software for defense and security agencies</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">AI-integrated intelligence and financial platforms</h4>
+            </div>
+          </div>
+          
+          <div class="flex gap-4 items-start">
+            <div class="capability-check flex-shrink-0 mt-1">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">End-to-end enterprise software architecture</h4>
+            </div>
+          </div>
+        </div>
 
-<!-- 8. Human Resource Development -->
+        <a href="contact.html" class="mt-10 inline-flex items-center gap-3 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-semibold px-8 py-4 rounded-2xl hover:from-pink-500 hover:to-rose-500 transition-all duration-300 btn-glow">
+          Start Your Project
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Human Resource Development -->
+<!-- 8. Human Resource Development (Updated) -->
 <section id="hr-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div class="relative h-96 glass rounded-2xl p-8 flex items-center justify-center overflow-hidden order-2 lg:order-1">
-      <svg class="w-full h-full text-orange-500 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    
+    <!-- Image First on Mobile -->
+    <div class="order-1 relative h-80 sm:h-96 glass rounded-3xl p-8 flex items-center justify-center overflow-hidden">
+      <svg class="w-full h-full text-orange-500 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17s4.5 10.747 10 10.747c5.5 0 10-4.998 10-10.747S17.5 6.253 12 6.253z" />
       </svg>
     </div>
-    <div class="order-1 lg:order-2">
-      <h2 id="service_hr_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Human Resource Development</h2>
-      <p class="text-lg text-gray-400 mb-8">We provide specialized training programs to prepare your workforce for the digital era, covering cybersecurity awareness, AI applications, and digital transformation strategies to build a skilled, secure, and future-ready team.</p>
+
+    <!-- Content -->
+    <div class="order-2">
+      <h2 id="service_hr_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Human Resource Management</h2>
+      <p class="text-lg text-gray-400 mb-8">
+        We provide comprehensive and specialized training programs in artificial intelligence, digital transformation, cybersecurity, social media management, digital marketing, branding, content management, and cybercrime prevention. 
+        Our goal is to equip government organizations, small and medium enterprises, large corporates, and entrepreneurs with the knowledge and skills required to build a smart, secure, and future-ready digital society.
+      </p>
       
       <div class="space-y-5">
         <div class="flex gap-4 items-start">
@@ -870,7 +903,7 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
             </svg>
           </div>
           <div>
-            <h4 class="text-white font-semibold">Cybersecurity and social media awareness training</h4>
+            <h4 class="text-white font-semibold">AI and digital transformation training programs</h4>
           </div>
         </div>
         
@@ -881,7 +914,7 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
             </svg>
           </div>
           <div>
-            <h4 class="text-white font-semibold">AI and digital interface proficiency programs</h4>
+            <h4 class="text-white font-semibold">Cybersecurity awareness and cybercrime prevention</h4>
           </div>
         </div>
         
@@ -892,7 +925,40 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
             </svg>
           </div>
           <div>
-            <h4 class="text-white font-semibold">Scalable upskilling for small to large enterprises</h4>
+            <h4 class="text-white font-semibold">Social media management and responsible usage</h4>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 items-start">
+          <div class="capability-check flex-shrink-0 mt-1">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">Digital marketing and branding strategies</h4>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 items-start">
+          <div class="capability-check flex-shrink-0 mt-1">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">Content development and management skills</h4>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 items-start">
+          <div class="capability-check flex-shrink-0 mt-1">
+            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-white font-semibold">Capacity building for government, SMEs, corporates, and entrepreneurs</h4>
           </div>
         </div>
       </div>
@@ -906,8 +972,8 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     </div>
   </div>
 </section>
-    
-</section>  
+
+</section>
     
     
     
