@@ -1,534 +1,583 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vendor Section</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research & Case Studies - Cloud Connect AI</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.14/dist/full.min.css" rel="stylesheet" type="text/css">
 
-<style>
+  <style>
+    * { font-family: 'Space Grotesk', sans-serif; }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0d0d1f 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tech-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: 1;
+    }
 
-/* ===== SECTION BACKGROUND ===== */
+    .glow-text {
+      text-shadow: 0 0 80px rgba(59, 130, 246, 0.6);
+    }
 
-.section-vendors{
-padding:80px 20px;
-background:linear-gradient(135deg,#312e81,#581c87,#831843);
-position:relative;
-overflow:hidden;
-font-family:Arial, Helvetica, sans-serif;
-}
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-.section-vendors::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(90deg,
-rgba(59,130,246,0.15),
-rgba(147,51,234,0.15),
-rgba(236,72,153,0.15));
-animation:pulse 6s infinite alternate;
-}
+.orb {
+      position: fixed;
+      border-radius: 5%;
+      filter: blur(2px);
+      opacity: 0.05;
+      z-index: 3;
+    }
 
-@keyframes pulse{
-0%{opacity:.5;}
-100%{opacity:1;}
-}
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(30px, -40px); }
+      50% { transform: translate(-20px, -60px); }
+      75% { transform: translate(40px, -30px); }
+    }
+    
+    @keyframes floatReverse {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(-35px, 45px); }
+      50% { transform: translate(25px, 55px); }
+      75% { transform: translate(-40px, 35px); }
+    }
+    
+    @keyframes floatSlow {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(50px, -50px); }
+      66% { transform: translate(-40px, 40px); }
+    }
+    
+    @keyframes floatFast {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(-30px, -35px); }
+      40% { transform: translate(35px, -25px); }
+      60% { transform: translate(-35px, 30px); }
+      80% { transform: translate(30px, 35px); }
+    }
 
-/* ===== CONTAINER ===== */
+    .case-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-.container{
-max-width:1200px;
-margin:auto;
-position:relative;
-}
+    .case-card:hover {
+      transform: translateY(-12px) scale(1.04);
+      box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25);
+    }
 
-/* ===== LAYOUT ===== */
+    .filter-btn.active {
+      background: linear-gradient(90deg, #3b82f6, #6366f1);
+      color: white;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
 
-.vendor-layout{
-display:flex;
-flex-direction:column;
-gap:40px;
-}
-
-@media(min-width:1024px){
-.vendor-layout{
-flex-direction:row;
-align-items:flex-start;
-}
-}
-
-/* ===== LEFT TEXT ===== */
-
-.vendor-text{
-flex:1;
-}
-
-.vendor-text h2{
-color:white;
-font-size:32px;
-line-height:1.3;
-margin-bottom:20px;
-}
-
-.vendor-text p{
-color:rgba(255,255,255,0.8);
-}
-
-/* ===== GRID ===== */
-
-.vendor-grid{
-flex:1.4;
-display:grid;
-grid-template-columns:1fr;
-border:1px solid #e5e7eb;
-border-radius:12px;
-overflow:hidden;
-background:white;
-}
-
-@media(min-width:640px){
-.vendor-grid{
-grid-template-columns:1fr 1fr;
-}
-}
-
-/* ===== CARD ===== */
-
-.vendor-card{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px;
-cursor:pointer;
-border-bottom:1px solid #e5e7eb;
-transition:0.3s;
-}
-
-.vendor-left{
-display:flex;
-align-items:center;
-gap:12px;
-}
-
-.vendor-left img{
-width:36px;
-height:36px;
-border-radius:50%;
-background:#f3f4f6;
-padding:5px;
-}
-
-.vendor-left span{
-font-weight:500;
-font-size:16px;
-color:#111827;
-transition:.3s;
-}
-
-/* ===== ARROW ===== */
-
-.arrow{
-width:18px;
-height:18px;
-opacity:0;
-transition:.3s;
-}
-
-.vendor-card:hover .arrow{
-opacity:1;
-color:white;
-}
-
-.vendor-card:hover span{
-color:white;
-}
-
-/* ===== HOVER COLORS ===== */
-
-.blue:hover{background:#2563eb;}
-.purple:hover{background:#9333ea;}
-.orange:hover{background:#ea580c;}
-.green:hover{background:#16a34a;}
-.red:hover{background:#dc2626;}
-.indigo:hover{background:#4f46e5;}
-
-</style>
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link.active::after,
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
 </head>
-<body>
+<body class="h-full bg-black text-white">
+  <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto relative">
+
+    <!-- Tech Pattern -->
+    <div class="tech-pattern"></div>
 
 
-<section class="section-vendors">
+   <!-- Floating Orbs - Dynamic Background -->
+   <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="position: fixed; animation: float 15s ease-in-out infinite;"></div>
+   <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
+   <div class="orb w-56 h-56 bg-indigo-600 bottom-0 left-1/3 hidden md:block" style="position: fixed; animation: floatSlow 20s ease-in-out infinite; animation-delay: -4s;"></div>
+   <div class="orb w-48 h-48 bg-cyan-500 top-1/2 right-1/4 hidden md:block" style="position: fixed; animation: floatFast 12s ease-in-out infinite; animation-delay: -1s;"></div>
+   <div class="orb w-64 h-64 bg-blue-500 bottom-1/4 left-0 hidden md:block" style="position: fixed; animation: float 16s ease-in-out infinite; animation-delay: -3s;"></div>
+   <div class="orb w-40 h-40 bg-purple-500 top-1/3 left-1/2 hidden md:block" style="position: fixed; animation: floatReverse 14s ease-in-out infinite; animation-delay: -5s;"></div>
+   <div class="orb w-32 h-32 bg-indigo-500 top-0 right-1/3 hidden md:block" style="position: fixed; animation: floatFast 13s ease-in-out infinite; animation-delay: -2.5s;"></div>
+   <div class="orb w-52 h-52 bg-cyan-600 bottom-1/3 right-0 hidden md:block" style="position: fixed; animation: floatSlow 19s ease-in-out infinite; animation-delay: -6s;"></div>
+   <div class="orb w-44 h-44 bg-blue-400 bottom-0 right-1/4 hidden md:block" style="position: fixed; animation: float 17s ease-in-out infinite; animation-delay: -3.5s;"></div>
+   <div class="orb w-36 h-36 bg-purple-400 top-1/4 left-1/4 hidden md:block" style="animation: floatFast 11s ease-in-out infinite; animation-delay: -4.5s;"></div>
+   
+   
+   <!-- Mobile orbs - subtle -->
+   <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="position: fixed; animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
+   <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="position: fixed; animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
+   
+   <!-- NEW: Extra Orb 1 for Mobile -->
+   <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
+        style="position: fixed; animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
+   
+   <!-- NEW: Extra Orb 2 for Mobile -->
+   <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
+        style="position: fixed; animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
 
-<div class="container">
 
-<div class="vendor-layout">
 
-<!-- LEFT TEXT -->
-<div class="vendor-text">
 
-<h2>
-Role-Based Solutions That Support Enterprise Transformation
-</h2>
+    
+    <div class="content-wrapper relative z-10">
 
-<p>
-NetCom Learning delivers role-based training solutions that translate complex
-technology ecosystems into practical, job-aligned capabilities.
-</p>
+      <!-- ==================== NAVBAR ==================== -->
+      <nav class="relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-20">
+
+            <!-- Logo -->
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
+                <img src="image/logo.png" alt="CCAI Logo">
+              </div>
+              <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center gap-8">
+              <a href="./index.html"      class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
+              <a href="./services.html"  class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
+              <a href="./aboutus.html"    class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
+              <a href="./research.html"   class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
+            </div>
+
+            <!-- Contact Button (Desktop) -->
+            <div class="hidden md:flex items-center gap-4">
+              <a href="./contact.html">
+                <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30">
+                  Contact Us
+                </button>
+              </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
+            <div class="flex flex-col gap-3">
+              <a href="./index.html"     class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
+              <a href="./aboutus.html"   class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
+              <a href="./services.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Solutions</a>
+              <a href="./research.html"  class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
+              <a href="./contact.html"   class="mt-3 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 text-center shadow-md">
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+<!-- Hero Section - Full width carousel -->
+<section class="relative  md: overflow-hidden min-h-[70vh] flex items-center">
+
+  <!-- Carousel Wrapper - full width -->
+  <div class="relative w-full">
+
+<div id="autoCarousel" class="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden shadow-2xl">
+
+  <!-- Slide 1 -->
+  <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100"
+       style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=2400');">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-6">
+      <div class="carousel-content max-w-4xl mx-auto">
+        <p class="text-2xl md:text-3xl font-medium mb-6 opacity-100">🔶 Research & Innovation</p>
+        <h1 class="font-heading font-bold text-4xl md:text-6xl mb-6">Driving Intelligent Solutions</h1>
+        <p class="text-lg md:text-xl opacity-90 leading-relaxed">
+          Exploring advanced technologies, AI-driven systems, and next-generation architectures to solve complex real-world challenges.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0"
+       style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2400');">
+    <div class="absolute inset-0 bg-black/55"></div>
+    <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-6">
+      <div class="carousel-content max-w-4xl mx-auto">
+        <p class="text-2xl md:text-3xl font-medium mb-6 opacity-100">🔶 Research & Innovation</p>
+        <h1 class="font-heading font-bold text-4xl md:text-6xl mb-6">AI, Cloud & Security Research</h1>
+        <p class="text-lg md:text-xl opacity-90 leading-relaxed">
+          Focused on artificial intelligence, cloud computing, and cybersecurity to build scalable and secure enterprise systems.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Slide 3 -->
+  <div class="carousel-slide absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0"
+       style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=2400');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 flex items-center justify-center h-full text-center text-white px-6">
+      <div class="carousel-content max-w-4xl mx-auto">
+        <p class="text-2xl md:text-3xl font-medium mb-6 opacity-100">🔶 Research & Innovation</p>
+        <h1 class="font-heading font-bold text-4xl md:text-6xl mb-6">Transforming Ideas into Impact</h1>
+        <p class="text-lg md:text-xl opacity-90 leading-relaxed">
+          Turning research insights into practical, high-impact solutions that drive innovation across industries.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
 
 </div>
 
 
-<!-- RIGHT GRID -->
-<div class="vendor-grid">
+  </div>
 
+    <!-- Carousel auto-rotate script (from your reference) -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".carousel-slide");
+    let current = 0;
 
-<div class="vendor-card blue">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/microsoft-icon.webp">
-<span>Microsoft</span>
-</div>
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.opacity = i === index ? "1" : "0";
+      });
+    }
 
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
 
-
-<div class="vendor-card purple">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/ai-certs-icon.webp">
-<span>AI CERTs™</span>
-</div>
-
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
-
-
-<div class="vendor-card orange">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/google-cloud-icon.webp">
-<span>Google Cloud</span>
-</div>
-
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
-
-
-<div class="vendor-card green">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/cisco-icon.webp">
-<span>Cisco</span>
-</div>
-
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
-
-
-<div class="vendor-card red">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/aws-icon.webp">
-<span>AWS</span>
-</div>
-
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
-
-
-<div class="vendor-card indigo">
-<div class="vendor-left">
-<img src="https://images.netcomlearning.com/cms/icons/pmi-icon.webp">
-<span>PMI</span>
-</div>
-
-<svg class="arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-d="M7 17l9.2-9.2M17 17V7H7"></path>
-</svg>
-</div>
-
-
-</div>
-
-</div>
-</div>
-</section>
-
-
-<script>
-
-/* Click action */
-
-document.querySelectorAll(".vendor-card").forEach(card=>{
-card.addEventListener("click",()=>{
-alert("Vendor selected");
-});
-});
-
-</script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trusted Partners</title>
-
-<style>
-
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f3f4f6;
-}
-
-/* section */
-
-.partner-section{
-padding:60px 20px;
-text-align:center;
-}
-
-.partner-section h2{
-font-size:20px;
-color:#111;
-margin-bottom:40px;
-}
-
-/* slider */
-
-.logo-slider{
-overflow:hidden;
-max-width:1200px;
-margin:auto;
-}
-
-/* moving track */
-
-.logo-track{
-display:flex;
-gap:40px;
-width:max-content;
-animation:scroll 25s linear infinite;
-}
-
-/* logo card */
-
-.logo{
-width:160px;
-height:70px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:white;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.08);
-padding:10px;
-}
-
-.logo img{
-max-width:100%;
-max-height:100%;
-object-fit:contain;
-}
-
-/* animation */
-
-@keyframes scroll{
-
-0%{
-transform:translateX(0);
-}
-
-100%{
-transform:translateX(-50%);
-}
-
-}
-
-/* mobile */
-
-@media(max-width:768px){
-
-.logo{
-width:120px;
-height:60px;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<section class="partner-section">
-
-<h2>Trusted Training Partner for Organizations Across the Globe</h2>
-
-<div class="logo-slider">
-
-<div class="logo-track">
-
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/amazon-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/bank-of-america-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/dell-technologies-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/deloitte-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/comcast-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/hp-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/optum-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/us-army-logo-training-partner.png"></div>
-
-<!-- duplicated for infinite scroll -->
-
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/amazon-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/bank-of-america-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/dell-technologies-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/deloitte-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/comcast-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/hp-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/optum-logo-training-partner.png"></div>
-<div class="logo"><img src="https://images.netcomlearning.com/cms/logos/us-army-logo-training-partner.png"></div>
-
-</div>
-
-</div>
+    setInterval(nextSlide, 4000); // change every 4 seconds
+    // First slide already has opacity-100
+  });
+  </script>
 
 </section>
 
+      <!-- ==================== MAIN CONTENT ==================== -->
+      <main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24">
+
+        <!-- HERO -->
+        <section class="text-center mb-20">
+          <h1 class="text-5xl md:text-7xl font-black text-white glow-text leading-tight mb-6">
+            Research & Case Studies
+          </h1>
+          <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+            Real-world AI and cloud solutions that deliver measurable business impact.
+          </p>
+        </section>
+
+        <!-- FILTER TABS -->
+        <div class="flex justify-center mb-16 gap-3 flex-wrap">
+          <button class="filter-btn active px-8 py-3 rounded-full glass text-sm font-medium transition-all" data-filter="all">All Projects</button>
+          <button class="filter-btn px-8 py-3 rounded-full glass text-sm font-medium transition-all" data-filter="ai">AI & Automation</button>
+          <button class="filter-btn px-8 py-3 rounded-full glass text-sm font-medium transition-all" data-filter="cloud">Cloud Solutions</button>
+          <button class="filter-btn px-8 py-3 rounded-full glass text-sm font-medium transition-all" data-filter="security">Cyber Security</button>
+        </div>
+
+        <!-- CASE STUDIES GRID -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="case-grid">
+
+          <!-- AI Project -->
+          <div class="case-card glass rounded-3xl overflow-hidden" data-category="ai">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop" 
+                 class="w-full h-56 object-cover" alt="AI Automation">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-3">AI-Powered Telecom Automation</h3>
+              <p class="text-gray-400 mb-6">Reduced operational costs by 40% using intelligent automation and predictive maintenance.</p>
+              <button onclick="openModal(0)" class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-2">
+                Read Case Study →
+              </button>
+            </div>
+          </div>
+
+          <!-- Cloud Project -->
+          <div class="case-card glass rounded-3xl overflow-hidden" data-category="cloud">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop" 
+                 class="w-full h-56 object-cover" alt="Cloud Migration">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-3">Enterprise Cloud Migration</h3>
+              <p class="text-gray-400 mb-6">Successfully migrated 12 legacy systems to AWS with zero downtime.</p>
+              <button onclick="openModal(1)" class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-2">
+                Read Case Study →
+              </button>
+            </div>
+          </div>
+
+          <!-- Security Project -->
+          <div class="case-card glass rounded-3xl overflow-hidden" data-category="security">
+            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=500&fit=crop" 
+                 class="w-full h-56 object-cover" alt="Cyber Security">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-3">Zero-Trust Security Framework</h3>
+              <p class="text-gray-400 mb-6">Implemented enterprise-grade security reducing breach risk by 85%.</p>
+              <button onclick="openModal(2)" class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-2">
+                Read Case Study →
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- BLOG / INSIGHTS -->
+        <section class="mt-28">
+          <h2 class="text-4xl font-bold text-center mb-12">Latest Insights</h2>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass p-8 rounded-3xl">
+              <h3 class="text-2xl font-semibold mb-4">The Rise of Agentic AI in Enterprise</h3>
+              <p class="text-gray-400 mb-6">How autonomous AI agents are revolutionizing business processes in 2026.</p>
+              <span class="text-blue-400 text-sm">Read Article →</span>
+            </div>
+            <div class="glass p-8 rounded-3xl">
+              <h3 class="text-2xl font-semibold mb-4">Multi-Cloud Strategy for 2026</h3>
+              <p class="text-gray-400 mb-6">Why leading organizations are moving away from single-cloud dependency.</p>
+              <span class="text-blue-400 text-sm">Read Article →</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="mt-24 text-center glass p-16 rounded-3xl">
+          <h2 class="text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
+          <p class="text-gray-400 mb-8 max-w-lg mx-auto">Let's discuss how AI and cloud can drive your next growth phase.</p>
+          <a href="./contact.html" 
+             class="inline-block px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-lg font-semibold rounded-2xl transition-all">
+            Start a Project
+          </a>
+        </section>
+      </main>
+
+      <!-- ==================== FOOTER ==================== -->
+      <!-- Footer -->
+      <footer class="relative border-t border-white/10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            <!-- Company Info -->
+            <div class="col-span-2 md:col-span-2 lg:mr-20">
+              <div class="flex items-center gap-3 mb-4">
+                <img src="image/logo101.png" alt="CCAI Logo" class="h-12 md:h-14 w-auto">
+              </div>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                Cloud Connect AI (CCAI) is a technology company focused on AI-driven cloud
+                infrastructure, enterprise automation, and intelligent digital
+                transformation solutions for modern organizations worldwide.
+              </p>
+            </div>
+
+            <!-- Navigation -->
+            <div>
+              <h4 class="text-white font-bold mb-4 text-sm">Navigation</h4>
+              <ul class="space-y-3">
+                <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors text-sm">Home</a></li>
+                <li><a href="aboutus.html" class="text-gray-400 hover:text-white transition-colors text-sm">About</a></li>
+                <li><a href="research.html" class="text-gray-400 hover:text-white transition-colors text-sm">Research</a></li>
+                
+              </ul>
+            </div>
+
+            <!-- Legal Links -->
+            <div>
+              <h4 class="text-white font-bold mb-4 text-sm">Legal</h4>
+              <ul class="space-y-3">
+                <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors text-sm">Contact</a></li>
+                <li><a href="terms_and_conditions.html" class="text-gray-400 hover:text-white transition-colors text-sm">Terms and Conditions</a></li>
+                <li><a href="privacy_policy.html" class="text-gray-400 hover:text-white transition-colors text-sm">Security and Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Bottom Bar -->
+          <div class="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-white/10 gap-4">
+            <p id="footer-text" class="text-gray-500 text-sm">© 2026 Cloud Connect AI. All rights reserved.</p>
+            
+            <!-- Social Links -->
+            <div class="flex items-center gap-4">
+              <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50 p-4">
+    <div class="glass max-w-2xl w-full rounded-3xl p-10 relative">
+      <button onclick="closeModal()" 
+              class="absolute top-6 right-6 text-3xl text-gray-400 hover:text-white transition-colors">×</button>
+      
+      <h2 id="modal-title" class="text-3xl font-bold mb-6"></h2>
+      <p id="modal-content" class="text-gray-300 leading-relaxed text-lg"></p>
+    </div>
+  </div>
+
+  <script>
+    // ==================== NAVBAR ACTIVE STATE + MOBILE MENU ====================
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+      let isOpen = false;
+
+      if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+          isOpen = !isOpen;
+          mobileMenu.classList.toggle('hidden');
+          
+          if (menuIcon) {
+            menuIcon.setAttribute('d', isOpen 
+              ? 'M6 18L18 6M6 6l12 12' 
+              : 'M4 6h16M4 12h16M4 18h16'
+            );
+          }
+        });
+      }
+
+      // Close mobile menu when clicking links
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          isOpen = false;
+          if (menuIcon) menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        });
+      });
+
+      // ==================== ACTIVE PAGE HIGHLIGHT ====================
+      function highlightActivePage() {
+        const currentPath = window.location.pathname.toLowerCase();
+        const navItems = document.querySelectorAll('.nav-item');
+
+        navItems.forEach(item => {
+          const page = item.getAttribute('data-page');
+          item.classList.remove('active', 'text-white');
+
+          if (
+            (page === 'home' && (currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/'))) ||
+            (page === 'solutions' && currentPath.includes('services.html')) ||
+            (page === 'about' && currentPath.includes('aboutus.html')) ||
+            (page === 'research' && currentPath.includes('research.html'))
+          ) {
+            item.classList.add('active', 'text-white');
+          }
+        });
+      }
+
+      highlightActivePage();
+
+      // Filter Functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const caseCards = document.querySelectorAll('.case-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+
+          caseCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Modal Data
+      const modalData = [
+        {
+          title: "AI-Powered Telecom Automation",
+          content: "We implemented advanced AI workflows that automated 70% of routine network operations, resulting in a 40% reduction in operational costs and significantly improved service reliability for a leading telecom provider."
+        },
+        {
+          title: "Enterprise Cloud Migration",
+          content: "Successfully migrated 12 critical legacy systems to a modern AWS cloud infrastructure with zero downtime. The project improved scalability, reduced infrastructure costs by 35%, and enhanced disaster recovery capabilities."
+        },
+        {
+          title: "Zero-Trust Security Framework",
+          content: "Designed and deployed a comprehensive zero-trust security architecture that reduced potential breach risk by 85%. The solution included advanced threat detection, continuous monitoring, and identity-based access control."
+        }
+      ];
+
+      window.openModal = function(index) {
+        document.getElementById('modal-title').textContent = modalData[index].title;
+        document.getElementById('modal-content').textContent = modalData[index].content;
+        document.getElementById('modal').classList.remove('hidden');
+        document.getElementById('modal').classList.add('flex');
+      };
+
+      window.closeModal = function() {
+        const modal = document.getElementById('modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      };
+
+      // Close modal when clicking outside
+      const modal = document.getElementById('modal');
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === this) window.closeModal();
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-<!-- Hero Section -->
-<main class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-20">
-
-<div class="grid lg:grid-cols-2 gap-16 items-center">
-
-<!-- LEFT SIDE -->
-<div class="max-w-2xl">
-
-<!-- Badge -->
-<div class="slide-up delay-100 inline-flex items-center gap-2 px-4 py-2 glass rounded-full mb-8">
-<span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-<span class="text-gray-300 text-sm">Connecting enterprises globally</span>
-</div>
-
-<!-- Heading -->
-<h1 class="slide-up delay-200 text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight glow-text mb-6">
-Born to <br>
-<span class="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-Connect
-</span>
-</h1>
-
-<!-- Subtitle -->
-<p class="slide-up delay-300 text-lg text-gray-400 mb-10 leading-relaxed">
-Cloud Connect AI integrates your enterprise infrastructure with intelligent
-connectivity solutions. Unified, secure, and infinitely scalable.
-</p>
-
-<!-- CTA -->
-<div class="slide-up delay-400 flex flex-col sm:flex-row gap-4 mb-16">
-
-<button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow flex items-center justify-center gap-2 group">
-<span>Get Started Free</span>
-</button>
-
-<button class="px-8 py-4 glass text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2">
-Watch Demo
-</button>
-
-</div>
-
-<!-- Stats -->
-<div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-
-<div class="glass rounded-xl p-4 text-center">
-<div class="text-2xl font-bold text-blue-400">500+</div>
-<div class="text-gray-400 text-xs">Enterprise Clients</div>
-</div>
-
-<div class="glass rounded-xl p-4 text-center">
-<div class="text-2xl font-bold text-purple-400">99.99%</div>
-<div class="text-gray-400 text-xs">Uptime SLA</div>
-</div>
-
-<div class="glass rounded-xl p-4 text-center">
-<div class="text-2xl font-bold text-cyan-400">150+</div>
-<div class="text-gray-400 text-xs">Countries</div>
-</div>
-
-<div class="glass rounded-xl p-4 text-center">
-<div class="text-2xl font-bold text-blue-300">24/7</div>
-<div class="text-gray-400 text-xs">Support</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- RIGHT SIDE VISUAL -->
-<div class="relative hidden lg:block">
-
-<div class="glass rounded-2xl p-8 backdrop-blur-xl border border-white/10 shadow-2xl">
-
-<div class="flex items-center justify-between mb-6">
-<h3 class="text-white font-bold">Network Overview</h3>
-<span class="text-green-400 text-sm">● Live</span>
-</div>
-
-<div class="space-y-4">
-
-<div class="flex items-center justify-between">
-<span class="text-gray-400 text-sm">Global Nodes</span>
-<span class="text-white font-semibold">2,450</span>
-</div>
-
-<div class="w-full h-2 bg-gray-800 rounded-full">
-<div class="h-2 w-3/4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-</div>
-
-<div class="flex items-center justify-between">
-<span class="text-gray-400 text-sm">AI Traffic Routing</span>
-<span class="text-white font-semibold">Active</span>
-</div>
-
-<div class="w-full h-2 bg-gray-800 rounded-full">
-<div class="h-2 w-2/3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-</div>
-
-<div class="flex items-center justify-between">
-<span class="text-gray-400 text-sm">Security Layer</span>
-<span class="text-white font-semibold">Protected</span>
-</div>
-
-<div class="w-full h-2 bg-gray-800 rounded-full">
-<div class="h-2 w-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</main>
