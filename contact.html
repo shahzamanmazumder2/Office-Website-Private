@@ -97,8 +97,89 @@
       opacity: 0.82;
       z-index: 1;
     }
+
+
+
+    
+
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    
+
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .scroll-animate.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card-hover {
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      border-color: #3b82f6;
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    }
+
+
+    .card-hover2:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+    }
+
+
+
   </style>
 </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body class="h-full">
   <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
     <div class="tech-pattern"></div>
@@ -126,39 +207,57 @@
 <div class="relative hero-bg overflow-hidden min-h-screen flex flex-col">
 
   <!-- Transparent Navbar (unchanged) -->
-  <nav class="relative z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <div class="flex items-center gap-2">
-          <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
-            <img src="image/logo.png" alt="CCAI Logo">
+        <nav class="relative fade-in z-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+
+              <!-- Logo -->
+              <div class="flex items-center gap-2">
+                <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
+                  <img src="image/logo.png" alt="CCAI Logo">
+                </div>
+                <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+              </div>
+
+              <!-- Desktop Navigation -->
+              <div class="hidden md:flex items-center gap-8">
+                <a href="./index.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
+                <a href="./services.html" class="nav-link nav-item text-white font-medium" data-page="solutions">Solutions</a>
+                <a href="./aboutus.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="about">About</a>
+                <a href="./research.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
+              </div>
+
+              <!-- Contact Button -->
+              <div class="hidden md:flex items-center gap-4">
+                <a href="./contact.html">
+                  <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
+                    Contact Us
+                  </button>
+                </a>
+              </div>
+
+              <!-- Mobile Menu Button -->
+              <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
+              <div class="flex flex-col gap-3">
+                <a href="./index.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
+                <a href="./aboutus.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">About</a>
+                <a href="./services.html" class="text-white font-medium py-2.5 px-4 rounded-lg">Solutions</a>
+                <a href="./research.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Research</a>
+                <a href="./contact.html" class="mt-3 px-6 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-base font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 text-center shadow-md">
+                  Contact Us
+                </a>
+              </div>
+            </div>
           </div>
-          <span class="text-white font-bold text-xl tracking-tight">CCAI</span>
-        </div>
-
-        <div class="hidden md:flex items-center gap-8">
-          <a href="./index.html" class="nav-link nav-item text-gray-300 hover:text-white text-sm font-medium">Home</a>
-          <a href="./services.html" class="nav-link nav-item text-gray-300 hover:text-white text-sm font-medium">Solutions</a>
-          <a href="./aboutus.html" class="nav-link nav-item text-gray-300 hover:text-white text-sm font-medium">About</a>
-          <a href="./research.html" class="nav-link nav-item text-gray-300 hover:text-white text-sm font-medium">Research</a>
-        </div>
-
-        <div class="hidden md:flex items-center gap-4">
-          <a href="./contact.html">
-            <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl btn-glow">
-              Contact Us
-            </button>
-          </a>
-        </div>
-
-        <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </nav>
+        </nav>
 
   <!-- Hero Content + Form -->
   <main class="relative z-20 flex-1 flex items-center py-12">
@@ -166,7 +265,7 @@
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         
         <!-- Left Side - Text -->
-        <div class="text-center lg:text-left mb-60" >
+        <div class="text-center lg:text-left lg:mb-60" >
           <div class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full mb-6">
             <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
             <span class="text-blue-300 text-sm font-medium">Let's Connect</span>
@@ -181,7 +280,7 @@
         </div>
 
         <!-- Right Side - Contact Form (on the image background) -->
-        <div class="scroll-animate">
+        <div class="scroll-animate card-hover2">
           <div class="glass rounded-3xl p-8 md:p-10 border border-blue-500/30 shadow-2xl">
             <h2 class="text-3xl font-bold text-white mb-2">Send us a Message</h2>
             <p class="text-gray-400 mb-8">We'll get back to you within 24 hours.</p>
@@ -376,51 +475,37 @@
 
   <!-- ==================== FIXED NAVBAR JAVASCRIPT ==================== -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      // Mobile Menu Toggle
-      const mobileBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuIcon = document.getElementById('menu-icon');
-      let isOpen = false;
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let isOpen = false;
 
-      if (mobileBtn) {
-        mobileBtn.addEventListener('click', () => {
-          isOpen = !isOpen;
-          mobileMenu.classList.toggle('hidden');
-          
-          if (menuIcon) {
-            menuIcon.setAttribute('d', isOpen 
-              ? 'M6 18L18 6M6 6l12 12' 
-              : 'M4 6h16M4 12h16M4 18h16'
-            );
-          }
-        });
-      }
-
-      // Close mobile menu when any link is clicked
-      document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        isOpen = !isOpen;
+        
+        if (isOpen) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        } else {
           mobileMenu.classList.add('hidden');
-          isOpen = false;
-          if (menuIcon) {
-            menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-          }
-        });
+          menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
       });
+    }
 
-      // Active link logic - no highlight on contact page
-      function highlightActivePage() {
-        const path = window.location.pathname.toLowerCase();
-        document.querySelectorAll('.nav-item').forEach(item => {
-          if (path.includes('contact')) {
-            item.classList.remove('active', 'text-white');
-          }
-        });
-      }
-      highlightActivePage();
+    // Close menu when clicking any link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        isOpen = false;
+        menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+      });
     });
-  </script>
+  });
+</script>
 
 
 
