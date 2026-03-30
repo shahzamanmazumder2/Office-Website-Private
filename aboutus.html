@@ -28,25 +28,30 @@
         linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.05) 75%, rgba(59, 130, 246, 0.05) 76%, transparent 77%, transparent);
       background-size: 50px 50px;
       z-index: 2;
+      will-change: transform;
     }
-    
-    .glow-text {
-      text-shadow: 0 0 80px rgba(59, 130, 246, 0.6);
-    }
-    
-    .btn-glow {
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    
-    .btn-glow:hover {
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.6), inset 0 1px 0 rgba(255,255,255,0.2);
-    }
-    
+
     .glass {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
+
+    /* ==================== PERFORMANCE OPTIMIZATIONS ==================== */
+    html { scroll-behavior: smooth; }
+
+    .orb {
+      position: fixed;
+      border-radius: 5%;
+      filter: blur(2px);
+      opacity: 0.05;
+      z-index: 3;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+
     
     @keyframes float {
       0%, 100% { transform: translate(0, 0); }
@@ -75,26 +80,17 @@
       60% { transform: translate(-35px, 30px); }
       80% { transform: translate(30px, 35px); }
     }
-    
-    .fade-in {
-      animation: fadeIn 0.8s ease-out forwards;
-      opacity: 0;
+
+
+
+
+
+    .scroll-animate, .card-hover {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
-    
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    
-    .slide-up {
-      animation: slideUp 0.8s ease-out forwards;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    @keyframes slideUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
+
     .scroll-animate {
       opacity: 0;
       transform: translateY(40px);
@@ -107,7 +103,7 @@
     }
 
     .card-hover {
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       border: 2px solid transparent;
     }
 
@@ -117,21 +113,15 @@
       box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
     }
 
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 900;
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+
+    
+
+
   </style>
 
-  <!-- ==================== NAVBAR & HERO CSS ==================== -->
+  <!-- Navbar & Hero Styles -->
   <style>
-    .nav-link {
-      position: relative;
-    }
+    .nav-link { position: relative; }
     .nav-link::after {
       content: '';
       position: absolute;
@@ -142,10 +132,7 @@
       background: linear-gradient(90deg, #3b82f6, #8b5cf6);
       transition: width 0.3s ease;
     }
-    .nav-link.active::after,
-    .nav-link:hover::after {
-      width: 100%;
-    }
+    .nav-link.active::after, .nav-link:hover::after { width: 100%; }
 
     .hero-bg {
       background-image: url('image/about_us_hero.jpg');
@@ -155,40 +142,27 @@
       position: relative;
     }
 
-    /* Your original orb style (kept intact) */
-    .orb {
-      position: fixed;
-      border-radius: 5%;
-      filter: blur(2px);
-      opacity: 0.05;
-      z-index: 3;
-    }
-
-    /* Stronger overlay only for hero to make text readable */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
       background: #0a0e27;
-      opacity: 0.78;           /* Stronger overlay so text is clear */
+      opacity: 0.78;
       z-index: 1;
     }
 
-    /* Navbar transparent on hero */
-    nav {
-      z-index: 50;
-      background: transparent !important;
-    }
+    nav { z-index: 50; background: transparent !important; }
   </style>
 
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
 <body class="h-full">
+
   <div id="app-wrapper" class="h-full w-full gradient-bg overflow-auto">
     <div class="tech-pattern"></div>
 
-    <!-- Floating Orbs - Whole Page (Your original style kept intact) -->
+    <!-- ==================== FLOATING ORBS (Kept exactly as original) ==================== -->
     <!-- Desktop Orbs -->
     <div class="orb w-96 h-96 bg-blue-600 top-0 left-0 hidden md:block" style="animation: float 15s ease-in-out infinite;"></div>
     <div class="orb w-72 h-72 bg-purple-600 top-1/4 right-0 hidden md:block" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s;"></div>
@@ -204,22 +178,17 @@
     <!-- Mobile Orbs -->
     <div class="orb w-48 h-48 bg-blue-600 top-0 left-0 md:hidden" style="animation: float 15s ease-in-out infinite; opacity: 0.07;"></div>
     <div class="orb w-32 h-32 bg-purple-600 bottom-1/4 right-0 md:hidden" style="animation: floatReverse 18s ease-in-out infinite; animation-delay: -2s; opacity: 0.07;"></div>
-    <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" 
-         style="animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
-    <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" 
-         style="animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
+    <div class="orb w-44 h-44 bg-cyan-500 top-1/2 left-1/5 md:hidden" style="animation: floatFast 13s ease-in-out infinite; opacity: 0.1; animation-delay: -5s;"></div>
+    <div class="orb w-20 h-20 bg-yellow-600 bottom-1/2 right-1/4 md:hidden" style="animation: floatSlow 17s ease-in-out infinite; opacity: 0.09; animation-delay: -8s;"></div>
 
     <div class="content-wrapper">
 
       <!-- ==================== HERO SECTION ==================== -->
       <div class="relative min-h-screen hero-bg overflow-hidden">
-
-        <!-- Navbar - Transparent over hero -->
+        <!-- Navbar -->
         <nav class="relative fade-in z-50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-
-              <!-- Logo -->
               <div class="flex items-center gap-2">
                 <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
                   <img src="image/logo.png" alt="CCAI Logo">
@@ -227,7 +196,6 @@
                 <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
               </div>
 
-              <!-- Desktop Navigation -->
               <div class="hidden md:flex items-center gap-8">
                 <a href="./index.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
                 <a href="./services.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="solutions">Solutions</a>
@@ -235,7 +203,6 @@
                 <a href="./research.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="research">Research</a>
               </div>
 
-              <!-- Contact Button -->
               <div class="hidden md:flex items-center gap-4">
                 <a href="./contact.html">
                   <button class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:from-blue-500 hover:to-indigo-500 transition-all duration-300 shadow-lg shadow-blue-900/20 hover:shadow-blue-700/30 btn-glow">
@@ -244,7 +211,6 @@
                 </a>
               </div>
 
-              <!-- Mobile Menu Button -->
               <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white p-2 focus:outline-none">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                   <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
@@ -252,7 +218,6 @@
               </button>
             </div>
 
-            <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden glass rounded-2xl mt-3 p-5 border border-white/5">
               <div class="flex flex-col gap-3">
                 <a href="./index.html" class="text-gray-200 hover:text-white transition-colors text-base font-medium py-2.5 px-4 rounded-lg hover:bg-white/5">Home</a>
@@ -270,24 +235,19 @@
         <!-- Hero Content -->
         <div class="relative z-20 min-h-[calc(100vh-80px)] flex items-center px-6 lg:px-32">
           <div class="grid md:grid-cols-2 gap-8 items-center w-full">
-
-            <!-- LEFT: TEXT -->
             <div class="space-y-8">
               <div class="inline-flex items-center gap-2 px-5 py-2 glass rounded-full">
                 <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
                 <span class="text-gray-300 text-sm font-medium">Our Story</span>
               </div>
-
               <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-none tracking-tighter">
                 About Cloud<br>Connect AI
               </h1>
-
               <p class="text-xl text-gray-300 max-w-lg leading-relaxed">
                 We are a team of visionary engineers and AI specialists building the next generation of intelligent cloud infrastructure.
               </p>
             </div>
 
-            <!-- RIGHT: IMAGE BOX -->
             <div class="hidden md:flex justify-end scroll-animate">
               <div class="w-10/12 h-80 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-3xl border border-white/10 p-8 flex items-center justify-center">
                 <div class="text-center">
@@ -299,15 +259,12 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
       <!-- ==================== HERO SECTION END ==================== -->
 
-    
-    
-    
+      
     <!-- Core Values Section -->
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
      <div class="text-center mb-16">
@@ -400,46 +357,6 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     
 
 
-    <!-- Stats Section -->
-<!-- Stats Section - Neutral Version -->
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Stat 1 -->
-    <div class="scroll-animate glass rounded-2xl p-10 stat-card text-center">
-      <div class="stat-number text-5xl md:text-6xl font-bold text-blue-400 mb-4" id="stat1-number">
-        45+
-      </div>
-      <p class="text-xl text-gray-300 font-semibold mb-2" id="stat1-text">Projects Delivered</p>
-      <p class="text-gray-400 text-sm">
-        Successful cybersecurity and cloud implementations across multiple industries
-      </p>
-    </div>
-
-    <!-- Stat 2 -->
-    <div class="scroll-animate glass rounded-2xl p-10 stat-card text-center">
-      <div class="stat-number text-5xl md:text-6xl font-bold text-purple-400 mb-4" id="stat2-number">
-        22+
-      </div>
-      <p class="text-xl text-gray-300 font-semibold mb-2" id="stat2-text">Happy Clients</p>
-      <p class="text-gray-400 text-sm">
-        Trusted by businesses including finance, e-commerce, and enterprise sectors
-      </p>
-    </div>
-
-    <!-- Stat 3 -->
-    <div class="scroll-animate glass rounded-2xl p-10 stat-card text-center">
-      <div class="stat-number text-5xl md:text-6xl font-bold text-cyan-400 mb-4" id="stat3-number">
-        18
-      </div>
-      <p class="text-xl text-gray-300 font-semibold mb-2" id="stat3-text">Expert Team Members</p>
-      <p class="text-gray-400 text-sm">
-        Certified professionals focused on delivering secure and scalable solutions
-      </p>
-    </div>
-
-  </div>
-</section>
 
 
 
@@ -494,7 +411,52 @@ document.addEventListener('DOMContentLoaded', loadFrontEndTech);
 
 
     
-    
+ <section>
+
+      
+    <!-- Back-End Technologies Section -->
+<div id="back-end-tech-section">
+  <p style="color:#888; text-align:center; padding:60px;">Loading back-end technologies section...</p>
+</div>
+
+
+<script>
+async function loadBackEndTech() {
+  try {
+    const res = await fetch('back_end_tech.html');
+    const html = await res.text();
+    document.getElementById('back-end-tech-section').innerHTML = html;
+
+    // Trigger animations
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          document.querySelector('.back-end-text').classList.add('in-view');
+          document.querySelector('.back-end-grid').classList.add('in-view');
+
+          document.querySelectorAll('.back-end-card').forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add('in-view');
+            }, 100 + (index * 80));
+          });
+        }
+      }, { threshold: 0.2 });
+
+      const section = document.querySelector('.section-back-end');
+      if (section) observer.observe(section);
+    }, 100);
+
+  } catch (e) {
+    console.error('Failed to load back-end tech section', e);
+  }
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', loadBackEndTech);
+</script>
+
+
+</section>   
 
     
     
@@ -567,52 +529,7 @@ document.addEventListener('DOMContentLoaded', loadDatabaseTech);
 
 
     
-<section>
 
-      
-    <!-- Back-End Technologies Section -->
-<div id="back-end-tech-section">
-  <p style="color:#888; text-align:center; padding:60px;">Loading back-end technologies section...</p>
-</div>
-
-
-<script>
-async function loadBackEndTech() {
-  try {
-    const res = await fetch('back_end_tech.html');
-    const html = await res.text();
-    document.getElementById('back-end-tech-section').innerHTML = html;
-
-    // Trigger animations
-    setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          document.querySelector('.back-end-text').classList.add('in-view');
-          document.querySelector('.back-end-grid').classList.add('in-view');
-
-          document.querySelectorAll('.back-end-card').forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add('in-view');
-            }, 100 + (index * 80));
-          });
-        }
-      }, { threshold: 0.2 });
-
-      const section = document.querySelector('.section-back-end');
-      if (section) observer.observe(section);
-    }, 100);
-
-  } catch (e) {
-    console.error('Failed to load back-end tech section', e);
-  }
-}
-
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', loadBackEndTech);
-</script>
-
-
-</section>
 
 
     
@@ -759,7 +676,39 @@ document.addEventListener('DOMContentLoaded', loadBackEndTech);
     </section>
 
 
-    
+  
+    <!-- Stats Section -->
+
+<!-- Foundation Section - Clean & Simple -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
+
+    <div class="glass rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+      <h3 class="font-semibold text-white mb-2">Built in Bangladesh</h3>
+      <p class="text-gray-400 text-sm">Local roots with global ambition</p>
+    </div>
+
+    <div class="glass rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+      <h3 class="font-semibold text-white mb-2">AI-First</h3>
+      <p class="text-gray-400 text-sm">Intelligent solutions from day one</p>
+    </div>
+
+    <div class="glass rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+      <h3 class="font-semibold text-white mb-2">Security First</h3>
+      <p class="text-gray-400 text-sm">Enterprise-grade protection</p>
+    </div>
+
+    <div class="glass rounded-3xl p-8 text-center hover:scale-105 transition-all duration-300">
+      <h3 class="font-semibold text-white mb-2">Global Ready</h3>
+      <p class="text-gray-400 text-sm">International quality</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+
     
     <!-- Final CTA Section -->
 <!-- Final CTA Section -->

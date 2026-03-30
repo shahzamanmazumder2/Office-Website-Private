@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
 <section id="bd-section" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
     <div>
-      <h2 id="service_bd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Big Data Analytics and Business Intelligence</h2>
+      <h2 id="service_bd_title" class="text-4xl md:text-5xl font-bold text-white mb-6">Big Data Analytics</h2>
       <p class="text-lg text-gray-400 mb-8">We transform complex data into actionable insights using OSINT and commercial sources. Our advanced analytics and Business Intelligence solutions help enterprises, financial institutions, and security organizations uncover patterns, predict trends, and make informed decisions.</p>
       
       <div class="space-y-5">
@@ -915,63 +915,88 @@ document.addEventListener('DOMContentLoaded', loadTechWeWork);
     
     
     
-    <!-- 9. Technologies & Platforms -->
-    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
-     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Technologies &amp; Platforms We Work With</h2>
-      <p id="tech_description" class="text-xl text-gray-400 max-w-3xl mx-auto">Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.</p>
-     </div>
-     <div class="tech-grid">
-      <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 20h8a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+
+<!-- 9. Technologies & Platforms -->
+
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 scroll-animate">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Technologies &amp; Platforms We Work With</h2>
+    <p id="tech_description" class="text-xl text-gray-400 max-w-3xl mx-auto">
+      Our engineering teams develop scalable digital solutions across mobile platforms, web applications, cloud infrastructure, and enterprise server environments.
+    </p>
+  </div>
+
+  <!-- Increased gap: changed from gap-8 to gap-10 (on large) and gap-8 on smaller screens -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+    
+    <!-- Mobile Applications -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 20h8a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">Mobile Applications</h3>
-       <p class="text-gray-400 text-sm">Enterprise mobile apps for business operations and digital platforms</p>
       </div>
-      <div class="service-card glass rounded-2xl p-8 scroll-animate text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+      <h3 class="text-lg font-bold text-white mb-3">Mobile Applications</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Enterprise mobile apps for business operations and digital platforms</p>
+    </div>
+
+    <!-- Android Development -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">Android Development</h3>
-       <p class="text-gray-400 text-sm">Native Android application development optimized for performance</p>
       </div>
-      <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M17.05 13.5c-.91 0-1.82-.33-2.5-1.02L7.07 19c.78.78 2.05 1 3.18.35l7.85-4.32c.52.1 1.04.15 1.57.15 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .3.03.59.07.88l-5.88 3.23c-.52-.09-1.04-.14-1.57-.14-2.76 0-5 2.24-5 5s2.24 5 5 5c.53 0 1.05-.05 1.57-.15l4.32-2.36c.26.2.56.38.89.5.52.19 1.08.28 1.64.28 2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+      <h3 class="text-lg font-bold text-white mb-3">Android Development</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Native Android application development optimized for performance</p>
+    </div>
+
+    <!-- iOS Development -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-gray-400 to-gray-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.05 13.5c-.91 0-1.82-.33-2.5-1.02L7.07 19c.78.78 2.05 1 3.18.35l7.85-4.32c.52.1 1.04.15 1.57.15 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .3.03.59.07.88l-5.88 3.23c-.52-.09-1.04-.14-1.57-.14-2.76 0-5 2.24-5 5s2.24 5 5 5c.53 0 1.05-.05 1.57-.15l4.32-2.36c.26.2.56.38.89.5.52.19 1.08.28 1.64.28 2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">iOS Development</h3>
-       <p class="text-gray-400 text-sm">Custom iPhone and iPad applications built for Apple ecosystems</p>
       </div>
-      <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6" />
+      <h3 class="text-lg font-bold text-white mb-3">iOS Development</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Custom iPhone and iPad applications built for Apple ecosystems</p>
+    </div>
+
+    <!-- Web Development -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate-left text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20H7m6-4h.01M9 20h6" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">Web Development</h3>
-       <p class="text-gray-400 text-sm">Modern responsive websites and web platforms for enterprises</p>
       </div>
-      <div class="service-card glass rounded-2xl p-8 scroll-animate text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2M5 12a2 2 0 00-2 2v5a2 2 0 002 2h14a2 2 0 002-2v-5a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+      <h3 class="text-lg font-bold text-white mb-3">Web Development</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Modern responsive websites and web platforms for enterprises</p>
+    </div>
+
+    <!-- Server & Backend -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2M5 12a2 2 0 00-2 2v5a2 2 0 002 2h14a2 2 0 002-2v-5a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">Server &amp; Backend</h3>
-       <p class="text-gray-400 text-sm">Robust APIs, databases, and backend architectures for scale</p>
       </div>
-      <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center">
-       <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      <h3 class="text-lg font-bold text-white mb-3">Server &amp; Backend</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Robust APIs, databases, and backend architectures for scale</p>
+    </div>
+
+    <!-- Cloud Infrastructure -->
+    <div class="service-card glass rounded-2xl p-8 scroll-animate-right text-center group hover:scale-[1.02] transition-all duration-300">
+      <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
         </svg>
-       </div>
-       <h3 class="text-lg font-bold text-white mb-2">Cloud Infrastructure</h3>
-       <p class="text-gray-400 text-sm">Scalable cloud platforms supporting high-performance applications</p>
       </div>
-     </div>
-    </section>
+      <h3 class="text-lg font-bold text-white mb-3">Cloud Infrastructure</h3>
+      <p class="text-gray-400 text-sm leading-relaxed">Scalable cloud platforms supporting high-performance applications</p>
+    </div>
+
+  </div>
+</section>
     
     
     
@@ -1196,43 +1221,46 @@ document.addEventListener('keydown', function(e) {
 
 
 <!-- 11. Final CTA Section - Clean & Modern -->
-<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-  <div class="cta-section bg-gradient-to-br from-zinc-900 to-zinc-950 border border-white/10 rounded-3xl p-10 md:p-16 text-center scroll-animate">
-    
-    <div class="max-w-3xl mx-auto">
-      <h2 id="cta_final_title" 
-          class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-        Ready to build intelligent digital solutions <br class="hidden md:block">for your organization?
+<!-- Final CTA Section -->
+<section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+  <div class="glass rounded-3xl p-8 sm:p-10 md:p-16 text-center scroll-animate border border-blue-500/30 relative overflow-hidden">
+
+    <!-- Subtle Glow Accent -->
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-transparent opacity-40 pointer-events-none"></div>
+
+    <!-- Content -->
+    <div class="relative z-10">
+
+      <!-- Title -->
+      <h2 id="cta-title" class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+        Ready to work with us?
       </h2>
-      
-      <p id="cta_final_subtitle" 
-         class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-        Let our expert team develop tailored solutions that drive innovation, enhance security, 
-        and accelerate your digital transformation journey.
+
+      <!-- Description -->
+      <p class="text-gray-300 text-base sm:text-lg md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed">
+        Let's discuss how we can help your organization achieve its digital transformation goals with our proven expertise and innovative solutions.
       </p>
 
-      <!-- Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-        <button onclick="window.location.href='aboutus.html'" 
-                id="cta_final_primary"
-                class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-2xl transition-all duration-300 btn-glow text-lg shadow-xl shadow-blue-500/30">
-          About Us
-        </button>
-        
-        <button onclick="window.location.href='contact.html'" 
-                id="cta_final_secondary"
-                class="w-full sm:w-auto px-10 py-4 glass hover:bg-white/10 text-white font-bold rounded-2xl transition-all duration-300 text-lg border border-white/10">
-          Contact Us
-        </button>
+      <!-- CTA Button -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        <a href="contact.html"
+           id="cta-button"
+           class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 btn-glow text-center">
+          Get In Touch
+        </a>
+
       </div>
 
-      <!-- Trust Line -->
-      <p class="text-gray-400 text-sm flex items-center justify-center gap-2">
-        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-        Our team typically responds within 24 hours • Free consultation available
+      <!-- Footer Note -->
+      <p class="text-gray-400 text-sm mt-6 md:mt-8">
+        Our team typically responds within 48 hours • Free consultation
       </p>
+
     </div>
   </div>
+
 </section>
     
     
