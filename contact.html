@@ -285,24 +285,81 @@
             <h2 class="text-3xl font-bold text-white mb-2">Send us a Message</h2>
             <p class="text-gray-400 mb-8">We'll get back to you within 24 hours.</p>
             
-            <form id="contact-form" class="space-y-6">
+<!-- ==================== UPDATED FORM ==================== -->
+            <form id="contactForm" action="send_email.php" method="POST" class="space-y-6">
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <input type="text" id="name-field" placeholder="Your Name" 
-                       class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" required>
-                <input type="email" id="email-field" placeholder="your@email.com" 
-                       class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" required>
+                <div>
+                  <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300"
+                    placeholder="John Doe">
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300"
+                    placeholder="you@example.com">
+                </div>
               </div>
-              <input type="text" id="subject-field" placeholder="Subject" 
-                     class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all" required>
-              <textarea id="message-field" placeholder="Tell us about your project..." rows="5"
-                        class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none" required></textarea>
-              
-              <div id="form-message" class="min-h-8"></div>
-              
-              <button type="submit" id="submit-button" 
-                      class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 btn-glow text-lg">
-                Send Message
+
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject" 
+                  required
+                  class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300"
+                  placeholder="Project Inquiry / Partnership / Support">
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="6" 
+                  required
+                  class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 resize-none"
+                  placeholder="Tell us about your project, requirements, or how we can help you..."></textarea>
+              </div>
+
+              <!-- Honeypot Anti-Spam -->
+              <div style="display: none;">
+                <label for="website">Website (Leave this field blank)</label>
+                <input type="text" id="website" name="website">
+              </div>
+
+              <!-- Form Status Message -->
+              <div id="form-message" class="min-h-[28px] text-sm"></div>
+
+              <!-- Submit Button -->
+              <button 
+                type="submit" 
+                id="submit-button"
+                class="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold rounded-2xl transition-all duration-300 btn-glow text-lg shadow-lg shadow-blue-900/30 flex items-center justify-center gap-3">
+                
+                <span id="button-text">Send Message</span>
+                
+                <!-- Loading Spinner -->
+                <span id="loading-spinner" class="hidden">
+                  <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                  </svg>
+                </span>
               </button>
+
             </form>
           </div>
         </div>
@@ -534,55 +591,38 @@
 
 
 
-
-
-  <script>
+<script>
     const defaultConfig = {
       'hero_title': 'Get In Touch',
       'hero_subtitle': 'We\'d love to hear from you. Reach out today to discuss your project or any questions you may have.',
       'office_title': 'Visit Our Office',
-      'office_address': '123 Tech Boulevard\nSilicon Valley, CA 94025\nUnited States',
+      'office_address': 'B1, House No. 268\nRoad No. 19, Mohakhali DOHS, Dhaka-1206\nBangladesh',
       'phone_title': 'Call Us',
-      'phone_number': '+1 (555) 123-4567',
+      'phone_number': '+8801769056868',
       'email_title': 'Email Us',
-      'email_address': 'hello@cloudconnectai.com',
+      'email_address': 'contact@cloudconnect-ai.com',
       'hours_title': 'Business Hours',
-      'hours_text': 'Mon - Fri: 9:00 AM - 6:00 PM\nSat: 10:00 AM - 4:00 PM\nSun: Closed',
+      'hours_text': 'Saturday - Thursday: 9:00 AM - 5:00 PM\nFriday: Closed',
       'form_title': 'Send us a Message',
-      'form_subtitle': 'Fill out the form and we\'ll get back to you within 24 hours.',
+      'form_subtitle': 'We\'ll get back to you within 24 hours.',
       'name_placeholder': 'Your Name',
       'email_placeholder': 'your@email.com',
       'subject_placeholder': 'Subject',
       'message_placeholder': 'Tell us about your project...',
       'submit_button': 'Send Message',
       'success_message': 'Thank you! We\'ll be in touch soon.',
-      'footer_text': '© 2024 Cloud Connect AI. All rights reserved.',
+      'footer_text': '© 2026 Cloud Connect AI. All rights reserved.',
       'font_family': 'Space Grotesk',
       'font_size': 16
     };
 
     async function onConfigChange(config) {
-      document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
-      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      document.getElementById('office-title').textContent = config.office_title || defaultConfig.office_title;
-      document.getElementById('office-address').textContent = config.office_address || defaultConfig.office_address;
-      document.getElementById('phone-title').textContent = config.phone_title || defaultConfig.phone_title;
-      document.getElementById('phone-number').textContent = config.phone_number || defaultConfig.phone_number;
-      document.getElementById('phone-number').href = `tel:${(config.phone_number || defaultConfig.phone_number).replace(/\D/g, '')}`;
-      document.getElementById('email-title').textContent = config.email_title || defaultConfig.email_title;
-      document.getElementById('email-address').textContent = config.email_address || defaultConfig.email_address;
-      document.getElementById('email-address').href = `mailto:${config.email_address || defaultConfig.email_address}`;
-      document.getElementById('hours-title').textContent = config.hours_title || defaultConfig.hours_title;
-      document.getElementById('hours-text').textContent = config.hours_text || defaultConfig.hours_text;
-      document.getElementById('form-title').textContent = config.form_title || defaultConfig.form_title;
-      document.getElementById('form-subtitle').textContent = config.form_subtitle || defaultConfig.form_subtitle;
-      document.getElementById('name-field').placeholder = config.name_placeholder || defaultConfig.name_placeholder;
-      document.getElementById('email-field').placeholder = config.email_placeholder || defaultConfig.email_placeholder;
-      document.getElementById('subject-field').placeholder = config.subject_placeholder || defaultConfig.subject_placeholder;
-      document.getElementById('message-field').placeholder = config.message_placeholder || defaultConfig.message_placeholder;
-      document.getElementById('submit-button').textContent = config.submit_button || defaultConfig.submit_button;
-      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
-      
+      // Update text elements (only those that exist)
+      if (document.getElementById('hero-title')) document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+      if (document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      if (document.getElementById('form-title')) document.getElementById('form-title').textContent = config.form_title || defaultConfig.form_title;
+      if (document.getElementById('form-subtitle')) document.getElementById('form-subtitle').textContent = config.form_subtitle || defaultConfig.form_subtitle;
+
       document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
     }
 
@@ -611,26 +651,13 @@
       return new Map([
         ['hero_title', config.hero_title || defaultConfig.hero_title],
         ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-        ['office_title', config.office_title || defaultConfig.office_title],
-        ['office_address', config.office_address || defaultConfig.office_address],
-        ['phone_title', config.phone_title || defaultConfig.phone_title],
-        ['phone_number', config.phone_number || defaultConfig.phone_number],
-        ['email_title', config.email_title || defaultConfig.email_title],
-        ['email_address', config.email_address || defaultConfig.email_address],
-        ['hours_title', config.hours_title || defaultConfig.hours_title],
-        ['hours_text', config.hours_text || defaultConfig.hours_text],
         ['form_title', config.form_title || defaultConfig.form_title],
         ['form_subtitle', config.form_subtitle || defaultConfig.form_subtitle],
-        ['name_placeholder', config.name_placeholder || defaultConfig.name_placeholder],
-        ['email_placeholder', config.email_placeholder || defaultConfig.email_placeholder],
-        ['subject_placeholder', config.subject_placeholder || defaultConfig.subject_placeholder],
-        ['message_placeholder', config.message_placeholder || defaultConfig.message_placeholder],
-        ['submit_button', config.submit_button || defaultConfig.submit_button],
-        ['success_message', config.success_message || defaultConfig.success_message],
-        ['footer_text', config.footer_text || defaultConfig.footer_text]
+        ['submit_button', config.submit_button || defaultConfig.submit_button]
       ]);
     }
 
+    // Scroll animations
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const scrollObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -645,51 +672,66 @@
       scrollObserver.observe(el);
     });
 
-    // Handle form submission
-    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    // ==================== NEW FORM SUBMISSION HANDLER ====================
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       const formMessage = document.getElementById('form-message');
       const submitButton = document.getElementById('submit-button');
-      
-      // Get form data
-      const name = document.getElementById('name-field').value;
-      const email = document.getElementById('email-field').value;
-      const subject = document.getElementById('subject-field').value;
-      const message = document.getElementById('message-field').value;
-      
-      // Validate
-      if (!name || !email || !subject || !message) {
-        formMessage.innerHTML = '<p class="text-red-400 text-sm">Please fill in all fields</p>';
+      const buttonText = document.getElementById('button-text');
+      const loadingSpinner = document.getElementById('loading-spinner');
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const website = document.getElementById('website').value.trim();
+
+      // Honeypot spam protection
+      if (website !== '') {
+        formMessage.innerHTML = '<p class="text-red-400">Spam detected.</p>';
         return;
       }
-      
-      // Disable button and show loading state
+
+      if (!name || !email || !subject || !message) {
+        formMessage.innerHTML = '<p class="text-red-400">Please fill in all required fields.</p>';
+        return;
+      }
+
+      // Loading state
       submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-      
+      buttonText.textContent = 'Sending...';
+      loadingSpinner.classList.remove('hidden');
+
       try {
-        // Simulate sending (in production, this would call your API)
-        await new Promise(resolve => setTimeout(resolve, 800));
-        
-        formMessage.innerHTML = `<p class="text-green-400 text-sm">${defaultConfig.success_message}</p>`;
-        
-        // Reset form
-        document.getElementById('contact-form').reset();
-        
-        // Re-enable button after 3 seconds
+        const formData = new FormData(this);
+
+        const response = await fetch('send_email.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.text();
+
+        if (response.ok && result.toLowerCase().includes('success')) {
+          formMessage.innerHTML = `<p class="text-green-400 font-medium">Thank you! Your message has been sent successfully.<br>We'll get back to you within 24 hours.</p>`;
+          this.reset();
+        } else {
+          formMessage.innerHTML = `<p class="text-red-400">Failed to send your message. Please try again.</p>`;
+        }
+
+      } catch (error) {
+        formMessage.innerHTML = `<p class="text-red-400">Connection error. Please check your internet and try again.</p>`;
+      } finally {
         setTimeout(() => {
           submitButton.disabled = false;
-          submitButton.textContent = defaultConfig.submit_button;
-          formMessage.innerHTML = '';
-        }, 3000);
-      } catch (error) {
-        formMessage.innerHTML = '<p class="text-red-400 text-sm">An error occurred. Please try again.</p>';
-        submitButton.disabled = false;
-        submitButton.textContent = defaultConfig.submit_button;
+          buttonText.textContent = 'Send Message';
+          loadingSpinner.classList.add('hidden');
+        }, 2500);
       }
     });
 
+    // Element SDK initialization
     if (window.elementSdk) {
       window.elementSdk.init({
         defaultConfig,
@@ -698,8 +740,7 @@
         mapToEditPanelValues
       });
     }
-  </script>
- 
+</script>
 
 
 
