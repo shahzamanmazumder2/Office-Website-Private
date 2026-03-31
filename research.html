@@ -172,12 +172,13 @@
         <nav class="relative z-50">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-              <div class="flex items-center gap-2">
-                <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg">
-                  <img src="image/logo.png" alt="CCAI Logo">
-                </div>
-                <span class="text-white font-bold text-xl tracking-tight">CCAI</span>
-              </div>
+<!-- Logo - Clickable -->
+<a href="index.html" class="flex items-center gap-2 group">
+  <div class="w-10 h-8 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+    <img src="image/logo.png" alt="CCAI Logo" class="h-8 w-auto transition-transform group-hover:scale-105">
+  </div>
+  <span id="brand-name" class="text-white font-bold text-xl tracking-tight">CCAI</span>
+</a>
 
               <div class="hidden md:flex items-center gap-8">
                 <a href="./index.html" class="nav-link nav-item text-gray-300 hover:text-white transition-colors text-sm font-medium" data-page="home">Home</a>
